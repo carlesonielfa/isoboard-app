@@ -29,7 +29,7 @@ local-probe = ["probe-runtime", "local-inference"]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
-tauri = { version = "~2.11", features = ["tray-icon", "macos-private-api"] }
+tauri = { version = "~2.12", features = ["tray-icon", "macos-private-api"] }
 specta = { version = "=2.0.0-rc.25", features = ["derive"] }
 specta-typescript = "=0.0.12"
 tauri-specta = { version = "=2.0.0-rc.25", features = ["derive", "typescript"] }

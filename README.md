@@ -48,8 +48,6 @@ With the local isOCR model, captures stay on your device. See [what data leaves 
 1. Download the DMG from [isoboard.app](https://isoboard.app).
 2. Drag isoboard to **Applications** and open it. The setup guide covers permissions and the local model.
 
-Release builds are not notarized yet, so macOS asks you to approve the first launch. [Here is how](https://docs.isoboard.app/getting-started/install/#how-do-i-open-isoboard-if-macos-blocks-it).
-
 isoboard is free for personal use. Work use needs a commercial license after a seven-day evaluation. See [pricing and licensing](https://docs.isoboard.app/license/pricing-and-licensing/).
 
 ## Documentation

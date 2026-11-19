@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/carlesonielfa/isoboard-app/security/advisories/new
+    about: Report vulnerabilities privately. Do not open a public issue.
+  - name: Purchase, license key or refund help
+    url: mailto:support@isoboard.app
+    about: Order and account details belong in email, not in public issues.
+  - name: Licensing, redistribution or integration enquiries
+    url: mailto:legal@isoboard.app
+    about: Questions about commercial use, bundling or other agreements.

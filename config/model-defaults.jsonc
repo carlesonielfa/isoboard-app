@@ -1,0 +1,64 @@
+// Public build-time configuration. Rebuild after editing; never store secrets here.
+{
+  // Must match an ID in src-tauri/src/local_models/catalog.json.
+  "setupLocalModel": "isocr1-0.8b",
+  // Display names; keys must match the Rust provider enum.
+  "providerLabels": {
+    "local": "Local",
+    "openai_api": "OpenAI",
+    "anthropic_api": "Anthropic",
+    "gemini_api": "Gemini",
+    "openai_compatible": "OpenAI-compatible",
+  },
+  // Provisioned once per provider; changes do not rewrite saved user profiles.
+  "builtinProfiles": [
+    {
+      "id": "builtin:openai_api:efficient",
+      "name": "OpenAI API - Efficient",
+      "backend": "openai_api",
+      "model": "gpt-6-luna",
+      "tier": "efficient",
+      "explanation": "Favors faster, lower-cost everyday captures.",
+    },
+    {
+      "id": "builtin:openai_api:accurate",
+      "name": "OpenAI API - Accurate",
+      "backend": "openai_api",
+      "model": "gpt-6.1-sol",
+      "tier": "accurate",
+      "explanation": "Favors difficult captures; may take longer and cost more.",
+    },
+    {
+      "id": "builtin:anthropic_api:efficient",
+      "name": "Anthropic - Efficient",
+      "backend": "anthropic_api",
+      "model": "claude-haiku-5.5",
+      "tier": "efficient",
+      "explanation": "Favors faster, lower-cost everyday captures.",
+    },
+    {
+      "id": "builtin:anthropic_api:accurate",
+      "name": "Anthropic - Accurate",
+      "backend": "anthropic_api",
+      "model": "claude-sonnet-5-5",
+      "tier": "accurate",
+      "explanation": "Favors difficult captures; may take longer and cost more.",
+    },
+    {
+      "id": "builtin:gemini_api:efficient",
+      "name": "Gemini - Efficient",
+      "backend": "gemini_api",
+      "model": "gemini-3.8-flash",
+      "tier": "efficient",
+      "explanation": "Favors faster, lower-cost everyday captures.",
+    },
+    {
+      "id": "builtin:gemini_api:accurate",
+      "name": "Gemini - Accurate",
+      "backend": "gemini_api",
+      "model": "gemini-4-argon",
+      "tier": "accurate",
+      "explanation": "Favors difficult captures; may take longer and cost more.",
+    },
+  ],
+}

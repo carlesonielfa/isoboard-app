@@ -1,0 +1,23 @@
+// Public build-time configuration. Rebuild after editing; never store secrets here.
+{
+  // Remote capability and pricing metadata for inference models.
+  "modelsDev": {
+    "url": "https://models.dev/api.json",
+    "requestTimeoutSeconds": 20,
+  },
+  // Model downloads and their repository links.
+  "huggingFace": {
+    "baseUrl": "https://huggingface.co",
+    "connectTimeoutSeconds": 30,
+    // Maximum inactivity while receiving a model download.
+    "readTimeoutSeconds": 60,
+  },
+  // Signed app updates. The manifest lists the latest published release.
+  "updates": {
+    "manifestUrl": "https://github.com/carlesonielfa/isoboard-app/releases/latest/download/latest.json",
+    "requestTimeoutSeconds": 30,
+    // Automatic checks wait after launch, then repeat on this interval.
+    "initialDelaySeconds": 60,
+    "intervalSeconds": 21600,
+  },
+}

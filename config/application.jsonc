@@ -1,0 +1,43 @@
+// Public build-time configuration. Rebuild after editing; never store secrets here.
+{
+  // Shared frontend and Rust validation bounds.
+  "limits": {
+    "additionalRulesBytes": 65536,
+    "promptTemplateBytes": 65536,
+    "profileNameCharacters": 80,
+    "temperatureMin": 0.0,
+    "temperatureMax": 2.0,
+    // Maximum representable u32; actual model limits may be lower.
+    "maxOutputTokens": 4294967295,
+    "requestTimeoutMinSeconds": 1,
+    "requestTimeoutMaxSeconds": 3600,
+  },
+  // Retention defaults for completed capture history.
+  "history": {
+    // Safety cap on successful entries; the byte budget is the real limit.
+    "maxEntries": 1000,
+    // 500 MiB total retained storage.
+    "maxBytes": 524288000,
+    // Full-resolution originals kept for reprocessing, newest first, with a
+    // budget separate from maxBytes. Older entries keep their thumbnail.
+    "maxOriginals": 50,
+    // 1 GiB for kept originals.
+    "maxOriginalBytes": 1073741824,
+  },
+  "feedback": {
+    // How long copied feedback stays visible.
+    "copyMilliseconds": 1600,
+    // Memory usage refresh interval in the debug UI.
+    "resourcePollMilliseconds": 2000,
+    "captureSuccessMilliseconds": 4000,
+    "captureFailureMilliseconds": 12000,
+    // Shared by native dismissal and the overlay CSS transition.
+    "captureFadeMilliseconds": 220,
+    // Hover sampling that pauses capture-result dismissal.
+    "captureCursorPollMilliseconds": 50,
+    // Must cover the fade so a hovered overlay can be restored.
+    "captureExitGraceMilliseconds": 320,
+    // One duration per bundled frame; the full logo holds longer.
+    "trayFrameMilliseconds": [300, 300, 300, 500],
+  },
+}

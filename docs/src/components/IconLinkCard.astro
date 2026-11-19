@@ -1,0 +1,74 @@
+---
+// A Starlight-style link card with a leading icon, used on the docs home page.
+import { Icon } from '@astrojs/starlight/components';
+import type { ComponentProps } from 'astro/types';
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  icon: ComponentProps<typeof Icon>['name'];
+}
+
+const { title, description, href, icon } = Astro.props;
+---
+
+<a class="icon-link-card not-content" href={href}>
+  <span class="icon"><Icon name={icon} size="1.25rem" /></span>
+  <span class="text">
+    <span class="title">{title}</span>
+    <span class="description">{description}</span>
+  </span>
+  <Icon name="right-arrow" size="1.25rem" class="arrow rtl:flip" />
+</a>
+
+<style>
+  .icon-link-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    background-color: rgb(20 17 27 / 70%);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.15s, background-color 0.15s;
+  }
+  .icon-link-card:hover {
+    border-color: var(--sl-color-gray-2);
+    background-color: var(--sl-color-gray-7, var(--sl-color-gray-6));
+  }
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .title {
+    font-family: var(--isoboard-heading-font);
+    font-weight: 600;
+    font-size: var(--sl-text-lg);
+    color: var(--sl-color-white);
+    line-height: var(--sl-line-height-headings);
+  }
+  .description {
+    color: var(--sl-color-gray-3);
+    line-height: 1.5;
+  }
+  .icon-link-card :global(.arrow) {
+    color: var(--sl-color-gray-3);
+  }
+  .icon-link-card:hover :global(.arrow) {
+    color: var(--sl-color-white);
+  }
+</style>

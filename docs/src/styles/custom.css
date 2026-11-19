@@ -1,0 +1,129 @@
+/* isoboard dark theme for Starlight: plum canvas, lavender accent, Sora headings, Inter body. */
+
+@font-face {
+  font-family: 'Inter Variable';
+  src: url('/fonts/inter-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sora Variable';
+  src: url('/fonts/sora-latin-variable.woff2') format('woff2');
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+:root {
+  --sl-font: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --isoboard-heading-font: 'Sora Variable', 'Sora', system-ui, sans-serif;
+
+  /* Accent: lavender from the brand kit. */
+  --sl-color-accent-low: #2e2340;
+  --sl-color-accent: #b48df0;
+  --sl-color-accent-high: #e7d7ff;
+
+  /* Grays tuned toward the plum canvas (#14111b). */
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #ece8f3;
+  --sl-color-gray-2: #c9c2d6;
+  --sl-color-gray-3: #9b92ab;
+  --sl-color-gray-4: #5f5670;
+  --sl-color-gray-5: #3a3346;
+  --sl-color-gray-6: #26222e;
+  --sl-color-black: #14111b;
+
+  --sl-color-hairline: rgb(255 255 255 / 12%);
+  --sl-color-hairline-light: rgb(255 255 255 / 18%);
+}
+
+h1,
+h2,
+h3,
+h4,
+.hero h1 {
+  font-family: var(--isoboard-heading-font);
+  letter-spacing: -0.01em;
+}
+
+/* The website's prismatic wash, fixed to the viewport, with the lavender dot grid on top. */
+body {
+  background-image:
+    radial-gradient(rgb(226 202 255 / 11%) 0.85px, transparent 1.25px),
+    url('/media/prismatic-wash.png');
+  background-size: 28px 28px, 100% 100%;
+  background-repeat: repeat, no-repeat;
+  background-position: 0 0, center;
+  background-attachment: fixed;
+}
+
+/* Home hero demo: two clips with different aspect ratios share one frame and cross-fade. */
+.hero-demo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 800 / 764;
+}
+.hero-demo video {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 1.25rem 3rem -1rem rgb(0 0 0 / 0.6);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.hero-demo video.is-active {
+  opacity: 1;
+}
+
+/* Give the hero demo more room than Starlight's default 7:4 split. */
+.hero > .hero-html {
+  width: min(92%, 30rem);
+}
+@media (min-width: 50rem) {
+  .hero {
+    grid-template-columns: 5fr 5fr;
+  }
+  .hero > .hero-html {
+    width: min(100%, 34rem);
+  }
+}
+
+/* Logo beside the home hero title. */
+.hero h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+}
+.hero-logo {
+  width: 0.9em;
+  height: 0.9em;
+  flex: none;
+}
+@media (max-width: 49.99rem) {
+  .hero h1 {
+    justify-content: center;
+  }
+}
+
+/* Muted "Docs" after the hero wordmark, matching the header. */
+.hero-docs {
+  font-weight: 400;
+  color: var(--sl-color-gray-3);
+}
+
+/* Translucent header over the wash, like the website's nav. */
+.page > .header {
+  background-color: rgb(20 17 27 / 55%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* The overlay is a 288 pt wide notification; show it near its real size. */
+.sl-markdown-content img[src*='capture-overlay-states'] {
+  width: min(100%, 22rem);
+}

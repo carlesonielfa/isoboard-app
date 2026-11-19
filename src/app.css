@@ -1,0 +1,182 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@source not '../.agents';
+
+@font-face {
+  font-family: 'Inter Variable';
+  src: url('/fonts/inter-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sora Variable';
+  src: url('/fonts/sora-latin-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans:
+    'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Helvetica Neue', sans-serif;
+  --font-display: 'Sora Variable', Sora, var(--font-sans);
+  --color-canvas: #14111b;
+  --color-surface: rgba(255, 255, 255, 0.045);
+  --color-surface-shell: rgba(20, 17, 27, 0.48);
+  --color-surface-solid: #26222e;
+  --color-surface-raised: rgba(255, 255, 255, 0.075);
+  --color-surface-control: rgba(255, 255, 255, 0.08);
+  --color-surface-overlay: rgba(38, 34, 46, 0.9);
+  --color-surface-preview: rgba(255, 255, 255, 0.75);
+  --color-overlay: #26222e;
+  --color-grid-dot: rgba(226, 202, 255, 0.3);
+  --color-highlight: #dbd0eb;
+  --color-highlight-surface: rgba(215, 188, 255, 0.12);
+  --color-ink: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.18);
+  --color-border-strong: rgba(215, 188, 255, 0.6);
+  --color-focus: #d7bcff;
+  --color-danger: #ffb4ab;
+  --color-danger-border: #ffb4ab;
+  --color-danger-surface: #451715;
+  --color-warning: #f7d58b;
+  --color-success: #8ed99b;
+  --spacing-toolbar-button: 1.875rem;
+  --radius-control: 0.75rem;
+  --radius-surface: 1.25rem;
+  --radius-capture: 1rem;
+  --animate-attention-glow: attention-glow 2.4s ease-in-out infinite;
+  --shadow-glow: inset 0 0 8px 1px rgba(215, 188, 255, 0.045);
+  --background-image-prismatic:
+    linear-gradient(135deg, rgba(242, 165, 203, 0.25), transparent 45%, rgba(127, 190, 239, 0.25)),
+    radial-gradient(ellipse at 55% 100%, rgba(193, 161, 244, 0.25), transparent 70%);
+}
+
+:root {
+  /* shadcn-svelte semantic contract mapped onto the isoboard palette. */
+  --background: var(--color-canvas);
+  --foreground: var(--color-ink);
+  --card: var(--color-surface);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-surface-overlay);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-canvas);
+  --secondary: var(--color-surface-control);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-surface-control);
+  --muted-foreground: var(--color-ink);
+  --accent: var(--color-surface-raised);
+  --accent-foreground: var(--color-ink);
+  --destructive: var(--color-danger);
+  --destructive-foreground: var(--color-canvas);
+  --border: var(--color-border);
+  --input: var(--color-border);
+  --ring: var(--color-focus);
+  --radius: var(--radius-control);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 0.25rem);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+}
+
+html,
+body {
+  height: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  background: transparent;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+
+  button,
+  summary {
+    font: inherit;
+  }
+
+  button,
+  input,
+  select,
+  textarea,
+  summary {
+    font-family: var(--font-sans);
+  }
+
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+}
+
+@keyframes attention-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px 0 color-mix(in srgb, var(--color-focus) 15%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 15px 1px color-mix(in srgb, var(--color-focus) 45%, transparent);
+  }
+}
+
+@keyframes app-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .app-shell,
+  [data-slot='select-content'],
+  [data-slot='combobox-content'],
+  [data-slot='popover-content'],
+  [data-slot='dropdown-menu-content'],
+  .capture-overlay {
+    background-color: var(--color-surface-solid);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

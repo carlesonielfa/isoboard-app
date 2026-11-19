@@ -1,0 +1,55 @@
+// Public build-time configuration. Rebuild after editing; never store secrets here.
+{
+  "supportEmail": "support@isoboard.app",
+  "checkoutUrl": "https://buy.polar.sh/polar_cl_xC3ihQZGNhAP7RnVMwfyv6QpF22Pwqg4l0XWd4cDsJo",
+  "licensing": {
+    // Starts once, when the user continues without a key.
+    "trialDays": 7,
+    // Calendar months from license creation; independent of commercial validity.
+    "supportMonths": 12,
+    // Commercial entitlement covers this major release series.
+    "coveredMajor": 1,
+    "keyPrefix": "ISOAPP-",
+    // Minimum time between scheduled Polar checks.
+    "validationIntervalSeconds": 86400,
+    // Checks whether validation is due; does not call Polar every tick.
+    "backgroundPollSeconds": 60,
+    // Refreshes local UI status, not the Polar API.
+    "statusRefreshMilliseconds": 60000,
+  },
+  "polar": {
+    "organizationId": "f9a76de5-56ce-4525-8d75-ee10f3cba16b",
+    // The license-key benefit checked when granting commercial permission.
+    "benefitId": "28056087-ae7b-4ea3-8e05-55c10b23d084",
+    // Reference metadata; validation uses organizationId and benefitId.
+    "productId": "51438471-fde7-4f98-96dc-6b0198a5e39a",
+    "validationUrl": "https://api.polar.sh/v1/customer-portal/license-keys/validate",
+    "requestTimeoutSeconds": 15,
+    "connectTimeoutSeconds": 5,
+  },
+  // Finalized v2 documents bundled for offline access; supporting terms and Spanish copies are alongside them.
+  "legalDocuments": [
+    {
+      "label": "License terms",
+      "resource": "legal/SOURCE-LICENSE.md",
+    },
+    {
+      "label": "Commercial terms",
+      "resource": "legal/COMMERCIAL-TERMS.md",
+    },
+    {
+      "label": "Privacy",
+      "resource": "legal/PRIVACY-NOTICE.md",
+    },
+  ],
+  "thirdPartyDocuments": [
+    {
+      "label": "Third-party notices",
+      "resource": "legal/THIRD_PARTY_NOTICES.txt",
+    },
+    {
+      "label": "MPL source code",
+      "resource": "legal/MPL-SOURCE-ACCESS.txt",
+    },
+  ],
+}

@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "models": [
+    {
+      "id": "isocr1-0.8b",
+      "name": "isOCR1 0.8B",
+      "supports_text": false,
+      "minimum_ui_mode": "basic",
+      "prompt": "isocr",
+      "download": {
+        "repo": "carlesonielfa/isOCR1-0.8B-GGUF",
+        "revision": "d320232acfc20b977359ebbb949ae5fd60527478",
+        "license_file": "LICENSE.md",
+        "files": [
+          {
+            "name": "isOCR1-0.8B-Q8_0.gguf",
+            "bytes": 811843520,
+            "sha256": "d4eaa4a642e285786c9cb390779b7ae2f2c7a59aec142ff409accad102e965e4"
+          },
+          {
+            "name": "mmproj-isOCR1-0.8B-Q8_0.gguf",
+            "bytes": 115923584,
+            "sha256": "e06f65928dfff60edfb74a420d8e0ccc8e2c609b1e0e8cdb736f334880f6e067"
+          }
+        ]
+      }
+    },
+    {
+      "id": "qwen3.5-2b",
+      "name": "Qwen3.5 2B",
+      "supports_text": true,
+      "prompt": "standard",
+      "download": {
+        "repo": "unsloth/Qwen3.5-2B-GGUF",
+        "revision": "f6d5376be1edb4d416d56da11e5397a961aca8ae",
+        "files": [
+          {
+            "name": "Qwen3.5-2B-Q4_K_M.gguf",
+            "bytes": 1280835840,
+            "sha256": "aaf42c8b7c3cab2bf3d69c355048d4a0ee9973d48f16c731c0520ee914699223"
+          },
+          {
+            "name": "mmproj-F16.gguf",
+            "bytes": 668227264,
+            "sha256": "7035e9cb8d7c6a9681d07eef9a364783e86ea4cd73faab2eabb4f43a101830c7"
+          }
+        ]
+      },
+      "minimum_ui_mode": "debug"
+    }
+  ]
+}

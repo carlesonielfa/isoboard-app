@@ -1,0 +1,24 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-hide",
+    "opener:default",
+    {
+      "identifier": "opener:allow-open-path",
+      "allow": [
+        { "path": "$RESOURCE/legal/THIRD_PARTY_NOTICES.txt" },
+        { "path": "$RESOURCE/legal/MPL-SOURCE-ACCESS.txt" },
+        { "path": "$RESOURCE/legal/SOURCE-LICENSE.md" },
+        { "path": "$RESOURCE/legal/COMMERCIAL-TERMS.md" },
+        { "path": "$RESOURCE/legal/PRIVACY-NOTICE.md" }
+      ]
+    },
+    "autostart:allow-enable",
+    "autostart:allow-disable",
+    "autostart:allow-is-enabled"
+  ]
+}

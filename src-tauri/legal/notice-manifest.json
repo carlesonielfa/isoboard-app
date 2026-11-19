@@ -1,0 +1,2462 @@
+{
+  "scope": "aarch64-apple-darwin default features; conservative normal/build dependency graph and observed frontend plus CSS inputs",
+  "cargo_lock_sha256": "157340d50760ac00fa0bab5ae6924103ccff4405c420f576f637e186ead589c2",
+  "bun_lock_sha256": "453a24d2778e7623402507bf4d3b1490a0477f3b88d8861a2192c183a59e2ea8",
+  "notices": [
+    {
+      "component": "Rust: Inflector 0.11.4",
+      "source": "https://github.com/whatisinternet/inflector",
+      "text_sha256": "fd793a8a15d8ab0f14fee4af67d7bf204d90221f21539bca258d60f146b473bc"
+    },
+    {
+      "component": "Rust: adler2 2.0.1",
+      "source": "https://github.com/oyvindln/adler2",
+      "text_sha256": "6f04f6c10c25874b25f8696efd14470dd517526f9f4102c9b7ece1c2c2321932"
+    },
+    {
+      "component": "Rust: ahash 0.8.12",
+      "source": "https://github.com/tkaitchuck/ahash",
+      "text_sha256": "00a82447ddb3db748837153d70079a04ad0b46d66ffaf439b53b1561a3a46590"
+    },
+    {
+      "component": "Rust: aho-corasick 1.1.5",
+      "source": "https://github.com/BurntSushi/aho-corasick",
+      "text_sha256": "4f5137edb7392f1f9c69d9118dd8f84c099cb5baa38ac9df125983f05c1ebeb3"
+    },
+    {
+      "component": "Rust: alloc-no-stdlib 2.0.4",
+      "source": "https://github.com/dropbox/rust-alloc-no-stdlib",
+      "text_sha256": "b19a6068ca2eb6bf67443f7e6a3ec61f7e46899967d95ce52b12d67efb3c1cea"
+    },
+    {
+      "component": "Rust: alloc-stdlib 0.2.4",
+      "source": "https://github.com/dropbox/rust-alloc-no-stdlib",
+      "text_sha256": "b19a6068ca2eb6bf67443f7e6a3ec61f7e46899967d95ce52b12d67efb3c1cea"
+    },
+    {
+      "component": "Rust: ammonia 4.1.4",
+      "source": "https://github.com/rust-ammonia/ammonia",
+      "text_sha256": "d68bb99048ee8c85f5d5b0ab869e01e2f4e1eb1bf12d5d6fadf459dc639f9be4"
+    },
+    {
+      "component": "Rust: anyhow 1.0.104",
+      "source": "https://github.com/dtolnay/anyhow",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: arboard 3.6.1",
+      "source": "https://github.com/1Password/arboard",
+      "text_sha256": "bc03c7b1c473f43ba07cf5f2ce3eb68e1e7ea0305b08eae00b67183bcd0f7072"
+    },
+    {
+      "component": "Rust: arrayvec 0.7.8",
+      "source": "https://github.com/bluss/arrayvec",
+      "text_sha256": "96d0713eea0d2a18717a2daf8d94c3cef20320217004f92e3ebbf3adfcd41bcf"
+    },
+    {
+      "component": "Rust: async-compression 0.4.46",
+      "source": "https://github.com/Nullus157/async-compression",
+      "text_sha256": "97d63f27126b1e3ccbc8f573c495716b4b38f677196ec7c3a6757e7cb523b67f"
+    },
+    {
+      "component": "Rust: atomic-waker 1.1.2",
+      "source": "https://github.com/smol-rs/atomic-waker",
+      "text_sha256": "051090af26d47c20e1f01cc8ce25ec9d9f44bcb910b3f36a0eec0ccf1dc8cccf"
+    },
+    {
+      "component": "Rust: auto-launch 0.5.0",
+      "source": "https://github.com/zzzgydi/auto-launch.git",
+      "text_sha256": "e40ed086ae73f701ed40ffe03bbb96f4fc2afdb6fc135eba59f95ab97fee8c04"
+    },
+    {
+      "component": "Rust: autocfg 1.5.1",
+      "source": "https://github.com/cuviper/autocfg",
+      "text_sha256": "278da3a3062e47809ba1de0a4d4161b524b1829d57c48ed32c8bbc5ea96a455d"
+    },
+    {
+      "component": "Rust: aws-lc-rs 1.18.1",
+      "source": "https://github.com/aws/aws-lc-rs",
+      "text_sha256": "f01c52a439d7959ed3cab1fa28268950a93acd433e11a884476678497ba2f6c4"
+    },
+    {
+      "component": "Rust: aws-lc-sys 0.45.0",
+      "source": "https://github.com/aws/aws-lc-rs",
+      "text_sha256": "c1a3c32717e414b96bc7260aef0d2009a66e55e28efa5378308dd0e5555b877d"
+    },
+    {
+      "component": "Rust: base64 0.21.7",
+      "source": "https://github.com/marshallpierce/rust-base64",
+      "text_sha256": "2aabdfbd0724eef996f85d10af6f452bfcfc0ce9b9cdea41334d80613fb99c04"
+    },
+    {
+      "component": "Rust: base64 0.22.1",
+      "source": "https://github.com/marshallpierce/rust-base64",
+      "text_sha256": "7eaef299de79df475c55f7c0c5e3efc0a5a135f195346bc78c720f85f34ec0ff"
+    },
+    {
+      "component": "Rust: base64 0.23.1",
+      "source": "https://github.com/marshallpierce/rust-base64",
+      "text_sha256": "ceb681fc32a53148409caedbd6343e2bcd933e946ea5e6d4123d12578b96bb78"
+    },
+    {
+      "component": "Rust: bindgen 0.72.1",
+      "source": "https://github.com/rust-lang/rust-bindgen",
+      "text_sha256": "62cf67926431ec88d6b730952b16e9c0adad95af44723bee94b88d7ebe493384"
+    },
+    {
+      "component": "Rust: bit-set 0.8.0",
+      "source": "https://github.com/contain-rs/bit-set",
+      "text_sha256": "290cc9a6b5bac5405687bf8e0d3e2d7caa627a5dba16f259e9af54405721c24b"
+    },
+    {
+      "component": "Rust: bit-vec 0.8.0",
+      "source": "https://github.com/contain-rs/bit-vec",
+      "text_sha256": "290cc9a6b5bac5405687bf8e0d3e2d7caa627a5dba16f259e9af54405721c24b"
+    },
+    {
+      "component": "Rust: bitflags 1.3.2",
+      "source": "https://github.com/bitflags/bitflags",
+      "text_sha256": "f23d2886c685c7a7121952eb4d893b2aee6ae49211057b206be53a7c3527ed3e"
+    },
+    {
+      "component": "Rust: bitflags 2.13.2",
+      "source": "https://github.com/bitflags/bitflags",
+      "text_sha256": "41c9eaedc124f23fb2e679455f688d2805eb50ffc04ecb30453483cc8b99592a"
+    },
+    {
+      "component": "Rust: block-buffer 0.10.4",
+      "source": "https://github.com/RustCrypto/utils",
+      "text_sha256": "f59c3def88c9c2ad097c1cdee336267e971d0a71190525e07f393c619b350aad"
+    },
+    {
+      "component": "Rust: block2 0.6.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "a43599dc45b5d9142bcdccae3fcbf464c501ea791866a535cc0e09c5f0f98af4"
+    },
+    {
+      "component": "Rust: brotli 8.0.4",
+      "source": "https://github.com/dropbox/rust-brotli",
+      "text_sha256": "df366a67a3bc844aa60c6af6b3266a1fd24d98a5bc626a220007f71df727f963"
+    },
+    {
+      "component": "Rust: brotli-decompressor 5.0.3",
+      "source": "https://github.com/dropbox/rust-brotli-decompressor",
+      "text_sha256": "89e74e36430edf6d89a865dcf96a9c62550303885751401518439b58edd972c1"
+    },
+    {
+      "component": "Rust: bs58 0.5.1",
+      "source": "https://github.com/Nullus157/bs58-rs",
+      "text_sha256": "7baee3b5f7e0594733dd709ace639062aef5574fcc3de0b37cdeee23cebf0312"
+    },
+    {
+      "component": "Rust: bytemuck 1.25.0",
+      "source": "https://github.com/Lokathor/bytemuck",
+      "text_sha256": "517112cba8a6c967b1f73f0ebc89544b4614f82b38017e46d084b3febf396cd0"
+    },
+    {
+      "component": "Rust: byteorder 1.5.0",
+      "source": "https://github.com/BurntSushi/byteorder",
+      "text_sha256": "4f5137edb7392f1f9c69d9118dd8f84c099cb5baa38ac9df125983f05c1ebeb3"
+    },
+    {
+      "component": "Rust: byteorder-lite 0.1.0",
+      "source": "https://github.com/image-rs/byteorder-lite",
+      "text_sha256": "c815a76a236d475a164165f3b1ae99b1dc4e27f14fca5dadefd43ebe7b899e48"
+    },
+    {
+      "component": "Rust: bytes 1.12.1",
+      "source": "https://github.com/tokio-rs/bytes",
+      "text_sha256": "777bd0d491c9f023114bf4fa2cec8477491a2ff24efa4e42a2af8f68563fc5f6"
+    },
+    {
+      "component": "Rust: camino 1.2.5",
+      "source": "https://github.com/camino-rs/camino",
+      "text_sha256": "77c6517493a418fe0e8585af3dd0f774017a4d87a1851cf59c7d40eb12853a9b"
+    },
+    {
+      "component": "Rust: cargo-platform 0.1.9",
+      "source": "https://github.com/rust-lang/cargo",
+      "text_sha256": "b074fa8e35589ef596acd540184c4e71e03ca1f7052f4d6ade8e4732720d8f4f"
+    },
+    {
+      "component": "Rust: cargo_metadata 0.19.2",
+      "source": "https://github.com/oli-obk/cargo_metadata",
+      "text_sha256": "627fd20ae90ab7db1cbf951c5c5603bee42608979800b25a30b547ff41665a88"
+    },
+    {
+      "component": "Rust: cargo_toml 0.22.3",
+      "source": "https://gitlab.com/lib.rs/cargo_toml",
+      "text_sha256": "be3acb7bd677035fcde7d5c4232fcf514feaa72b2d73d8cd63a160bf66dab29d"
+    },
+    {
+      "component": "Rust: cc 1.4.5",
+      "source": "https://github.com/rust-lang/cc-rs",
+      "text_sha256": "560433cbe3d24e8835c40d792f4df0064f84221ddf4085c21d24756319ae9398"
+    },
+    {
+      "component": "Rust: cexpr 0.6.0",
+      "source": "https://github.com/jethrogb/rust-cexpr",
+      "text_sha256": "4da74fd565fd5b0a6614f724b9180095d89053849a5453d7cd9c557771b5dc3a"
+    },
+    {
+      "component": "Rust: cfb 0.7.3",
+      "source": "https://github.com/mdsteele/rust-cfb",
+      "text_sha256": "6e5ecc770de482214d44de75ff444122a7e9475ad5fbcc80c574b9f6375d5d38"
+    },
+    {
+      "component": "Rust: cfg-if 1.0.4",
+      "source": "https://github.com/rust-lang/cfg-if",
+      "text_sha256": "8d48a235658801bee7f54e22fb53bd4e8646dc983b155fcfe55322ed4dfdb431"
+    },
+    {
+      "component": "Rust: cfg_aliases 0.2.2",
+      "source": "https://github.com/katharostech/cfg_aliases",
+      "text_sha256": "ce5c9764dc65ea11e41fd65e1fc64747569da28ec83d58a208a0d320f5ecafb9"
+    },
+    {
+      "component": "Rust: chacha20 0.10.2",
+      "source": "https://github.com/RustCrypto/stream-ciphers",
+      "text_sha256": "c33001d376a573bd072aaa2944619942b33b5b70391167cca7783cb96f88eb5e"
+    },
+    {
+      "component": "Rust: chrono 0.4.45",
+      "source": "https://github.com/chronotope/chrono",
+      "text_sha256": "08b1300ed70520228164eff117c99c21c80ec7714ef20f3849d3e92be365c460"
+    },
+    {
+      "component": "Rust: clang-sys 1.9.1",
+      "source": "https://github.com/KyleMayes/clang-sys",
+      "text_sha256": "bcf5f91b8a649c43c6ff00a9696e84bd5e91ae9629d729535dfc7a74fc7bf3bf"
+    },
+    {
+      "component": "Rust: cmake 0.1.58",
+      "source": "https://github.com/rust-lang/cmake-rs",
+      "text_sha256": "8d48a235658801bee7f54e22fb53bd4e8646dc983b155fcfe55322ed4dfdb431"
+    },
+    {
+      "component": "Rust: compression-codecs 0.4.41",
+      "source": "https://github.com/Nullus157/async-compression",
+      "text_sha256": "97d63f27126b1e3ccbc8f573c495716b4b38f677196ec7c3a6757e7cb523b67f"
+    },
+    {
+      "component": "Rust: compression-core 0.4.33",
+      "source": "https://github.com/Nullus157/async-compression",
+      "text_sha256": "97d63f27126b1e3ccbc8f573c495716b4b38f677196ec7c3a6757e7cb523b67f"
+    },
+    {
+      "component": "Rust: convert_case 0.10.0",
+      "source": "https://github.com/rutrum/convert-case",
+      "text_sha256": "c5eeaa08fbcdb2889743f3c5e6ee928e4c6b74169e7c8f0883e1aaf0e009c209"
+    },
+    {
+      "component": "Rust: cookie 0.18.2",
+      "source": "https://github.com/SergioBenitez/cookie-rs",
+      "text_sha256": "5cd25291510d57d2dfdffc3b0ca869d26623156cfdd6dabe9a2ea6f3f37e4f87"
+    },
+    {
+      "component": "Rust: core-foundation 0.10.1",
+      "source": "https://github.com/servo/core-foundation-rs",
+      "text_sha256": "3d6de90198f9e9c7f13fb4bd4ca50d489b932d6a1d8e87ac2b75e9069ada5508"
+    },
+    {
+      "component": "Rust: core-foundation 0.9.4",
+      "source": "https://github.com/servo/core-foundation-rs",
+      "text_sha256": "3d6de90198f9e9c7f13fb4bd4ca50d489b932d6a1d8e87ac2b75e9069ada5508"
+    },
+    {
+      "component": "Rust: core-foundation-sys 0.8.7",
+      "source": "https://github.com/servo/core-foundation-rs",
+      "text_sha256": "3d6de90198f9e9c7f13fb4bd4ca50d489b932d6a1d8e87ac2b75e9069ada5508"
+    },
+    {
+      "component": "Rust: core-graphics 0.25.0",
+      "source": "https://github.com/servo/core-foundation-rs",
+      "text_sha256": "3f99b883b5cc84d9a16c28fb922bc0335b339e77f4556be8fb687d16c7c6b3e4"
+    },
+    {
+      "component": "Rust: core-graphics-types 0.2.0",
+      "source": "https://github.com/servo/core-foundation-rs",
+      "text_sha256": "3d6de90198f9e9c7f13fb4bd4ca50d489b932d6a1d8e87ac2b75e9069ada5508"
+    },
+    {
+      "component": "Rust: coreaudio-rs 0.13.0",
+      "source": "https://github.com/RustAudio/coreaudio-rs.git",
+      "text_sha256": "8c0ccd320196855e0584a2d49da92c2a7003d3bb8a98224a77d2b44af42f1007"
+    },
+    {
+      "component": "Rust: cpal 0.16.0",
+      "source": "https://github.com/rustaudio/cpal",
+      "text_sha256": "5f50cb3aefb9f8359581451feb501e217cc65b02508b62e5e75b0b69652223cb"
+    },
+    {
+      "component": "Rust: cpufeatures 0.2.17",
+      "source": "https://github.com/RustCrypto/utils",
+      "text_sha256": "49c387b26bca588c446963dc60f200f59d0a5101e820c92fc95de4b3939bd070"
+    },
+    {
+      "component": "Rust: crc32fast 1.5.1",
+      "source": "https://github.com/srijs/rust-crc32fast",
+      "text_sha256": "d66fa1032d87a54e7312bbbd2bb4fde982f41b6cc030500267d0d523abe157f9"
+    },
+    {
+      "component": "Rust: crossbeam-channel 0.5.17",
+      "source": "https://github.com/crossbeam-rs/crossbeam",
+      "text_sha256": "b475ca3f8fe78f7f46832301c71498489ef8f5c84f8268235c8877af0ac63b7b"
+    },
+    {
+      "component": "Rust: crossbeam-utils 0.8.23",
+      "source": "https://github.com/crossbeam-rs/crossbeam",
+      "text_sha256": "1aba699b7f1982b03f3df56469ef1b60d1904e62ea08e3e83fcd35ed5045b66c"
+    },
+    {
+      "component": "Rust: crypto-common 0.1.7",
+      "source": "https://github.com/RustCrypto/traits",
+      "text_sha256": "cf046b820086bd7be3d1caf0bc38f5c3fdcd133b857edb8f8f14387545ff9f23"
+    },
+    {
+      "component": "Rust: cssparser 0.36.0",
+      "source": "https://github.com/servo/rust-cssparser",
+      "text_sha256": "7127baea86d42669bc8b3850ef6b3003ce626ff5054bedd0d098b7a6217b2a27"
+    },
+    {
+      "component": "Rust: cssparser 0.37.0",
+      "source": "https://github.com/servo/rust-cssparser",
+      "text_sha256": "7127baea86d42669bc8b3850ef6b3003ce626ff5054bedd0d098b7a6217b2a27"
+    },
+    {
+      "component": "Rust: cssparser-macros 0.6.1",
+      "source": "https://github.com/servo/rust-cssparser",
+      "text_sha256": "7127baea86d42669bc8b3850ef6b3003ce626ff5054bedd0d098b7a6217b2a27"
+    },
+    {
+      "component": "Rust: ctor 0.8.0",
+      "source": "https://github.com/mmastrac/rust-ctor",
+      "text_sha256": "7e59810036fd0aa634852bacb4243faf15c3fa0b18c65b73450a39dd3fb6709a"
+    },
+    {
+      "component": "Rust: ctor-proc-macro 0.0.7",
+      "source": "https://github.com/mmastrac/rust-ctor",
+      "text_sha256": "7e59810036fd0aa634852bacb4243faf15c3fa0b18c65b73450a39dd3fb6709a"
+    },
+    {
+      "component": "Rust: darling 0.23.0",
+      "source": "https://github.com/TedDriggs/darling",
+      "text_sha256": "abb72ec83b8a44617dad80a4547cbd409d7d61073477e688a0eeba196d3a5551"
+    },
+    {
+      "component": "Rust: darling 0.24.1",
+      "source": "https://github.com/TedDriggs/darling",
+      "text_sha256": "abb72ec83b8a44617dad80a4547cbd409d7d61073477e688a0eeba196d3a5551"
+    },
+    {
+      "component": "Rust: darling_core 0.23.0",
+      "source": "https://github.com/TedDriggs/darling",
+      "text_sha256": "abb72ec83b8a44617dad80a4547cbd409d7d61073477e688a0eeba196d3a5551"
+    },
+    {
+      "component": "Rust: darling_core 0.24.1",
+      "source": "https://github.com/TedDriggs/darling",
+      "text_sha256": "abb72ec83b8a44617dad80a4547cbd409d7d61073477e688a0eeba196d3a5551"
+    },
+    {
+      "component": "Rust: darling_macro 0.23.0",
+      "source": "https://github.com/TedDriggs/darling",
+      "text_sha256": "abb72ec83b8a44617dad80a4547cbd409d7d61073477e688a0eeba196d3a5551"
+    },
+    {
+      "component": "Rust: darling_macro 0.24.1",
+      "source": "https://github.com/TedDriggs/darling",
+      "text_sha256": "abb72ec83b8a44617dad80a4547cbd409d7d61073477e688a0eeba196d3a5551"
+    },
+    {
+      "component": "Rust: dasp_sample 0.11.0",
+      "source": "https://github.com/rustaudio/sample.git",
+      "text_sha256": "b0b71fd19efb7899bfd1567901a4fb1fd5f2caac50957709f995ba718c6e5358"
+    },
+    {
+      "component": "Rust: defmt 1.1.1",
+      "source": "https://github.com/knurling-rs/defmt",
+      "text_sha256": "7d015dbc8d73f3c61d14dc3e9608bd11a407963377e788076ab0a3d58c9c4b7e"
+    },
+    {
+      "component": "Rust: defmt-macros 1.1.1",
+      "source": "https://github.com/knurling-rs/defmt",
+      "text_sha256": "7d015dbc8d73f3c61d14dc3e9608bd11a407963377e788076ab0a3d58c9c4b7e"
+    },
+    {
+      "component": "Rust: defmt-parser 1.0.0",
+      "source": "https://github.com/knurling-rs/defmt",
+      "text_sha256": "7d015dbc8d73f3c61d14dc3e9608bd11a407963377e788076ab0a3d58c9c4b7e"
+    },
+    {
+      "component": "Rust: deranged 0.5.8",
+      "source": "https://github.com/jhpratt/deranged",
+      "text_sha256": "6dd98f648c9b2c422c9e8bbeb06d3d8c53686407343dd9a83a4f3360bf4c3d25"
+    },
+    {
+      "component": "Rust: derive_more 2.1.1",
+      "source": "https://github.com/JelteF/derive_more",
+      "text_sha256": "ff96388f46d0327c96f86b48e6583a5410cdf8838731b08f5dba9f775f24d55c"
+    },
+    {
+      "component": "Rust: derive_more-impl 2.1.1",
+      "source": "https://github.com/JelteF/derive_more",
+      "text_sha256": "ff96388f46d0327c96f86b48e6583a5410cdf8838731b08f5dba9f775f24d55c"
+    },
+    {
+      "component": "Rust: digest 0.10.7",
+      "source": "https://github.com/RustCrypto/traits",
+      "text_sha256": "c934c3958826c549410665b7cc6a3646d4ee015670c3b6e264a253eed056f554"
+    },
+    {
+      "component": "Rust: dirs 4.0.0",
+      "source": "https://github.com/soc/dirs-rs",
+      "text_sha256": "acfa695d2dac27e9ba3c06d2411e0df07b0dc329b71c016b7fef222b62fbec9e"
+    },
+    {
+      "component": "Rust: dirs 6.0.0",
+      "source": "https://github.com/soc/dirs-rs",
+      "text_sha256": "acfa695d2dac27e9ba3c06d2411e0df07b0dc329b71c016b7fef222b62fbec9e"
+    },
+    {
+      "component": "Rust: dirs-sys 0.3.7",
+      "source": "https://github.com/dirs-dev/dirs-sys-rs",
+      "text_sha256": "acfa695d2dac27e9ba3c06d2411e0df07b0dc329b71c016b7fef222b62fbec9e"
+    },
+    {
+      "component": "Rust: dirs-sys 0.5.0",
+      "source": "https://github.com/dirs-dev/dirs-sys-rs",
+      "text_sha256": "acfa695d2dac27e9ba3c06d2411e0df07b0dc329b71c016b7fef222b62fbec9e"
+    },
+    {
+      "component": "Rust: dispatch2 0.3.1",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "7d46ebd688a1793e798e09ffb96318cb399f51f0afc5ac36c0d4d36a42821441"
+    },
+    {
+      "component": "Rust: displaydoc 0.2.7",
+      "source": "https://github.com/yaahc/displaydoc",
+      "text_sha256": "bb2ff6e3ed8aaa8cf9d0c6642f6edf5097875efea6486c9fa04ac7349a4f1024"
+    },
+    {
+      "component": "Rust: dom_query 0.27.0",
+      "source": "https://github.com/niklak/dom_query",
+      "text_sha256": "51d0245ea1d5edc642f30e0b9cefa52471b61f645bd2e571778812642b8a347e"
+    },
+    {
+      "component": "Rust: dpi 0.1.2",
+      "source": "https://github.com/rust-windowing/winit",
+      "text_sha256": "be5890c18cb53e7ee76a447323dac70b30f336a4d43282c937e420a77bc17484"
+    },
+    {
+      "component": "Rust: dtoa 1.0.11",
+      "source": "https://github.com/dtolnay/dtoa",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: dtoa-short 0.3.5",
+      "source": "https://github.com/upsuper/dtoa-short",
+      "text_sha256": "0de25db10ded6d7134f1fd7eeffe57e58be559324921baa7418015b8b4faf62a"
+    },
+    {
+      "component": "Rust: dtor 0.3.0",
+      "source": "https://github.com/mmastrac/rust-ctor",
+      "text_sha256": "7e59810036fd0aa634852bacb4243faf15c3fa0b18c65b73450a39dd3fb6709a"
+    },
+    {
+      "component": "Rust: dtor-proc-macro 0.0.6",
+      "source": "https://github.com/mmastrac/rust-ctor",
+      "text_sha256": "7e59810036fd0aa634852bacb4243faf15c3fa0b18c65b73450a39dd3fb6709a"
+    },
+    {
+      "component": "Rust: dunce 1.0.5",
+      "source": "https://gitlab.com/kornelski/dunce",
+      "text_sha256": "ce20e29d780f869100cd80dd45c4710f70bed412256fae3535bad188200649ed"
+    },
+    {
+      "component": "Rust: dyn-clone 1.0.20",
+      "source": "https://github.com/dtolnay/dyn-clone",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: either 1.18.0",
+      "source": "https://github.com/rayon-rs/either",
+      "text_sha256": "a2e3bf5ed8c1eea1c7b93b0ce4b5f5ec1cc4cf4ad78f775c98ba87d7f3bdf44d"
+    },
+    {
+      "component": "Rust: embed-resource 3.0.11",
+      "source": "https://github.com/nabijaczleweli/rust-embed-resource",
+      "text_sha256": "310befbd93b780acc0fa00eec50c906572f53412b0c18cc74662b3519346740d"
+    },
+    {
+      "component": "Rust: embed_plist 1.2.2",
+      "source": "https://github.com/nvzqz/embed-plist-rs",
+      "text_sha256": "573e90c418d4af8161cd4c125dc7e0cd7ca318230a7ac9f6609b4746c272cca4"
+    },
+    {
+      "component": "Rust: encoding_rs 0.8.41",
+      "source": "https://github.com/hsivonen/encoding_rs",
+      "text_sha256": "774ccd2dff9498bd7a363891a8a162191eecf87fd6772894d73c7dfca44c18f6"
+    },
+    {
+      "component": "Rust: enumflags2 0.7.12",
+      "source": "https://github.com/meithecatte/enumflags2",
+      "text_sha256": "fcfb9907e387e0934fbba6b7aad2c4aeafcd3320af0e200d04408ef0ffd054ec"
+    },
+    {
+      "component": "Rust: enumflags2_derive 0.7.12",
+      "source": "https://github.com/meithecatte/enumflags2",
+      "text_sha256": "dc962839e23c4f53931dc364d70ddfea5536d31c9429a003e2cf543279027cea"
+    },
+    {
+      "component": "Rust: equivalent 1.0.2",
+      "source": "https://github.com/indexmap-rs/equivalent",
+      "text_sha256": "847cc4d8f07560826d6040b831e01c28b84bf4e0d1d80d72e6964ba209dfe578"
+    },
+    {
+      "component": "Rust: erased-serde 0.4.10",
+      "source": "https://github.com/dtolnay/erased-serde",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: errno 0.3.14",
+      "source": "https://github.com/lambda-fairy/rust-errno",
+      "text_sha256": "5add61101f5cfd173dfd3c4fbd2d16e5a8216959fd42d652b5ea572b663cd564"
+    },
+    {
+      "component": "Rust: eventsource-stream 0.2.3",
+      "source": "https://github.com/jpopesculian/eventsource-stream",
+      "text_sha256": "87a999e20d702c438bd7271d46e26eeabd13d3812e89556399e0a9e3daca33a4"
+    },
+    {
+      "component": "Rust: extended 0.1.0",
+      "source": "https://github.com/depp/extended-rs",
+      "text_sha256": "828a46230f147689ced6b9c819bd6752ecee40fd808db019dd11fc7e49464e9d"
+    },
+    {
+      "component": "Rust: fallible-iterator 0.3.0",
+      "source": "https://github.com/sfackler/rust-fallible-iterator",
+      "text_sha256": "1a11f8f450071acfaa34d968c5fb0240350dc1c3eb2c1f4b5ca96fc55a594f98"
+    },
+    {
+      "component": "Rust: fallible-streaming-iterator 0.1.9",
+      "source": "https://github.com/sfackler/fallible-streaming-iterator",
+      "text_sha256": "5946edf4148836661f2a2505d9fe13b025df3f407697d003ff61337f4334a37c"
+    },
+    {
+      "component": "Rust: fastrand 2.5.0",
+      "source": "https://github.com/smol-rs/fastrand",
+      "text_sha256": "d458e0282e8122377c2ad827f865799966a58db8d20ab76a22476f4f3e1e93a7"
+    },
+    {
+      "component": "Rust: fdeflate 0.3.7",
+      "source": "https://github.com/image-rs/fdeflate",
+      "text_sha256": "ae0d2a10a092dd5a17edaa383be8d8b052c3b932e70457f9188de2842d2ff8f6"
+    },
+    {
+      "component": "Rust: filetime 0.2.30",
+      "source": "https://github.com/alexcrichton/filetime",
+      "text_sha256": "8be826f49d581e437e20a1d9026b4a0e51545046f231d543b17ca311c1ebce28"
+    },
+    {
+      "component": "Rust: find-msvc-tools 0.1.12",
+      "source": "https://github.com/rust-lang/cc-rs",
+      "text_sha256": "560433cbe3d24e8835c40d792f4df0064f84221ddf4085c21d24756319ae9398"
+    },
+    {
+      "component": "Rust: find_cuda_helper 0.2.0",
+      "source": "https://github.com/Rust-GPU/Rust-CUDA",
+      "text_sha256": "7932b990e044fd9dc861aaeaba4eda7f713aadf3ab4da8b06813d07573cca7e8"
+    },
+    {
+      "component": "Rust: flate2 1.1.10",
+      "source": "https://github.com/rust-lang/flate2-rs",
+      "text_sha256": "e7608934f2fd393a1842faf44ff34a73d3fbd6027313e3a966c66d5f7ceba1de"
+    },
+    {
+      "component": "Rust: fnv 1.0.7",
+      "source": "https://github.com/servo/rust-fnv",
+      "text_sha256": "3b630cbb095e7a86cffb201b2a8bfb165edae9ca665a1ce74fc3682184378940"
+    },
+    {
+      "component": "Rust: foldhash 0.2.0",
+      "source": "https://github.com/orlp/foldhash",
+      "text_sha256": "01f8eab7edfbdfa908bbdbee618e8903feff131850a092d1d569482f7e3ac593"
+    },
+    {
+      "component": "Rust: foreign-types 0.5.0",
+      "source": "https://github.com/sfackler/foreign-types",
+      "text_sha256": "f2f0dda86b464fd02aa8a5c1e2fe857c382f45b44c6874392a75d73bfa3f5521"
+    },
+    {
+      "component": "Rust: foreign-types-macros 0.2.4",
+      "source": "https://github.com/sfackler/foreign-types",
+      "text_sha256": "f2f0dda86b464fd02aa8a5c1e2fe857c382f45b44c6874392a75d73bfa3f5521"
+    },
+    {
+      "component": "Rust: foreign-types-shared 0.3.1",
+      "source": "https://github.com/sfackler/foreign-types",
+      "text_sha256": "f2f0dda86b464fd02aa8a5c1e2fe857c382f45b44c6874392a75d73bfa3f5521"
+    },
+    {
+      "component": "Rust: form_urlencoded 1.2.2",
+      "source": "https://github.com/servo/rust-url",
+      "text_sha256": "7bd7f0c0eb909323fc403e5c4d70f23cab1e6f330f7ee719ab0ef4a2472f3894"
+    },
+    {
+      "component": "Rust: fs_extra 1.3.0",
+      "source": "https://github.com/webdesus/fs_extra",
+      "text_sha256": "94f60cef8595e27b6fe91ba04cd54e172159c3db3f1f65420e650595cae9c320"
+    },
+    {
+      "component": "Rust: fsevent-sys 4.1.0",
+      "source": "https://github.com/octplane/fsevent-rust/tree/master/fsevent-sys",
+      "text_sha256": "b11a4e83972a75d8cafd0afaf7a4297f3c5c8b9173134f860cafa6ab595415cb"
+    },
+    {
+      "component": "Rust: futures 0.3.32",
+      "source": "https://github.com/rust-lang/futures-rs",
+      "text_sha256": "d8901dd488d344ea9568ca81358e9694774d45da0572c10e82604d1452f75147"
+    },
+    {
+      "component": "Rust: futures-channel 0.3.32",
+      "source": "https://github.com/rust-lang/futures-rs",
+      "text_sha256": "d8901dd488d344ea9568ca81358e9694774d45da0572c10e82604d1452f75147"
+    },
+    {
+      "component": "Rust: futures-core 0.3.32",
+      "source": "https://github.com/rust-lang/futures-rs",
+      "text_sha256": "d8901dd488d344ea9568ca81358e9694774d45da0572c10e82604d1452f75147"
+    },
+    {
+      "component": "Rust: futures-executor 0.3.32",
+      "source": "https://github.com/rust-lang/futures-rs",
+      "text_sha256": "d8901dd488d344ea9568ca81358e9694774d45da0572c10e82604d1452f75147"
+    },
+    {
+      "component": "Rust: futures-io 0.3.32",
+      "source": "https://github.com/rust-lang/futures-rs",
+      "text_sha256": "d8901dd488d344ea9568ca81358e9694774d45da0572c10e82604d1452f75147"
+    },
+    {
+      "component": "Rust: futures-macro 0.3.32",
+      "source": "https://github.com/rust-lang/futures-rs",
+      "text_sha256": "d8901dd488d344ea9568ca81358e9694774d45da0572c10e82604d1452f75147"
+    },
+    {
+      "component": "Rust: futures-sink 0.3.32",
+      "source": "https://github.com/rust-lang/futures-rs",
+      "text_sha256": "d8901dd488d344ea9568ca81358e9694774d45da0572c10e82604d1452f75147"
+    },
+    {
+      "component": "Rust: futures-task 0.3.32",
+      "source": "https://github.com/rust-lang/futures-rs",
+      "text_sha256": "d8901dd488d344ea9568ca81358e9694774d45da0572c10e82604d1452f75147"
+    },
+    {
+      "component": "Rust: futures-util 0.3.32",
+      "source": "https://github.com/rust-lang/futures-rs",
+      "text_sha256": "d8901dd488d344ea9568ca81358e9694774d45da0572c10e82604d1452f75147"
+    },
+    {
+      "component": "Rust: genai 0.6.5",
+      "source": "https://github.com/jeremychone/rust-genai",
+      "text_sha256": "76e7df1d2a17420df9786ad21196f91b619e95bf2ec5a9ea7dd89a893ea2dedb"
+    },
+    {
+      "component": "Rust: generic-array 0.14.7",
+      "source": "https://github.com/fizyk20/generic-array.git",
+      "text_sha256": "59af62f6a09ead6da2bf3bf5c9ca45a917114c81115ab93466a8a42af301cbdf"
+    },
+    {
+      "component": "Rust: getrandom 0.2.17",
+      "source": "https://github.com/rust-random/getrandom",
+      "text_sha256": "395fad0815ab3f4d486f7f03c337b5a7dbcfe855696a777372fc7400f7f99b6f"
+    },
+    {
+      "component": "Rust: getrandom 0.3.4",
+      "source": "https://github.com/rust-random/getrandom",
+      "text_sha256": "e4dcd5dc29b6c54c58c3a8ab7ef461dba3a6957a9abc7afd8384bd82b7c5e46e"
+    },
+    {
+      "component": "Rust: getrandom 0.4.3",
+      "source": "https://github.com/rust-random/getrandom",
+      "text_sha256": "2a4b60405016efcd682a54b0194b03e5987b634d169109851c67d10088f53d48"
+    },
+    {
+      "component": "Rust: glob 0.3.4",
+      "source": "https://github.com/rust-lang/glob",
+      "text_sha256": "41c9eaedc124f23fb2e679455f688d2805eb50ffc04ecb30453483cc8b99592a"
+    },
+    {
+      "component": "Rust: global-hotkey 0.8.0",
+      "source": "https://github.com/tauri-apps/global-hotkey",
+      "text_sha256": "2caf331da3adabf21e14dc933ab9e2b50e5908c2a84aaf61f985d9e47a3e4eae"
+    },
+    {
+      "component": "Rust: h2 0.4.19",
+      "source": "https://github.com/hyperium/h2",
+      "text_sha256": "5754fa695adf6616471a02c8cc34ffe1f87c53f783304481d8f26295b6b87d89"
+    },
+    {
+      "component": "Rust: hashbrown 0.12.3",
+      "source": "https://github.com/rust-lang/hashbrown",
+      "text_sha256": "bb64fc457feda4ec309314c6569f32979c332805f2b1016e5e5b7dbfe3d12ed4"
+    },
+    {
+      "component": "Rust: hashbrown 0.14.5",
+      "source": "https://github.com/rust-lang/hashbrown",
+      "text_sha256": "bb64fc457feda4ec309314c6569f32979c332805f2b1016e5e5b7dbfe3d12ed4"
+    },
+    {
+      "component": "Rust: hashbrown 0.17.1",
+      "source": "https://github.com/rust-lang/hashbrown",
+      "text_sha256": "67b3474df42ec55ad4a42b62fc3d74216415c5fc243e8c2223b4b9863c5dd3f9"
+    },
+    {
+      "component": "Rust: hashlink 0.9.1",
+      "source": "https://github.com/kyren/hashlink",
+      "text_sha256": "c9d97cb52bdc9a1ec22bf148f690ff778b967cadbf9a7871b8c7df6d87210095"
+    },
+    {
+      "component": "Rust: heck 0.5.0",
+      "source": "https://github.com/withoutboats/heck",
+      "text_sha256": "1780b128924eafe00f4e571f976d829b19ccadffc834c2b5cdd3896789eecf5b"
+    },
+    {
+      "component": "Rust: hex 0.4.3",
+      "source": "https://github.com/KokaKiwi/rust-hex",
+      "text_sha256": "3dd27e8768304605fc6712211a00ba8f56951e0582e44e5af3de8084d29546e7"
+    },
+    {
+      "component": "Rust: html2text 0.16.7",
+      "source": "https://github.com/jugglerchris/rust-html2text/",
+      "text_sha256": "c03d03a3e5b7eef00675bbfc096613091484095bb4d47325e83c2a24fb8f0dc1"
+    },
+    {
+      "component": "Rust: html5ever 0.38.0",
+      "source": "https://github.com/servo/html5ever",
+      "text_sha256": "4ea41c3ef6a69dda48ec7978d2796136ee237c0be8cf7edf16fc07a75fb5fa8e"
+    },
+    {
+      "component": "Rust: html5ever 0.39.0",
+      "source": "https://github.com/servo/html5ever",
+      "text_sha256": "4ea41c3ef6a69dda48ec7978d2796136ee237c0be8cf7edf16fc07a75fb5fa8e"
+    },
+    {
+      "component": "Rust: http 1.5.0",
+      "source": "https://github.com/hyperium/http",
+      "text_sha256": "70dac098c4adfddf90b2e4511c56725fe1752f384dee7387be1030f1feadb05e"
+    },
+    {
+      "component": "Rust: http-body 1.0.1",
+      "source": "https://github.com/hyperium/http-body",
+      "text_sha256": "98750427d63e429377c2c587fca5c5499266ead33708b4e7107041f87ca54700"
+    },
+    {
+      "component": "Rust: http-body-util 0.1.3",
+      "source": "https://github.com/hyperium/http-body",
+      "text_sha256": "e759f36129b24981049bdb3ce779452a16a5e877654aaa06885c8f536dd29e38"
+    },
+    {
+      "component": "Rust: httparse 1.10.1",
+      "source": "https://github.com/seanmonstar/httparse",
+      "text_sha256": "4406fceeb2aa4ec432ba57b5e6632186a7a52d9e59f9022dec6448d74ba0eb89"
+    },
+    {
+      "component": "Rust: hyper 1.9.0",
+      "source": "https://github.com/hyperium/hyper",
+      "text_sha256": "6dedfd4e68ee58c96cb1bbb933bf71d278622131ab461fb83a90e38c7bd37cdf"
+    },
+    {
+      "component": "Rust: hyper-rustls 0.27.9",
+      "source": "https://github.com/rustls/hyper-rustls",
+      "text_sha256": "db98e43165e86fa05b42ba49ff829b463f3b35a38f1dc6a4b39168d61559bb88"
+    },
+    {
+      "component": "Rust: hyper-util 0.1.20",
+      "source": "https://github.com/hyperium/hyper-util",
+      "text_sha256": "319590b42de1900861fcd28dddb6a3d188fae283ade602277818129833a7b15f"
+    },
+    {
+      "component": "Rust: iana-time-zone 0.1.65",
+      "source": "https://github.com/strawlab/iana-time-zone",
+      "text_sha256": "a6281c1c76ed3e1b7156b2178718cd60368656ab52e40bd42b4c98a97eaf2a57"
+    },
+    {
+      "component": "Rust: ico 0.5.0",
+      "source": "https://github.com/mdsteele/rust-ico",
+      "text_sha256": "7abefb84042aa0334c71d78fc7b8420d705ee453e596cde402531129cbc1fd6d"
+    },
+    {
+      "component": "Rust: icu_collections 2.3.0",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: icu_locale_core 2.3.0",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: icu_normalizer 2.3.0",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: icu_normalizer_data 2.3.0",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: icu_properties 2.3.0",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: icu_properties_data 2.3.0",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: icu_provider 2.3.1",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: ident_case 1.0.1",
+      "source": "https://github.com/TedDriggs/ident_case",
+      "text_sha256": "7deafa27a4472f28886b234c4f321317b5b1811f315748fca75bf564e9400690"
+    },
+    {
+      "component": "Rust: idna 1.1.0",
+      "source": "https://github.com/servo/rust-url/",
+      "text_sha256": "7dddd71bc0076bb65421dce5e81b652fc37c53e8d48efbaddfac4dd609b870fc"
+    },
+    {
+      "component": "Rust: idna_adapter 1.2.2",
+      "source": "https://github.com/hsivonen/idna_adapter",
+      "text_sha256": "2d17de489f445437804422145e0d61990b58b366a35bd7cd157997074a71c0bc"
+    },
+    {
+      "component": "Rust: image 0.25.10",
+      "source": "https://github.com/image-rs/image",
+      "text_sha256": "ae0d2a10a092dd5a17edaa383be8d8b052c3b932e70457f9188de2842d2ff8f6"
+    },
+    {
+      "component": "Rust: indexmap 1.9.3",
+      "source": "https://github.com/bluss/indexmap",
+      "text_sha256": "8d07510d94e59dc6f3d8e3284dcf739436745440f0474b5738b9f23be3ec215b"
+    },
+    {
+      "component": "Rust: indexmap 2.14.2",
+      "source": "https://github.com/indexmap-rs/indexmap",
+      "text_sha256": "8d07510d94e59dc6f3d8e3284dcf739436745440f0474b5738b9f23be3ec215b"
+    },
+    {
+      "component": "Rust: infer 0.19.0",
+      "source": "https://github.com/bojand/infer",
+      "text_sha256": "02770e4051949e02bcc401d9601df9a9ba40661e68c76d445910b4f0907d4f83"
+    },
+    {
+      "component": "Rust: ipnet 2.12.0",
+      "source": "https://github.com/krisprice/ipnet",
+      "text_sha256": "5e80f5cc509365ed8638dda3867cf01af76b39b3ba22656f322f4ec526ebeed8"
+    },
+    {
+      "component": "Rust: iri-string 0.7.12",
+      "source": "https://github.com/lo48576/iri-string",
+      "text_sha256": "77620462ba2bdd52143db7129091bcb6249f516a7bdb42823cf5f1e96807199e"
+    },
+    {
+      "component": "Rust: itertools 0.13.0",
+      "source": "https://github.com/rust-itertools/itertools",
+      "text_sha256": "efbae99dacd26526906817ef1bf3768b3424abd3939e6d756622f7624dff2646"
+    },
+    {
+      "component": "Rust: itoa 1.0.18",
+      "source": "https://github.com/dtolnay/itoa",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: jiff 0.2.35",
+      "source": "https://github.com/BurntSushi/jiff",
+      "text_sha256": "4f5137edb7392f1f9c69d9118dd8f84c099cb5baa38ac9df125983f05c1ebeb3"
+    },
+    {
+      "component": "Rust: jiff-core 0.1.0",
+      "source": "https://github.com/BurntSushi/jiff",
+      "text_sha256": "4f5137edb7392f1f9c69d9118dd8f84c099cb5baa38ac9df125983f05c1ebeb3"
+    },
+    {
+      "component": "Rust: jobserver 0.1.35",
+      "source": "https://github.com/rust-lang/jobserver-rs",
+      "text_sha256": "8d48a235658801bee7f54e22fb53bd4e8646dc983b155fcfe55322ed4dfdb431"
+    },
+    {
+      "component": "Rust: json-patch 3.0.1",
+      "source": "https://github.com/idubrov/json-patch",
+      "text_sha256": "132385aad50b7597423248b9aeb0de5bd5203ea8d78d78ba31ced3b7f51352d7"
+    },
+    {
+      "component": "Rust: jsonc-parser 0.34.0",
+      "source": "https://github.com/dprint/jsonc-parser",
+      "text_sha256": "08e2ed6eaf968ddee23a595623d85c32a89d56fe126a0e291084d05b68acdc9b"
+    },
+    {
+      "component": "Rust: jsonptr 0.6.3",
+      "source": "https://github.com/chanced/jsonptr",
+      "text_sha256": "8d13e871ed99a735cacaaefbc9a19672ac81c893d0f368ef9bbf44a81d04cee2"
+    },
+    {
+      "component": "Rust: keyboard-types 0.7.0",
+      "source": "https://github.com/pyfisch/keyboard-types",
+      "text_sha256": "b23eadf0babef885df0be0b1d4ed8bbc6b9c2d89eca7774391711a32cd69a367"
+    },
+    {
+      "component": "Rust: keyring 3.6.3",
+      "source": "https://github.com/hwchen/keyring-rs.git",
+      "text_sha256": "2b43c163b695ec4132093fa42d92b762918f0c4f23eaa431b2797a16bc587378"
+    },
+    {
+      "component": "Rust: lazy_static 1.5.0",
+      "source": "https://github.com/rust-lang-nursery/lazy-static.rs",
+      "text_sha256": "14444d1ba44248e10689692d6533d35e6814af69051df0f21d5c431a2cccefba"
+    },
+    {
+      "component": "Rust: libc 0.2.189",
+      "source": "https://github.com/rust-lang/libc",
+      "text_sha256": "7e24744686cb3d5a57d85567824eef4d5d88adb68f5a59cf84cd39e23d9d7ee4"
+    },
+    {
+      "component": "Rust: libloading 0.8.9",
+      "source": "https://github.com/nagisa/rust_libloading/",
+      "text_sha256": "63165d75c167455c3a45d78d2861111cd6e42fe0676321a5e8e16e915d689991"
+    },
+    {
+      "component": "Rust: libsqlite3-sys 0.30.1",
+      "source": "https://github.com/rusqlite/rusqlite",
+      "text_sha256": "7e0ada6fee609d8702b4e423dbffc4cacd07718716c71978c0566fdcbfb8b8bc"
+    },
+    {
+      "component": "Rust: litemap 0.8.3",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: llama-cpp-2 0.1.158",
+      "source": "https://github.com/utilityai/llama-cpp-rs",
+      "text_sha256": "6c501e01f7b25f48a2aa5c32500ddf1e46ad26913008cd901be184417539354d"
+    },
+    {
+      "component": "Rust: llama-cpp-sys-2 0.1.158",
+      "source": "https://github.com/utilityai/llama-cpp-rs",
+      "text_sha256": "6c501e01f7b25f48a2aa5c32500ddf1e46ad26913008cd901be184417539354d"
+    },
+    {
+      "component": "Rust: lock_api 0.4.14",
+      "source": "https://github.com/Amanieu/parking_lot",
+      "text_sha256": "4107273afc32ba0429d8511b305a8a30b461fbc1c4290f1d2e74151e1eb637da"
+    },
+    {
+      "component": "Rust: log 0.4.34",
+      "source": "https://github.com/rust-lang/log",
+      "text_sha256": "41c9eaedc124f23fb2e679455f688d2805eb50ffc04ecb30453483cc8b99592a"
+    },
+    {
+      "component": "Rust: lru-slab 0.1.2",
+      "source": "https://github.com/Ralith/lru-slab",
+      "text_sha256": "2679cbe50f46f7ff8fe00dcb83dbdc0987d06aa82bfecd93ee6a002514df248d"
+    },
+    {
+      "component": "Rust: mach2 0.4.3",
+      "source": "https://github.com/JohnTitor/mach2",
+      "text_sha256": "646e7f8ca10aba45190013b47dad403f3d34f700ae71767d455b936b60889cce"
+    },
+    {
+      "component": "Rust: maplit 1.0.2",
+      "source": "https://github.com/bluss/maplit",
+      "text_sha256": "4958c8b3d21486783c59fdbb567fcb3ba9dd1951f61183dc9452099b3d7c66fb"
+    },
+    {
+      "component": "Rust: markup5ever 0.38.0",
+      "source": "https://github.com/servo/html5ever",
+      "text_sha256": "4ea41c3ef6a69dda48ec7978d2796136ee237c0be8cf7edf16fc07a75fb5fa8e"
+    },
+    {
+      "component": "Rust: markup5ever 0.39.0",
+      "source": "https://github.com/servo/html5ever",
+      "text_sha256": "4ea41c3ef6a69dda48ec7978d2796136ee237c0be8cf7edf16fc07a75fb5fa8e"
+    },
+    {
+      "component": "Rust: memchr 2.8.3",
+      "source": "https://github.com/BurntSushi/memchr",
+      "text_sha256": "3917aac99c3fc2922e770615d4e5775b43ffdfa1332689ae1f49b4f42786dae1"
+    },
+    {
+      "component": "Rust: memo-map 0.3.4",
+      "source": "https://github.com/mitsuhiko/memo-map",
+      "text_sha256": "c82a82684f53319a95dd10687a979ca5e697b61b04c22b724e2c6128a4358d1f"
+    },
+    {
+      "component": "Rust: mime 0.3.17",
+      "source": "https://github.com/hyperium/mime",
+      "text_sha256": "c0047888b6b8b393be9a30436ee27d345576c5babd9961cbe9cd3a8058bedeac"
+    },
+    {
+      "component": "Rust: mime_guess 2.0.5",
+      "source": "https://github.com/abonander/mime_guess",
+      "text_sha256": "4798b192be73dff78537817510fae87c05a5b0cd82a5b5fe7e27d5d777bad89d"
+    },
+    {
+      "component": "Rust: minijinja 2.24.0",
+      "source": "https://github.com/mitsuhiko/minijinja",
+      "text_sha256": "c82a82684f53319a95dd10687a979ca5e697b61b04c22b724e2c6128a4358d1f"
+    },
+    {
+      "component": "Rust: minijinja-contrib 2.24.0",
+      "source": "https://github.com/mitsuhiko/minijinja",
+      "text_sha256": "c82a82684f53319a95dd10687a979ca5e697b61b04c22b724e2c6128a4358d1f"
+    },
+    {
+      "component": "Rust: minimal-lexical 0.2.1",
+      "source": "https://github.com/Alexhuszagh/minimal-lexical",
+      "text_sha256": "43862d88cd48efe4a1257a9a78d33fdb0fdc3493565dc2a0119bd5fb55e89371"
+    },
+    {
+      "component": "Rust: minisign-verify 0.2.5",
+      "source": "https://github.com/jedisct1/rust-minisign-verify",
+      "text_sha256": "522b288cfe55fcf34659c1f288a84a74be9710e59a9f705b38476ffde3bed6be"
+    },
+    {
+      "component": "Rust: miniz_oxide 0.8.9",
+      "source": "https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide",
+      "text_sha256": "f792972bb5c3491ee93ec75c689ecb5396718bf58b13ab70da4173422d730a8d"
+    },
+    {
+      "component": "Rust: miniz_oxide 0.9.1",
+      "source": "https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide",
+      "text_sha256": "f792972bb5c3491ee93ec75c689ecb5396718bf58b13ab70da4173422d730a8d"
+    },
+    {
+      "component": "Rust: mio 1.2.3",
+      "source": "https://github.com/tokio-rs/mio",
+      "text_sha256": "8dd94a1068dde4715450b9070eb425557d28c0d3f92436a2accd476bc16d0c2e"
+    },
+    {
+      "component": "Rust: moxcms 0.8.1",
+      "source": "https://github.com/awxkee/moxcms.git",
+      "text_sha256": "fbeacababde35c84bc1c7b4645693dbbed51dba4d964fa3a7b63b5aea6764ae8"
+    },
+    {
+      "component": "Rust: muda 0.19.3",
+      "source": "https://github.com/tauri-apps/muda",
+      "text_sha256": "e2511585ff826aaccee625fb72ea267e80e4e30f8086e60f1b66d5f61e8b7478"
+    },
+    {
+      "component": "Rust: multiversion_no_op 1.0.0",
+      "source": "https://github.com/hsivonen/multiversion_no_op",
+      "text_sha256": "014c3f997faee260dff19f312e165b7c5ce735b9ba506e5d426965197f5537f1"
+    },
+    {
+      "component": "Rust: new_debug_unreachable 1.0.6",
+      "source": "https://github.com/mbrubeck/rust-debug-unreachable",
+      "text_sha256": "a2b4278233f861e5ae77c48507cd4271aaf8ec95264e7772c7794f3f1578eb04"
+    },
+    {
+      "component": "Rust: nom 7.1.3",
+      "source": "https://github.com/Geal/nom",
+      "text_sha256": "62b64c7a2c7660b5719e6dfceed8a567caf03bfc7151dd4e31b9122d48baacc4"
+    },
+    {
+      "component": "Rust: notify 8.2.0",
+      "source": "https://github.com/notify-rs/notify.git",
+      "text_sha256": "5314d4239feb5f8ab818c4317b4c55d035769db2e3ef76da2b74598a45d305cc"
+    },
+    {
+      "component": "Rust: notify-types 2.1.0",
+      "source": "https://github.com/notify-rs/notify.git",
+      "text_sha256": "726afbd4fb74998282aacd1137d2a629fc47f585142a85cf72e39b03731634e2"
+    },
+    {
+      "component": "Rust: num-bigint 0.4.8",
+      "source": "https://github.com/rust-num/num-bigint",
+      "text_sha256": "41c9eaedc124f23fb2e679455f688d2805eb50ffc04ecb30453483cc8b99592a"
+    },
+    {
+      "component": "Rust: num-conv 0.2.2",
+      "source": "https://github.com/jhpratt/num-conv",
+      "text_sha256": "44c7150a089936561369f30ef8b083e88fe452604bb077e910de5ccf43b89202"
+    },
+    {
+      "component": "Rust: num-integer 0.1.47",
+      "source": "https://github.com/rust-num/num-integer",
+      "text_sha256": "41c9eaedc124f23fb2e679455f688d2805eb50ffc04ecb30453483cc8b99592a"
+    },
+    {
+      "component": "Rust: num-rational 0.4.2",
+      "source": "https://github.com/rust-num/num-rational",
+      "text_sha256": "41c9eaedc124f23fb2e679455f688d2805eb50ffc04ecb30453483cc8b99592a"
+    },
+    {
+      "component": "Rust: num-traits 0.2.19",
+      "source": "https://github.com/rust-num/num-traits",
+      "text_sha256": "41c9eaedc124f23fb2e679455f688d2805eb50ffc04ecb30453483cc8b99592a"
+    },
+    {
+      "component": "Rust: objc2 0.6.4",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "a43599dc45b5d9142bcdccae3fcbf464c501ea791866a535cc0e09c5f0f98af4"
+    },
+    {
+      "component": "Rust: objc2-app-kit 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: objc2-audio-toolbox 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: objc2-core-audio 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: objc2-core-audio-types 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: objc2-core-foundation 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: objc2-core-graphics 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: objc2-encode 4.1.0",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "a43599dc45b5d9142bcdccae3fcbf464c501ea791866a535cc0e09c5f0f98af4"
+    },
+    {
+      "component": "Rust: objc2-exception-helper 0.1.1",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "91c4a4ea5497c8479afe7a94884f5471a323463e0daf6507f4541c91d3ec767e"
+    },
+    {
+      "component": "Rust: objc2-foundation 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b74cf6be96eb217e400699da07d95f3d2d005607a781e4cb3a5f6d182a0fed0f"
+    },
+    {
+      "component": "Rust: objc2-io-kit 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: objc2-io-surface 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: objc2-osa-kit 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: objc2-user-notifications 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: objc2-web-kit 0.3.2",
+      "source": "https://github.com/madsmtm/objc2",
+      "text_sha256": "b196dd1bfa36564a862ab3091aaa8049b475c7bdbb69c21e8a7a909a9b3d90ac"
+    },
+    {
+      "component": "Rust: once_cell 1.21.4",
+      "source": "https://github.com/matklad/once_cell",
+      "text_sha256": "31adab325f21236f2f6345bb090d464f4091a68bf780d8924b262b402220baa8"
+    },
+    {
+      "component": "Rust: open 5.4.4",
+      "source": "https://github.com/Byron/open-rs",
+      "text_sha256": "40efadcb9c5a35072dfe9a96ecfd536b1a22fe988caeaee9e55629e3f28aad38"
+    },
+    {
+      "component": "Rust: option-ext 0.2.0",
+      "source": "https://github.com/soc/option-ext.git",
+      "text_sha256": "df35c936c09216a58a871dac55393f449d57cbf6368de46df3f142d12233281c"
+    },
+    {
+      "component": "Rust: osakit 0.3.1",
+      "source": "https://github.com/mdevils/rust-osakit",
+      "text_sha256": "d638e011e8eea2ae32f3aa9ab1a893b0833e5bf0d08dbcd34ea945cd1bbd5595"
+    },
+    {
+      "component": "Rust: parking_lot 0.12.5",
+      "source": "https://github.com/Amanieu/parking_lot",
+      "text_sha256": "4107273afc32ba0429d8511b305a8a30b461fbc1c4290f1d2e74151e1eb637da"
+    },
+    {
+      "component": "Rust: parking_lot_core 0.9.12",
+      "source": "https://github.com/Amanieu/parking_lot",
+      "text_sha256": "4107273afc32ba0429d8511b305a8a30b461fbc1c4290f1d2e74151e1eb637da"
+    },
+    {
+      "component": "Rust: paste 1.0.15",
+      "source": "https://github.com/dtolnay/paste",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: percent-encoding 2.3.2",
+      "source": "https://github.com/servo/rust-url/",
+      "text_sha256": "7dddd71bc0076bb65421dce5e81b652fc37c53e8d48efbaddfac4dd609b870fc"
+    },
+    {
+      "component": "Rust: phf 0.13.1",
+      "source": "https://github.com/rust-phf/rust-phf",
+      "text_sha256": "083640103dd16912ba1c78d69c430b4d6e9c5c48244787716ef49f6e9970eb18"
+    },
+    {
+      "component": "Rust: phf_codegen 0.13.1",
+      "source": "https://github.com/rust-phf/rust-phf",
+      "text_sha256": "083640103dd16912ba1c78d69c430b4d6e9c5c48244787716ef49f6e9970eb18"
+    },
+    {
+      "component": "Rust: phf_generator 0.13.1",
+      "source": "https://github.com/rust-phf/rust-phf",
+      "text_sha256": "083640103dd16912ba1c78d69c430b4d6e9c5c48244787716ef49f6e9970eb18"
+    },
+    {
+      "component": "Rust: phf_macros 0.13.1",
+      "source": "https://github.com/rust-phf/rust-phf",
+      "text_sha256": "083640103dd16912ba1c78d69c430b4d6e9c5c48244787716ef49f6e9970eb18"
+    },
+    {
+      "component": "Rust: phf_shared 0.13.1",
+      "source": "https://github.com/rust-phf/rust-phf",
+      "text_sha256": "083640103dd16912ba1c78d69c430b4d6e9c5c48244787716ef49f6e9970eb18"
+    },
+    {
+      "component": "Rust: pin-project-lite 0.2.17",
+      "source": "https://github.com/taiki-e/pin-project-lite",
+      "text_sha256": "2efbc3db31453496c921f92cf6535be99694f62f6804aa3ce3e3d46f0f8c6566"
+    },
+    {
+      "component": "Rust: pkg-config 0.3.33",
+      "source": "https://github.com/rust-lang/pkg-config-rs",
+      "text_sha256": "8d48a235658801bee7f54e22fb53bd4e8646dc983b155fcfe55322ed4dfdb431"
+    },
+    {
+      "component": "Rust: plist 1.10.1",
+      "source": "https://github.com/ebarnard/rust-plist/",
+      "text_sha256": "66cc51c12428533589ab0842c243ffd89c68127e4d2e38be196e80e62885ee28"
+    },
+    {
+      "component": "Rust: png 0.17.16",
+      "source": "https://github.com/image-rs/image-png",
+      "text_sha256": "c0612b50bdcc97653e890fe6598a48b6374c0776dc56eeab5a3b18b2fa66c83d"
+    },
+    {
+      "component": "Rust: png 0.18.1",
+      "source": "https://github.com/image-rs/image-png",
+      "text_sha256": "c0612b50bdcc97653e890fe6598a48b6374c0776dc56eeab5a3b18b2fa66c83d"
+    },
+    {
+      "component": "Rust: potential_utf 0.1.6",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: powerfmt 0.2.0",
+      "source": "https://github.com/jhpratt/powerfmt",
+      "text_sha256": "9981e99b5e11d162fdd9c39add48552a87fe5cdbb83d423b04d8c0c3f55e758e"
+    },
+    {
+      "component": "Rust: precomputed-hash 0.1.1",
+      "source": "https://github.com/emilio/precomputed-hash",
+      "text_sha256": "ebf4c123214c1b558e1076031ce9e63774c0226ec2bfaec51b19d9b67d8a7428"
+    },
+    {
+      "component": "Rust: prettyplease 0.2.37",
+      "source": "https://github.com/dtolnay/prettyplease",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: proc-macro2 1.0.107",
+      "source": "https://github.com/dtolnay/proc-macro2",
+      "text_sha256": "4a1a3b8e814de2459a2c11edd5487467ffff9a87c4e13e35e6ff1c262a5bb119"
+    },
+    {
+      "component": "Rust: pxfm 0.1.30",
+      "source": "https://github.com/awxkee/pxfm",
+      "text_sha256": "fbeacababde35c84bc1c7b4645693dbbed51dba4d964fa3a7b63b5aea6764ae8"
+    },
+    {
+      "component": "Rust: quick-xml 0.42.0",
+      "source": "https://github.com/tafia/quick-xml",
+      "text_sha256": "e9d26ab51a18aa9d2c6360f28aea195025743b597fb4978950fefcd686bb5c70"
+    },
+    {
+      "component": "Rust: quinn 0.11.11",
+      "source": "https://github.com/quinn-rs/quinn",
+      "text_sha256": "98a2c9b4400ef4ba052bd51afbc7ebc5b7561176ac5f0503123362b96d1d97f5"
+    },
+    {
+      "component": "Rust: quinn-proto 0.11.17",
+      "source": "https://github.com/quinn-rs/quinn",
+      "text_sha256": "98a2c9b4400ef4ba052bd51afbc7ebc5b7561176ac5f0503123362b96d1d97f5"
+    },
+    {
+      "component": "Rust: quinn-udp 0.5.15",
+      "source": "https://github.com/quinn-rs/quinn",
+      "text_sha256": "98a2c9b4400ef4ba052bd51afbc7ebc5b7561176ac5f0503123362b96d1d97f5"
+    },
+    {
+      "component": "Rust: quote 1.0.47",
+      "source": "https://github.com/dtolnay/quote",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: rand 0.10.2",
+      "source": "https://github.com/rust-random/rand",
+      "text_sha256": "5fdb902fdf8e2af6763a5abba53bcb98c2a3533f6479c8f2e7dd12f5cc1856cf"
+    },
+    {
+      "component": "Rust: rand_core 0.10.1",
+      "source": "https://github.com/rust-random/rand_core",
+      "text_sha256": "5d45220dd91072e77abde64a8dfef3d6cdbd0845c3f5d70f26585d87d3d81f39"
+    },
+    {
+      "component": "Rust: rand_pcg 0.10.2",
+      "source": "https://github.com/rust-random/rngs",
+      "text_sha256": "806e7c768437e20cedd3a8e436a775b33c5daeb044fb01930a5ac04496c20a09"
+    },
+    {
+      "component": "Rust: raw-window-handle 0.6.2",
+      "source": "https://github.com/rust-windowing/raw-window-handle",
+      "text_sha256": "be8ce08302d266cf45f388724d687f8f16c423af5a4843281941a070972f5674"
+    },
+    {
+      "component": "Rust: ref-cast 1.0.27",
+      "source": "https://github.com/dtolnay/ref-cast",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: ref-cast-impl 1.0.27",
+      "source": "https://github.com/dtolnay/ref-cast",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: regex 1.13.1",
+      "source": "https://github.com/rust-lang/regex",
+      "text_sha256": "8a437416d36be4be3c988733aa7bf7d2c2daab4ab0fbd61003ee24207ed17317"
+    },
+    {
+      "component": "Rust: regex-automata 0.4.18",
+      "source": "https://github.com/rust-lang/regex",
+      "text_sha256": "8a437416d36be4be3c988733aa7bf7d2c2daab4ab0fbd61003ee24207ed17317"
+    },
+    {
+      "component": "Rust: regex-syntax 0.8.11",
+      "source": "https://github.com/rust-lang/regex",
+      "text_sha256": "8a437416d36be4be3c988733aa7bf7d2c2daab4ab0fbd61003ee24207ed17317"
+    },
+    {
+      "component": "Rust: reqwest 0.13.2",
+      "source": "https://github.com/seanmonstar/reqwest",
+      "text_sha256": "e302ae8f1e40947b294f3c86fdeed7db931eb562c784806d9fd590644a596b02"
+    },
+    {
+      "component": "Rust: rfd 0.16.0",
+      "source": "https://github.com/PolyMeilex/rfd",
+      "text_sha256": "f3cb7c0039952cc346c2c4999f56d78b7b1cd40a8c569a87656aa29d5567eb67"
+    },
+    {
+      "component": "Rust: ring 0.17.14",
+      "source": "https://github.com/briansmith/ring",
+      "text_sha256": "109772f0694d33ff7bff8830f3cf1eb791eb37e1f766c7324345d7b81a7b451e"
+    },
+    {
+      "component": "Rust: rodio 0.21.1",
+      "source": "https://github.com/RustAudio/rodio",
+      "text_sha256": "2dd1c869d4641615b7c44affa12dc480af4c0f3ffe8345d342f87692c05ed4a1"
+    },
+    {
+      "component": "Rust: rusqlite 0.32.1",
+      "source": "https://github.com/rusqlite/rusqlite",
+      "text_sha256": "7e0ada6fee609d8702b4e423dbffc4cacd07718716c71978c0566fdcbfb8b8bc"
+    },
+    {
+      "component": "Rust: rusqlite_migration 1.3.1",
+      "source": "https://github.com/cljoly/rusqlite_migration",
+      "text_sha256": "0bab1cd0ea0bd6cb0810f2bf5d1cf58c7859c02c55b335781d741d2dd38b5803"
+    },
+    {
+      "component": "Rust: rustc-hash 2.1.3",
+      "source": "https://github.com/rust-lang/rustc-hash",
+      "text_sha256": "3317eafe509f8437c729d36d4e4b846f17704421d067851340159b77e6b0c5ba"
+    },
+    {
+      "component": "Rust: rustc_version 0.4.1",
+      "source": "https://github.com/djc/rustc-version-rs",
+      "text_sha256": "d90f9a72f677c296c60507d6cd8b83bd8284ffca299a25185af38230766b2f94"
+    },
+    {
+      "component": "Rust: rustix 1.1.4",
+      "source": "https://github.com/bytecodealliance/rustix",
+      "text_sha256": "d24a8ce28829fcd9631b98825304e3af47af6fd02a74c0f69568c8daf8213937"
+    },
+    {
+      "component": "Rust: rustls 0.23.44",
+      "source": "https://github.com/rustls/rustls",
+      "text_sha256": "db98e43165e86fa05b42ba49ff829b463f3b35a38f1dc6a4b39168d61559bb88"
+    },
+    {
+      "component": "Rust: rustls-pki-types 1.15.1",
+      "source": "https://github.com/rustls/pki-types",
+      "text_sha256": "b28b81cd2147a6e6480ca328b5efc93bb2c365ebae55a93cb42199470f018033"
+    },
+    {
+      "component": "Rust: rustls-platform-verifier 0.6.2",
+      "source": "https://github.com/rustls/rustls-platform-verifier",
+      "text_sha256": "6ab7aaa5457904e4ea8008277a448876e981afd8361e1ff3df4518d7e82d3dad"
+    },
+    {
+      "component": "Rust: rustls-webpki 0.103.15",
+      "source": "https://github.com/rustls/webpki",
+      "text_sha256": "2918457956eb4fb2cb7a9ae1509a5faf1cf56a745b58e6ece3b6bf113f215657"
+    },
+    {
+      "component": "Rust: rustversion 1.0.22",
+      "source": "https://github.com/dtolnay/rustversion",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: same-file 1.0.6",
+      "source": "https://github.com/BurntSushi/same-file",
+      "text_sha256": "2c2db5fdd49a837a287921833fe4d3814091e5952b5431fcb22c2f3232c2e9ef"
+    },
+    {
+      "component": "Rust: schemars 0.8.22",
+      "source": "https://github.com/GREsau/schemars",
+      "text_sha256": "9b9188429c4ce4ef673cd229bc53c4569d9dd0a6a8805cce7dda422fa28a13da"
+    },
+    {
+      "component": "Rust: schemars 0.9.0",
+      "source": "https://github.com/GREsau/schemars",
+      "text_sha256": "9b9188429c4ce4ef673cd229bc53c4569d9dd0a6a8805cce7dda422fa28a13da"
+    },
+    {
+      "component": "Rust: schemars 1.2.2",
+      "source": "https://github.com/GREsau/schemars",
+      "text_sha256": "9b9188429c4ce4ef673cd229bc53c4569d9dd0a6a8805cce7dda422fa28a13da"
+    },
+    {
+      "component": "Rust: schemars_derive 0.8.22",
+      "source": "https://github.com/GREsau/schemars",
+      "text_sha256": "9b9188429c4ce4ef673cd229bc53c4569d9dd0a6a8805cce7dda422fa28a13da"
+    },
+    {
+      "component": "Rust: scopeguard 1.2.0",
+      "source": "https://github.com/bluss/scopeguard",
+      "text_sha256": "2a76fcec9025286063f5a11a36f6a1b63fe5df848925386908580d9912306188"
+    },
+    {
+      "component": "Rust: security-framework 3.7.0",
+      "source": "https://github.com/kornelski/rust-security-framework",
+      "text_sha256": "72b35169d5422c28200d24ecfe203684adb12ed53d786da7233577e2e8833e2b"
+    },
+    {
+      "component": "Rust: security-framework-sys 2.17.0",
+      "source": "https://github.com/kornelski/rust-security-framework",
+      "text_sha256": "72b35169d5422c28200d24ecfe203684adb12ed53d786da7233577e2e8833e2b"
+    },
+    {
+      "component": "Rust: selectors 0.36.1",
+      "source": "https://github.com/servo/stylo",
+      "text_sha256": "9f51bf1d676a97e9146d5e00e26c406161ac99fb326e16b400f61e907f074282"
+    },
+    {
+      "component": "Rust: semver 1.0.28",
+      "source": "https://github.com/dtolnay/semver",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: serde 1.0.229",
+      "source": "https://github.com/serde-rs/serde",
+      "text_sha256": "03ae8e5f2f70919f849fd44b83dda5989d54cd563d7f2e9a0af258d205a997b9"
+    },
+    {
+      "component": "Rust: serde-untagged 0.1.9",
+      "source": "https://github.com/dtolnay/serde-untagged",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: serde_core 1.0.229",
+      "source": "https://github.com/serde-rs/serde",
+      "text_sha256": "03ae8e5f2f70919f849fd44b83dda5989d54cd563d7f2e9a0af258d205a997b9"
+    },
+    {
+      "component": "Rust: serde_derive 1.0.229",
+      "source": "https://github.com/serde-rs/serde",
+      "text_sha256": "03ae8e5f2f70919f849fd44b83dda5989d54cd563d7f2e9a0af258d205a997b9"
+    },
+    {
+      "component": "Rust: serde_derive_internals 0.29.1",
+      "source": "https://github.com/serde-rs/serde",
+      "text_sha256": "03ae8e5f2f70919f849fd44b83dda5989d54cd563d7f2e9a0af258d205a997b9"
+    },
+    {
+      "component": "Rust: serde_json 1.0.151",
+      "source": "https://github.com/serde-rs/json",
+      "text_sha256": "03ae8e5f2f70919f849fd44b83dda5989d54cd563d7f2e9a0af258d205a997b9"
+    },
+    {
+      "component": "Rust: serde_repr 0.1.21",
+      "source": "https://github.com/dtolnay/serde-repr",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: serde_spanned 1.1.1",
+      "source": "https://github.com/toml-rs/toml",
+      "text_sha256": "7bffb71106be5b52471ad11d1fa67998b5ffc4ed805ef3af6726592a5abda6ff"
+    },
+    {
+      "component": "Rust: serde_with 3.23.0",
+      "source": "https://github.com/jonasbb/serde_with/",
+      "text_sha256": "de9bb3691703a7f27b8a1f1cb34da260e1a724dbcf5649230ef7b9422c2f3443"
+    },
+    {
+      "component": "Rust: serde_with_macros 3.23.0",
+      "source": "https://github.com/jonasbb/serde_with/",
+      "text_sha256": "8acc2ba772f9f06a0857393e843055d0665bb95dfdbf9f802244fea3a0da41c9"
+    },
+    {
+      "component": "Rust: serialize-to-javascript 0.1.2",
+      "source": "https://github.com/chippers/serialize-to-javascript",
+      "text_sha256": "86f9211aa12712fa0b0634e43e760a45a00ea95dbf4fabb3eaff48f535e75cc1"
+    },
+    {
+      "component": "Rust: serialize-to-javascript-impl 0.1.2",
+      "source": "https://github.com/chippers/serialize-to-javascript",
+      "text_sha256": "86f9211aa12712fa0b0634e43e760a45a00ea95dbf4fabb3eaff48f535e75cc1"
+    },
+    {
+      "component": "Rust: servo_arc 0.4.3",
+      "source": "https://github.com/servo/stylo",
+      "text_sha256": "80e436fef2926ac792276827d752c973004542bf69d522eaaaff3417d7f0ffe4"
+    },
+    {
+      "component": "Rust: sha2 0.10.9",
+      "source": "https://github.com/RustCrypto/hashes",
+      "text_sha256": "39b994bab53407eadf4e54081f1ff666d8fa3a6156130e0a86be9f00aa6a7a23"
+    },
+    {
+      "component": "Rust: shlex 1.3.0",
+      "source": "https://github.com/comex/rust-shlex",
+      "text_sha256": "fce775451da04105eed60e4baba0f7e04b1ce3f5881f7290f6db1b033544ba07"
+    },
+    {
+      "component": "Rust: shlex 2.0.1",
+      "source": "https://github.com/comex/rust-shlex",
+      "text_sha256": "fce775451da04105eed60e4baba0f7e04b1ce3f5881f7290f6db1b033544ba07"
+    },
+    {
+      "component": "Rust: signal-hook-registry 1.4.8",
+      "source": "https://github.com/vorner/signal-hook",
+      "text_sha256": "029ebf3b8531da50c57bf5edd1f908f82bc7a20d491cde55e937408d79aa5e8d"
+    },
+    {
+      "component": "Rust: simd-adler32 0.3.10",
+      "source": "https://github.com/mcountryman/simd-adler32",
+      "text_sha256": "5e417cfe32eb36e7bcedd90a5fdf0e065f024e6221680d1492b5c6432cb9e8d5"
+    },
+    {
+      "component": "Rust: simdutf8 0.1.5",
+      "source": "https://github.com/rusticstuff/simdutf8",
+      "text_sha256": "913c5f951b07300fb68bdc52b961937de9069761d7587af2f976784e7e4f91cf"
+    },
+    {
+      "component": "Rust: siphasher 1.0.3",
+      "source": "https://github.com/jedisct1/rust-siphash",
+      "text_sha256": "e860e9d73e3141cff68daef4865a49d764a2646d446af4098282e98505a5e7e5"
+    },
+    {
+      "component": "Rust: slab 0.4.12",
+      "source": "https://github.com/tokio-rs/slab",
+      "text_sha256": "44d770138477b6d909b95da6663a3605d661d0f75d7160a7f9d1825399fd5f5c"
+    },
+    {
+      "component": "Rust: smallvec 1.16.0",
+      "source": "https://github.com/servo/rust-smallvec",
+      "text_sha256": "c98cfc3f9ec384bf1af6e1092eccfb2d8c37c873f034f3b206ee6df822682171"
+    },
+    {
+      "component": "Rust: socket2 0.6.5",
+      "source": "https://github.com/rust-lang/socket2",
+      "text_sha256": "767b0eb3ab1e817466062ee5240e072013026251af8805b79432516ac630bd23"
+    },
+    {
+      "component": "Rust: specta 2.0.0-rc.25",
+      "source": "https://github.com/specta-rs/specta",
+      "text_sha256": "de4cb18535019519e4ce53a3c328d0820196b48e2a7138560bf37a295c76dce8"
+    },
+    {
+      "component": "Rust: specta-macros 2.0.0-rc.25",
+      "source": "https://github.com/specta-rs/specta",
+      "text_sha256": "de4cb18535019519e4ce53a3c328d0820196b48e2a7138560bf37a295c76dce8"
+    },
+    {
+      "component": "Rust: specta-serde 0.0.12",
+      "source": "https://github.com/specta-rs/specta",
+      "text_sha256": "de4cb18535019519e4ce53a3c328d0820196b48e2a7138560bf37a295c76dce8"
+    },
+    {
+      "component": "Rust: specta-typescript 0.0.12",
+      "source": "https://github.com/specta-rs/specta",
+      "text_sha256": "de4cb18535019519e4ce53a3c328d0820196b48e2a7138560bf37a295c76dce8"
+    },
+    {
+      "component": "Rust: specta-util 0.0.12",
+      "source": "https://github.com/specta-rs/specta",
+      "text_sha256": "de4cb18535019519e4ce53a3c328d0820196b48e2a7138560bf37a295c76dce8"
+    },
+    {
+      "component": "Rust: stable_deref_trait 1.2.1",
+      "source": "https://github.com/storyyeller/stable_deref_trait",
+      "text_sha256": "618a143c27044773951061ffdf106ee932d100811702d18cdfd5ef6f965a75e0"
+    },
+    {
+      "component": "Rust: string_cache 0.9.0",
+      "source": "https://github.com/servo/string-cache",
+      "text_sha256": "3d6de90198f9e9c7f13fb4bd4ca50d489b932d6a1d8e87ac2b75e9069ada5508"
+    },
+    {
+      "component": "Rust: string_cache_codegen 0.6.1",
+      "source": "https://github.com/servo/string-cache",
+      "text_sha256": "3d6de90198f9e9c7f13fb4bd4ca50d489b932d6a1d8e87ac2b75e9069ada5508"
+    },
+    {
+      "component": "Rust: strsim 0.11.1",
+      "source": "https://github.com/rapidfuzz/strsim-rs",
+      "text_sha256": "1702f7fe22c0a464ff8344ced5e4bd795e19fef1fa12df47ae3afcf24fb4256e"
+    },
+    {
+      "component": "Rust: strum 0.28.0",
+      "source": "https://github.com/Peternator7/strum",
+      "text_sha256": "f4da5eed20a5f6736da81d1cebabd08e6b2fb3cd4817db497c4f414d050eac30"
+    },
+    {
+      "component": "Rust: strum_macros 0.28.0",
+      "source": "https://github.com/Peternator7/strum",
+      "text_sha256": "f4da5eed20a5f6736da81d1cebabd08e6b2fb3cd4817db497c4f414d050eac30"
+    },
+    {
+      "component": "Rust: subtle 2.6.1",
+      "source": "https://github.com/dalek-cryptography/subtle",
+      "text_sha256": "44b91ee7d289c68f22db8321ec7b92d6cdcc4e0c66caade111b3c940e144c9d0"
+    },
+    {
+      "component": "Rust: swift-rs 1.0.8",
+      "source": "https://github.com/Brendonovich/swift-rs",
+      "text_sha256": "077264787fc29d502855751e970f9193e5d5566e45be366288f1dda8b7fea7c4"
+    },
+    {
+      "component": "Rust: symphonia 0.5.5",
+      "source": "https://github.com/pdeljanov/Symphonia",
+      "text_sha256": "9ffd5c7877b3217313252f0a9f964f99d882c4f11a5aa04e97e1a7678938158d"
+    },
+    {
+      "component": "Rust: symphonia-codec-pcm 0.5.5",
+      "source": "https://github.com/pdeljanov/Symphonia",
+      "text_sha256": "9ffd5c7877b3217313252f0a9f964f99d882c4f11a5aa04e97e1a7678938158d"
+    },
+    {
+      "component": "Rust: symphonia-core 0.5.5",
+      "source": "https://github.com/pdeljanov/Symphonia",
+      "text_sha256": "9ffd5c7877b3217313252f0a9f964f99d882c4f11a5aa04e97e1a7678938158d"
+    },
+    {
+      "component": "Rust: symphonia-format-riff 0.5.5",
+      "source": "https://github.com/pdeljanov/Symphonia",
+      "text_sha256": "454e5567fcdff6dbf9c332100c83a96f3f78e6257d7a456dec10db07b808e93f"
+    },
+    {
+      "component": "Rust: symphonia-metadata 0.5.5",
+      "source": "https://github.com/pdeljanov/Symphonia",
+      "text_sha256": "9ffd5c7877b3217313252f0a9f964f99d882c4f11a5aa04e97e1a7678938158d"
+    },
+    {
+      "component": "Rust: syn 2.0.119",
+      "source": "https://github.com/dtolnay/syn",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: syn 3.0.5",
+      "source": "https://github.com/dtolnay/syn",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: sync_wrapper 1.0.2",
+      "source": "https://github.com/Actyx/sync_wrapper",
+      "text_sha256": "a5f2310b9c13e7c9f18d9560669cc4b9531c5b9d744d61c6a74486dd2e97a094"
+    },
+    {
+      "component": "Rust: synstructure 0.13.2",
+      "source": "https://github.com/mystor/synstructure",
+      "text_sha256": "871c6a212865d9b63f13acdfdab6ff111600e66b2e4460d0012a8f28e25a62e7"
+    },
+    {
+      "component": "Rust: sysinfo 0.39.6",
+      "source": "https://github.com/GuillaumeGomez/sysinfo",
+      "text_sha256": "aba8d3cf00e2b92917b69596be5f8d7dad510cb549c2fe519eb5ad6ec30eba4c"
+    },
+    {
+      "component": "Rust: system-configuration 0.7.0",
+      "source": "https://github.com/mullvad/system-configuration-rs",
+      "text_sha256": "0ce315f34596e14a3159d21e8030ee56d338b7079367022a5afc2baa25ce3f5f"
+    },
+    {
+      "component": "Rust: system-configuration-sys 0.6.0",
+      "source": "https://github.com/mullvad/system-configuration-rs",
+      "text_sha256": "0ce315f34596e14a3159d21e8030ee56d338b7079367022a5afc2baa25ce3f5f"
+    },
+    {
+      "component": "Rust: tao 0.35.3",
+      "source": "https://github.com/tauri-apps/tao",
+      "text_sha256": "c2c383e24e883d862803bee0c2cdc2ff57d4456822a731f1378c8ff8649ca230"
+    },
+    {
+      "component": "Rust: tar 0.4.46",
+      "source": "https://github.com/composefs/tar-rs",
+      "text_sha256": "b7ba12b17f4f78ca525e8b675b4c4f086ead9eb6f3a70fb5e7f22c5870862757"
+    },
+    {
+      "component": "Rust: tauri 2.11.5",
+      "source": "https://github.com/tauri-apps/tauri",
+      "text_sha256": "b4bc4255ee876e597822a704889290be415d9abd4fcff15dcfe25889b25d8607"
+    },
+    {
+      "component": "Rust: tauri-build 2.6.3",
+      "source": "https://github.com/tauri-apps/tauri",
+      "text_sha256": "b4bc4255ee876e597822a704889290be415d9abd4fcff15dcfe25889b25d8607"
+    },
+    {
+      "component": "Rust: tauri-codegen 2.6.3",
+      "source": "https://github.com/tauri-apps/tauri",
+      "text_sha256": "b4bc4255ee876e597822a704889290be415d9abd4fcff15dcfe25889b25d8607"
+    },
+    {
+      "component": "Rust: tauri-macros 2.6.3",
+      "source": "https://github.com/tauri-apps/tauri",
+      "text_sha256": "b4bc4255ee876e597822a704889290be415d9abd4fcff15dcfe25889b25d8607"
+    },
+    {
+      "component": "Rust: tauri-plugin 2.6.3",
+      "source": "https://github.com/tauri-apps/tauri",
+      "text_sha256": "081a7fe7bfa1ea5bda5e05de17030ec5f0b2b099d7d7d85bc44ccda52cf06f33"
+    },
+    {
+      "component": "Rust: tauri-plugin-autostart 2.5.1",
+      "source": "https://github.com/tauri-apps/plugins-workspace",
+      "text_sha256": "f26ea0036b81689befcec4073f9521ed2d7c470a77e51e77be9afb93c9cb017f"
+    },
+    {
+      "component": "Rust: tauri-plugin-dialog 2.7.3",
+      "source": "https://github.com/tauri-apps/plugins-workspace",
+      "text_sha256": "f26ea0036b81689befcec4073f9521ed2d7c470a77e51e77be9afb93c9cb017f"
+    },
+    {
+      "component": "Rust: tauri-plugin-fs 2.5.2",
+      "source": "https://github.com/tauri-apps/plugins-workspace",
+      "text_sha256": "f26ea0036b81689befcec4073f9521ed2d7c470a77e51e77be9afb93c9cb017f"
+    },
+    {
+      "component": "Rust: tauri-plugin-global-shortcut 2.3.2",
+      "source": "https://github.com/tauri-apps/plugins-workspace",
+      "text_sha256": "f26ea0036b81689befcec4073f9521ed2d7c470a77e51e77be9afb93c9cb017f"
+    },
+    {
+      "component": "Rust: tauri-plugin-opener 2.5.5",
+      "source": "https://github.com/tauri-apps/plugins-workspace",
+      "text_sha256": "f26ea0036b81689befcec4073f9521ed2d7c470a77e51e77be9afb93c9cb017f"
+    },
+    {
+      "component": "Rust: tauri-plugin-updater 2.12.0",
+      "source": "https://github.com/tauri-apps/plugins-workspace",
+      "text_sha256": "23eb5849f05c72b5c5eb695b0e20b5db16b19ef41ad49ebe647d4803cedda7a9"
+    },
+    {
+      "component": "Rust: tauri-runtime 2.11.3",
+      "source": "https://github.com/tauri-apps/tauri",
+      "text_sha256": "b4bc4255ee876e597822a704889290be415d9abd4fcff15dcfe25889b25d8607"
+    },
+    {
+      "component": "Rust: tauri-runtime-wry 2.11.4",
+      "source": "https://github.com/tauri-apps/tauri",
+      "text_sha256": "b4bc4255ee876e597822a704889290be415d9abd4fcff15dcfe25889b25d8607"
+    },
+    {
+      "component": "Rust: tauri-specta 2.0.0-rc.25",
+      "source": "https://github.com/specta-rs/tauri-specta",
+      "text_sha256": "de4cb18535019519e4ce53a3c328d0820196b48e2a7138560bf37a295c76dce8"
+    },
+    {
+      "component": "Rust: tauri-specta-macros 2.0.0-rc.25",
+      "source": "https://github.com/specta-rs/tauri-specta",
+      "text_sha256": "de4cb18535019519e4ce53a3c328d0820196b48e2a7138560bf37a295c76dce8"
+    },
+    {
+      "component": "Rust: tauri-utils 2.9.3",
+      "source": "https://github.com/tauri-apps/tauri",
+      "text_sha256": "b4bc4255ee876e597822a704889290be415d9abd4fcff15dcfe25889b25d8607"
+    },
+    {
+      "component": "Rust: tauri-winres 0.3.6",
+      "source": "https://github.com/tauri-apps/winres",
+      "text_sha256": "4dbef208f36bce792767a7e10593be564ff98a8a029315c1fee4507d3c992b76"
+    },
+    {
+      "component": "Rust: tempfile 3.27.0",
+      "source": "https://github.com/Stebalien/tempfile",
+      "text_sha256": "665fd40d5132de3d7295cd7fe7ada68a14f1f75dd6346807bd9bfc3b045d0460"
+    },
+    {
+      "component": "Rust: tendril 0.5.1",
+      "source": "https://github.com/servo/html5ever",
+      "text_sha256": "1c167665a68631aa310df4585e7ee30592ede458810d89b6f657376c2b6d5be9"
+    },
+    {
+      "component": "Rust: thiserror 1.0.69",
+      "source": "https://github.com/dtolnay/thiserror",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: thiserror 2.0.20",
+      "source": "https://github.com/dtolnay/thiserror",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: thiserror-impl 1.0.69",
+      "source": "https://github.com/dtolnay/thiserror",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: thiserror-impl 2.0.20",
+      "source": "https://github.com/dtolnay/thiserror",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: time 0.3.55",
+      "source": "https://github.com/time-rs/time",
+      "text_sha256": "4207163e06d01cb722bb9be85fcb9a3f67b8ad443838a18e0479806c92397cd2"
+    },
+    {
+      "component": "Rust: time-core 0.1.9",
+      "source": "https://github.com/time-rs/time",
+      "text_sha256": "4207163e06d01cb722bb9be85fcb9a3f67b8ad443838a18e0479806c92397cd2"
+    },
+    {
+      "component": "Rust: time-macros 0.2.32",
+      "source": "https://github.com/time-rs/time",
+      "text_sha256": "4207163e06d01cb722bb9be85fcb9a3f67b8ad443838a18e0479806c92397cd2"
+    },
+    {
+      "component": "Rust: tinystr 0.8.4",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: tinyvec 1.13.2",
+      "source": "https://github.com/Lokathor/tinyvec",
+      "text_sha256": "d91a071fb20a6effb146e30a8c5feb36927edaa1471642b4bcea3ea100611042"
+    },
+    {
+      "component": "Rust: tinyvec_macros 0.1.1",
+      "source": "https://github.com/Soveu/tinyvec_macros",
+      "text_sha256": "84457871a2a4c6088daff0fbb2805fc3ae94c254e236a8ed2d97c2c428f1a67d"
+    },
+    {
+      "component": "Rust: tokio 1.53.1",
+      "source": "https://github.com/tokio-rs/tokio",
+      "text_sha256": "d4da42386355946d60198448d35074726506de9479763b8d4750ab68e0db728f"
+    },
+    {
+      "component": "Rust: tokio-macros 2.7.2",
+      "source": "https://github.com/tokio-rs/tokio",
+      "text_sha256": "dff9f41562e3675f1dea7fb6bbde49457ca3ec16de2c81f035fb060fd3b29b28"
+    },
+    {
+      "component": "Rust: tokio-rustls 0.26.5",
+      "source": "https://github.com/rustls/tokio-rustls",
+      "text_sha256": "f71f87ecc2148c3a077e9ad6f47e80c11e448b2073f15e8d4192bc0d2f715d0e"
+    },
+    {
+      "component": "Rust: tokio-stream 0.1.19",
+      "source": "https://github.com/tokio-rs/tokio",
+      "text_sha256": "d4da42386355946d60198448d35074726506de9479763b8d4750ab68e0db728f"
+    },
+    {
+      "component": "Rust: tokio-util 0.7.18",
+      "source": "https://github.com/tokio-rs/tokio",
+      "text_sha256": "d4da42386355946d60198448d35074726506de9479763b8d4750ab68e0db728f"
+    },
+    {
+      "component": "Rust: toml 0.9.12+spec-1.1.0",
+      "source": "https://github.com/toml-rs/toml",
+      "text_sha256": "7bffb71106be5b52471ad11d1fa67998b5ffc4ed805ef3af6726592a5abda6ff"
+    },
+    {
+      "component": "Rust: toml 1.1.5+spec-1.1.0",
+      "source": "https://github.com/toml-rs/toml",
+      "text_sha256": "7bffb71106be5b52471ad11d1fa67998b5ffc4ed805ef3af6726592a5abda6ff"
+    },
+    {
+      "component": "Rust: toml_datetime 0.7.5+spec-1.1.0",
+      "source": "https://github.com/toml-rs/toml",
+      "text_sha256": "7bffb71106be5b52471ad11d1fa67998b5ffc4ed805ef3af6726592a5abda6ff"
+    },
+    {
+      "component": "Rust: toml_datetime 1.1.1+spec-1.1.0",
+      "source": "https://github.com/toml-rs/toml",
+      "text_sha256": "7bffb71106be5b52471ad11d1fa67998b5ffc4ed805ef3af6726592a5abda6ff"
+    },
+    {
+      "component": "Rust: toml_parser 1.1.3+spec-1.1.0",
+      "source": "https://github.com/toml-rs/toml",
+      "text_sha256": "7bffb71106be5b52471ad11d1fa67998b5ffc4ed805ef3af6726592a5abda6ff"
+    },
+    {
+      "component": "Rust: toml_writer 1.1.2+spec-1.1.0",
+      "source": "https://github.com/toml-rs/toml",
+      "text_sha256": "7bffb71106be5b52471ad11d1fa67998b5ffc4ed805ef3af6726592a5abda6ff"
+    },
+    {
+      "component": "Rust: tower 0.5.3",
+      "source": "https://github.com/tower-rs/tower",
+      "text_sha256": "e056dfd8a6390944b640435e9383be3c650d7bcf7016237e885dd250d5b9d587"
+    },
+    {
+      "component": "Rust: tower-http 0.6.8",
+      "source": "https://github.com/tower-rs/tower-http",
+      "text_sha256": "c0b9f9b2351ac7d87be71e3ea50f4bdb2edb90dd8b5e431857bd46be33594385"
+    },
+    {
+      "component": "Rust: tower-layer 0.3.3",
+      "source": "https://github.com/tower-rs/tower",
+      "text_sha256": "e056dfd8a6390944b640435e9383be3c650d7bcf7016237e885dd250d5b9d587"
+    },
+    {
+      "component": "Rust: tower-service 0.3.3",
+      "source": "https://github.com/tower-rs/tower",
+      "text_sha256": "e056dfd8a6390944b640435e9383be3c650d7bcf7016237e885dd250d5b9d587"
+    },
+    {
+      "component": "Rust: tracing 0.1.44",
+      "source": "https://github.com/tokio-rs/tracing",
+      "text_sha256": "5b9ea38d4df36a6df66ba40f11b8cbdc81ad005ff633eae89172e7cefdc08df8"
+    },
+    {
+      "component": "Rust: tracing-attributes 0.1.31",
+      "source": "https://github.com/tokio-rs/tracing",
+      "text_sha256": "a0c6e264da6471d913a12bef558189a251dd1aba2a46c0cc6485608239bbf658"
+    },
+    {
+      "component": "Rust: tracing-core 0.1.36",
+      "source": "https://github.com/tokio-rs/tracing",
+      "text_sha256": "233f052ca8bc0c70e9aec648b6d404b1020686a5bf24d77da4584481f59214fe"
+    },
+    {
+      "component": "Rust: tray-icon 0.24.2",
+      "source": "https://github.com/tauri-apps/tray-icon",
+      "text_sha256": "f10c36bad34b3fa785901a3508790ff27818b185a482dab40a0ad31bd76b47d4"
+    },
+    {
+      "component": "Rust: try-lock 0.2.5",
+      "source": "https://github.com/seanmonstar/try-lock",
+      "text_sha256": "87734eb24201af048442cf9634c936ecddc2e81912687f6c1887a021abe188e7"
+    },
+    {
+      "component": "Rust: typeid 1.0.3",
+      "source": "https://github.com/dtolnay/typeid",
+      "text_sha256": "6cc1e7485b8aa65ad1073c948134b4e9e23f9fdf7dca719305423d2b7b9906bb"
+    },
+    {
+      "component": "Rust: typenum 1.20.1",
+      "source": "https://github.com/paholg/typenum",
+      "text_sha256": "9c56d8e105526bfd4adb9343cdc037f914d917b88af3393711a9883a1a76b4d6"
+    },
+    {
+      "component": "Rust: unic-char-property 0.9.0",
+      "source": "https://github.com/open-i18n/rust-unic/",
+      "text_sha256": "1dfaeeb8ae78e11ddf7fdcaab013d074cafbda2a6ddcd0e62d6b5d58481d3141"
+    },
+    {
+      "component": "Rust: unic-char-range 0.9.0",
+      "source": "https://github.com/open-i18n/rust-unic/",
+      "text_sha256": "1dfaeeb8ae78e11ddf7fdcaab013d074cafbda2a6ddcd0e62d6b5d58481d3141"
+    },
+    {
+      "component": "Rust: unic-common 0.9.0",
+      "source": "https://github.com/open-i18n/rust-unic/",
+      "text_sha256": "1dfaeeb8ae78e11ddf7fdcaab013d074cafbda2a6ddcd0e62d6b5d58481d3141"
+    },
+    {
+      "component": "Rust: unic-ucd-ident 0.9.0",
+      "source": "https://github.com/open-i18n/rust-unic/",
+      "text_sha256": "1dfaeeb8ae78e11ddf7fdcaab013d074cafbda2a6ddcd0e62d6b5d58481d3141"
+    },
+    {
+      "component": "Rust: unic-ucd-version 0.9.0",
+      "source": "https://github.com/open-i18n/rust-unic/",
+      "text_sha256": "1dfaeeb8ae78e11ddf7fdcaab013d074cafbda2a6ddcd0e62d6b5d58481d3141"
+    },
+    {
+      "component": "Rust: unicase 2.9.0",
+      "source": "https://github.com/seanmonstar/unicase",
+      "text_sha256": "0ca26f2a7d1847d764094826414ead55c0d6867e260e10b8d03c0798f2c46429"
+    },
+    {
+      "component": "Rust: unicode-ident 1.0.24",
+      "source": "https://github.com/dtolnay/unicode-ident",
+      "text_sha256": "7d2bc4bd9eeef7920340b112e436574390f7e699a86b9d6dc67afbe02fe5da9d"
+    },
+    {
+      "component": "Rust: unicode-segmentation 1.13.3",
+      "source": "https://github.com/unicode-rs/unicode-segmentation",
+      "text_sha256": "5a110d543916a9698a1de121f18d4c2bc60e7ae887d406b7f5511333ee70c2e1"
+    },
+    {
+      "component": "Rust: unicode-width 0.2.2",
+      "source": "https://github.com/unicode-rs/unicode-width",
+      "text_sha256": "5a110d543916a9698a1de121f18d4c2bc60e7ae887d406b7f5511333ee70c2e1"
+    },
+    {
+      "component": "Rust: unicode-xid 0.2.6",
+      "source": "https://github.com/unicode-rs/unicode-xid",
+      "text_sha256": "d382bf8f9cbb5d9ffef527fcd3839f952d80b25280b211d1f48ba414dcef439c"
+    },
+    {
+      "component": "Rust: untrusted 0.9.0",
+      "source": "https://github.com/briansmith/untrusted",
+      "text_sha256": "c3adc086b870cda34b78d06ef6a4305e9887c943d9cd4332cbf424d8d0c304f8"
+    },
+    {
+      "component": "Rust: url 2.5.8",
+      "source": "https://github.com/servo/rust-url",
+      "text_sha256": "7dddd71bc0076bb65421dce5e81b652fc37c53e8d48efbaddfac4dd609b870fc"
+    },
+    {
+      "component": "Rust: urlpattern 0.3.0",
+      "source": "https://github.com/denoland/rust-urlpattern",
+      "text_sha256": "087f29f5bbf276ae6d0aba1373221bd6a8d36ec644ae7751529aa28a36ada897"
+    },
+    {
+      "component": "Rust: utf8_iter 1.0.4",
+      "source": "https://github.com/hsivonen/utf8_iter",
+      "text_sha256": "66fb3f0318d7de4267eca42dc4fddd19f8c65162b65163e2b8613580f6287082"
+    },
+    {
+      "component": "Rust: uuid 1.26.1",
+      "source": "https://github.com/uuid-rs/uuid",
+      "text_sha256": "010adb3579e6a6644e640ac80bf08daf61351f85be8e38c1b84246c7364a477e"
+    },
+    {
+      "component": "Rust: value-ext 0.1.5",
+      "source": "https://github.com/jeremychone/rust-value-ext",
+      "text_sha256": "86487c5cb1fcc1b471142242a716896bf77c4ea983fbb40cfd7ca75ae27d2d2c"
+    },
+    {
+      "component": "Rust: vcpkg 0.2.15",
+      "source": "https://github.com/mcgoo/vcpkg-rs",
+      "text_sha256": "2644e8a45ad5aac2aa2b8252f94f2649d7423b397a5ff0773c8d89b1473c0e57"
+    },
+    {
+      "component": "Rust: version_check 0.9.5",
+      "source": "https://github.com/SergioBenitez/version_check",
+      "text_sha256": "dcb84782118973f1a9a9dce2879e9b03bab0124e5696639615acc961221ee5b1"
+    },
+    {
+      "component": "Rust: walkdir 2.5.0",
+      "source": "https://github.com/BurntSushi/walkdir",
+      "text_sha256": "0ed928a849e410c25079dfb742d47ffd4f69d65323526ed8fd13713b7ee9ef86"
+    },
+    {
+      "component": "Rust: want 0.3.1",
+      "source": "https://github.com/seanmonstar/want",
+      "text_sha256": "b19add5cf86bd33bca13abe540b3083b68f45c26877467c06ab36b42869a4719"
+    },
+    {
+      "component": "Rust: web_atoms 0.2.6",
+      "source": "https://github.com/servo/html5ever",
+      "text_sha256": "4ea41c3ef6a69dda48ec7978d2796136ee237c0be8cf7edf16fc07a75fb5fa8e"
+    },
+    {
+      "component": "Rust: window-vibrancy 0.6.0",
+      "source": "https://github.com/tauri-apps/tauri-plugin-vibrancy",
+      "text_sha256": "0d21ef3e742bf043a49a5e08414beeb22c0d0b9a217bc3673aa5dfc0b2fb715b"
+    },
+    {
+      "component": "Rust: winnow 0.7.15",
+      "source": "https://github.com/winnow-rs/winnow",
+      "text_sha256": "0e74ff2c1e232e6b88c2dbf8c1cbd905bc51a64e0f97cc8788946a623f21c7bb"
+    },
+    {
+      "component": "Rust: winnow 1.0.4",
+      "source": "https://github.com/winnow-rs/winnow",
+      "text_sha256": "0e74ff2c1e232e6b88c2dbf8c1cbd905bc51a64e0f97cc8788946a623f21c7bb"
+    },
+    {
+      "component": "Rust: writeable 0.6.4",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: wry 0.55.1",
+      "source": "https://github.com/tauri-apps/wry",
+      "text_sha256": "ffb738b1a0285e325163c959d10fb36e6aa85f9bc2c5114dde8e98d646558cdf"
+    },
+    {
+      "component": "Rust: xattr 1.6.1",
+      "source": "https://github.com/Stebalien/xattr",
+      "text_sha256": "ce6242075b3a273e613b98a68ce0b50f87fcdb4debea83e71e11592b513a75f9"
+    },
+    {
+      "component": "Rust: yoke 0.8.3",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "0994667317be2777f943c2f4bd269ce132c979f1c29519167e65ed6a479b92a9"
+    },
+    {
+      "component": "Rust: yoke-derive 0.8.2",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "0994667317be2777f943c2f4bd269ce132c979f1c29519167e65ed6a479b92a9"
+    },
+    {
+      "component": "Rust: zerocopy 0.8.57",
+      "source": "https://github.com/google/zerocopy",
+      "text_sha256": "9d01e3686705eaaaf1ad301569728a83d8830aa5b24d8b3663806ee097852c4b"
+    },
+    {
+      "component": "Rust: zerofrom 0.1.8",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: zerofrom-derive 0.1.7",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "0994667317be2777f943c2f4bd269ce132c979f1c29519167e65ed6a479b92a9"
+    },
+    {
+      "component": "Rust: zeroize 1.9.0",
+      "source": "https://github.com/RustCrypto/utils",
+      "text_sha256": "bbce502b1f6c8fd975dd0ab2c0c6ace40b07793066800e5e3dd3bd6319481b2d"
+    },
+    {
+      "component": "Rust: zerotrie 0.2.5",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: zerovec 0.11.8",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "8005e8868000a5c03383801a27f8e399e53907e02628e532bedcaf33eac66261"
+    },
+    {
+      "component": "Rust: zerovec-derive 0.11.6",
+      "source": "https://github.com/unicode-org/icu4x",
+      "text_sha256": "0994667317be2777f943c2f4bd269ce132c979f1c29519167e65ed6a479b92a9"
+    },
+    {
+      "component": "Rust: zlib-rs 0.6.7",
+      "source": "https://github.com/trifectatechfoundation/zlib-rs",
+      "text_sha256": "4ba1c7e1f978df0f3d1399abaa62731f4e4e8692015c649f0b05e03b8713cf90"
+    },
+    {
+      "component": "Rust: zmij 1.0.23",
+      "source": "https://github.com/dtolnay/zmij",
+      "text_sha256": "a8800bb621320380094ce43f6f459f47ee56bba872ba3415ba7776ae92bf5354"
+    },
+    {
+      "component": "Rust: zune-core 0.5.3",
+      "source": "https://github.com/etemesi254/zune-image",
+      "text_sha256": "a8323b31e0b5fefa6ee5596e2d991b339a347e79b6b47f5c0c06e131d561c5f7"
+    },
+    {
+      "component": "Rust: zune-jpeg 0.5.15",
+      "source": "https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg",
+      "text_sha256": "d0e7e2490098a752133b945d8922fdcd160976ac2c15f7cbbca7b26ffee083b4"
+    },
+    {
+      "component": "Frontend: @floating-ui/core 1.8.0",
+      "source": "https://www.npmjs.com/package/@floating-ui/core/v/1.8.0",
+      "text_sha256": "40c0cd30ecc620ef0a4a76c14bc02be728dfb6b56e699959a0ef5811b1ef948f"
+    },
+    {
+      "component": "Frontend: @floating-ui/dom 1.8.0",
+      "source": "https://www.npmjs.com/package/@floating-ui/dom/v/1.8.0",
+      "text_sha256": "40c0cd30ecc620ef0a4a76c14bc02be728dfb6b56e699959a0ef5811b1ef948f"
+    },
+    {
+      "component": "Frontend: @floating-ui/utils 0.2.12",
+      "source": "https://www.npmjs.com/package/@floating-ui/utils/v/0.2.12",
+      "text_sha256": "40c0cd30ecc620ef0a4a76c14bc02be728dfb6b56e699959a0ef5811b1ef948f"
+    },
+    {
+      "component": "Frontend: @lucide/svelte 1.45.0",
+      "source": "https://www.npmjs.com/package/@lucide/svelte/v/1.45.0",
+      "text_sha256": "89419663a0ee9f88deb5cbb6a93d0a7fd47e0cc7041737db8236665caa85a6ae"
+    },
+    {
+      "component": "Frontend: @sveltejs/kit 2.70.3",
+      "source": "https://www.npmjs.com/package/@sveltejs/kit/v/2.70.3",
+      "text_sha256": "df594ceaa8abb7d174460b4a137e6fb2e59e0408f806cad6b87d280c94bf941e"
+    },
+    {
+      "component": "Frontend: @tauri-apps/api 2.11.1",
+      "source": "https://www.npmjs.com/package/@tauri-apps/api/v/2.11.1",
+      "text_sha256": "b16c29cf1056e8fe5f6f48de16807588bf044ce38826d0bfb7a914080dacfaf3"
+    },
+    {
+      "component": "Frontend: @tauri-apps/api 2.12.0",
+      "source": "https://www.npmjs.com/package/@tauri-apps/api/v/2.12.0",
+      "text_sha256": "db27abe39a4526692fcf6ebbd070f3ca078bc0117c5d0f35e27cdc2f54866280"
+    },
+    {
+      "component": "Frontend: @tauri-apps/plugin-autostart 2.5.1",
+      "source": "https://www.npmjs.com/package/@tauri-apps/plugin-autostart/v/2.5.1",
+      "text_sha256": "7498c2627dcd6d5d2080dd36e210475ab69bc62ab8c9287370865971f3cad920"
+    },
+    {
+      "component": "Frontend: @tauri-apps/plugin-opener 2.5.5",
+      "source": "https://www.npmjs.com/package/@tauri-apps/plugin-opener/v/2.5.5",
+      "text_sha256": "7498c2627dcd6d5d2080dd36e210475ab69bc62ab8c9287370865971f3cad920"
+    },
+    {
+      "component": "Frontend: bits-ui 2.19.2",
+      "source": "https://www.npmjs.com/package/bits-ui/v/2.19.2",
+      "text_sha256": "a4659a1970ae045de2841bf3879eb6f91781cf94b53b1701839a13faf255ea27"
+    },
+    {
+      "component": "Frontend: clsx 2.1.1",
+      "source": "https://www.npmjs.com/package/clsx/v/2.1.1",
+      "text_sha256": "567ab6ee292b11250a3502a90f5dd395b247847d1c1e3dc4bd258d03d5c69455"
+    },
+    {
+      "component": "Frontend: inline-style-parser 0.2.7",
+      "source": "https://www.npmjs.com/package/inline-style-parser/v/0.2.7",
+      "text_sha256": "3f6afb14faf887b726340ffe7024e875d28c1cfd1bd462f887f256a4ef98c721"
+    },
+    {
+      "component": "Frontend: paneforge 1.0.2",
+      "source": "https://www.npmjs.com/package/paneforge/v/1.0.2",
+      "text_sha256": "b8c2777b0ecec30fdd2d9947c897f11584e4724a56ff3197d3d0304c0bc7e304"
+    },
+    {
+      "component": "Frontend: runed 0.35.1",
+      "source": "https://www.npmjs.com/package/runed/v/0.35.1",
+      "text_sha256": "d2b5bc414454655357a8713a135fab0ca9c07c7253ed4f7cbe58943bc2efcd0b"
+    },
+    {
+      "component": "Frontend: runed 0.29.2",
+      "source": "https://www.npmjs.com/package/runed/v/0.29.2",
+      "text_sha256": "d2b5bc414454655357a8713a135fab0ca9c07c7253ed4f7cbe58943bc2efcd0b"
+    },
+    {
+      "component": "Frontend: runed 0.23.4",
+      "source": "https://www.npmjs.com/package/runed/v/0.23.4",
+      "text_sha256": "d2b5bc414454655357a8713a135fab0ca9c07c7253ed4f7cbe58943bc2efcd0b"
+    },
+    {
+      "component": "Frontend: style-to-object 1.0.14",
+      "source": "https://www.npmjs.com/package/style-to-object/v/1.0.14",
+      "text_sha256": "6e5e8101e86666aedb5d25ed0333aff7a6e014695a1ccadef93ed2351455693a"
+    },
+    {
+      "component": "Frontend: svelte 5.57.0",
+      "source": "https://www.npmjs.com/package/svelte/v/5.57.0",
+      "text_sha256": "d2931d67784991f50291919eec3bc1265f8a9b15636b4d5caa74922469b0c6a8"
+    },
+    {
+      "component": "Frontend: svelte-toolbelt 0.10.6",
+      "source": "https://www.npmjs.com/package/svelte-toolbelt/v/0.10.6",
+      "text_sha256": "d2b5bc414454655357a8713a135fab0ca9c07c7253ed4f7cbe58943bc2efcd0b"
+    },
+    {
+      "component": "Frontend: svelte-toolbelt 0.9.3",
+      "source": "https://www.npmjs.com/package/svelte-toolbelt/v/0.9.3",
+      "text_sha256": "d2b5bc414454655357a8713a135fab0ca9c07c7253ed4f7cbe58943bc2efcd0b"
+    },
+    {
+      "component": "Frontend: tabbable 6.5.0",
+      "source": "https://www.npmjs.com/package/tabbable/v/6.5.0",
+      "text_sha256": "eee0ab2ae06265d572f92ca03d045136454960ee433faecc48479ea7ccbbbc20"
+    },
+    {
+      "component": "Frontend: tailwind-merge 3.7.0",
+      "source": "https://www.npmjs.com/package/tailwind-merge/v/3.7.0",
+      "text_sha256": "b9e4840227dc10e49d66d474259a69c9fb3a509493f395fa843fc621e90fa789"
+    },
+    {
+      "component": "Frontend: tailwind-variants 3.3.1",
+      "source": "https://www.npmjs.com/package/tailwind-variants/v/3.3.1",
+      "text_sha256": "7f9bcc9b7b38a329291a17d33f3ba2d621992303e480d9b777880953237ae22e"
+    },
+    {
+      "component": "Frontend: tailwindcss 4.3.3",
+      "source": "https://www.npmjs.com/package/tailwindcss/v/4.3.3",
+      "text_sha256": "3b76f4b5685182b0b02312bb6381550fc3730f56572b30203fae43a7ed390d89"
+    },
+    {
+      "component": "Frontend: tw-animate-css 1.4.0",
+      "source": "https://www.npmjs.com/package/tw-animate-css/v/1.4.0",
+      "text_sha256": "d8bff4e058a3b2acccc00945d050d476f588fd58b7e3bed85f3de66d67efafb1"
+    },
+    {
+      "component": "Native: llama-cpp-sys-2 0.1.158 / llama.cpp/LICENSE",
+      "source": "https://crates.io/crates/llama-cpp-sys-2/0.1.158",
+      "text_sha256": "3468798dd4eb1badf2d665d4afec49d424aa31fd4f0af91638ccd4b1a48615d0"
+    },
+    {
+      "component": "Native: llama-cpp-sys-2 0.1.158 / llama.cpp/vendor/cpp-httplib/LICENSE",
+      "source": "https://crates.io/crates/llama-cpp-sys-2/0.1.158",
+      "text_sha256": "d260e6eaf487837d051bb6dbb9bba4715e354470ba7d2db1e102aa8a75302041"
+    },
+    {
+      "component": "Native: llama-cpp-sys-2 0.1.158 / llama.cpp/vendor/hash/rotate-bits/LICENSE.md",
+      "source": "https://crates.io/crates/llama-cpp-sys-2/0.1.158",
+      "text_sha256": "611a18ffaaa3ba125acc761c314d37ad045c6f2dbaba7d68a3452896a612a9a5"
+    },
+    {
+      "component": "Native: llama-cpp-sys-2 0.1.158 / llama.cpp/vendor/hash/sha256/LICENSE",
+      "source": "https://crates.io/crates/llama-cpp-sys-2/0.1.158",
+      "text_sha256": "315de204569f206a2832e5f76a08f22db080780062c9ddb4ee4e012d1c8762ac"
+    },
+    {
+      "component": "Native: llama-cpp-sys-2 0.1.158 / llama.cpp/vendor/hash/xxhash/LICENSE",
+      "source": "https://crates.io/crates/llama-cpp-sys-2/0.1.158",
+      "text_sha256": "e7164e9405decd93caba8408bcfe43dc2634465b621a31855ed7980e8aab68a7"
+    },
+    {
+      "component": "Native: llama-cpp-sys-2 0.1.158 / llama.cpp/vendor/stb/stb_image.h",
+      "source": "https://crates.io/crates/llama-cpp-sys-2/0.1.158",
+      "text_sha256": "0c9c71225c938c21aa57c72f889eb23691c2db472c088d5d2d0ee81a0c00bb34"
+    },
+    {
+      "component": "Native: llama-cpp-sys-2 0.1.158 / llama.cpp/vendor/miniaudio/miniaudio.h",
+      "source": "https://crates.io/crates/llama-cpp-sys-2/0.1.158",
+      "text_sha256": "4414c1e1c13f609f1a9554acd2d463d7c2609fecc9c0868927150a4677188ae7"
+    },
+    {
+      "component": "Native: llama-cpp-sys-2 0.1.158 / llama.cpp/vendor/sheredom/subprocess.h",
+      "source": "https://crates.io/crates/llama-cpp-sys-2/0.1.158",
+      "text_sha256": "0b59773b4a78183490adb41f67d989311ebeef5d26ea0a91c177bfd3c408c7d7"
+    },
+    {
+      "component": "Native: llama-cpp-sys-2 0.1.158 / llama.cpp/vendor/hash/sha1/sha1.c",
+      "source": "https://crates.io/crates/llama-cpp-sys-2/0.1.158",
+      "text_sha256": "c290f4beb5e5c3c00e8dae27391b708138e5237723da401382f3a4be98c1810b"
+    },
+    {
+      "component": "Native: llama-cpp-sys-2 0.1.158 / llama.cpp/vendor/nlohmann/json.hpp",
+      "source": "https://crates.io/crates/llama-cpp-sys-2/0.1.158",
+      "text_sha256": "70dc3289d3eded2f4771803783e9ae52bb43b53cef358a180da5f1cbe57740ff"
+    },
+    {
+      "component": "Native: aws-lc-sys 0.45.0 / LICENSE",
+      "source": "https://crates.io/crates/aws-lc-sys/0.45.0",
+      "text_sha256": "49f5cc2a2e4db6cc86cc1c853cbf00af70abd12c55dae8d6561f26ccd1bfd162"
+    },
+    {
+      "component": "Native: aws-lc-sys 0.45.0 / aws-lc/LICENSE",
+      "source": "https://crates.io/crates/aws-lc-sys/0.45.0",
+      "text_sha256": "49f5cc2a2e4db6cc86cc1c853cbf00af70abd12c55dae8d6561f26ccd1bfd162"
+    },
+    {
+      "component": "Native: aws-lc-sys 0.45.0 / aws-lc/third_party/fiat/LICENSE",
+      "source": "https://crates.io/crates/aws-lc-sys/0.45.0",
+      "text_sha256": "c86c0f590ac954babf892ba6b03c50c00cdf326ddfd0ad31ed0ec16abdaada52"
+    },
+    {
+      "component": "Native: ring 0.17.14 / LICENSE",
+      "source": "https://crates.io/crates/ring/0.17.14",
+      "text_sha256": "edb9c6dbff4676b90e729ffdb6c9239076a2e01b3bb8aadf080bdc7a682296da"
+    },
+    {
+      "component": "Native: ring 0.17.14 / LICENSE-other-bits",
+      "source": "https://crates.io/crates/ring/0.17.14",
+      "text_sha256": "07414b6c33f30acfd5e0dda512e77ddbeb9f8a37290568fd056a01a0b50244c1"
+    },
+    {
+      "component": "Native: ring 0.17.14 / LICENSE-BoringSSL",
+      "source": "https://crates.io/crates/ring/0.17.14",
+      "text_sha256": "473867fcf89f75954018ee72124015779a1b9ca0d1a33328f2ddcf538690c067"
+    },
+    {
+      "component": "Native: ring 0.17.14 / src/polyfill/once_cell/LICENSE-APACHE",
+      "source": "https://crates.io/crates/ring/0.17.14",
+      "text_sha256": "954f335b8baf5e1a5748b3a1bf6eeb2ec0b28ae19813f02063d64be005765a76"
+    },
+    {
+      "component": "Native: ring 0.17.14 / src/polyfill/once_cell/LICENSE-MIT",
+      "source": "https://crates.io/crates/ring/0.17.14",
+      "text_sha256": "740a360e4d9c99a258a4a870097a4641af896babd62ca7ab2a2c6de4d5ada151"
+    },
+    {
+      "component": "Native: ring 0.17.14 / third_party/fiat/LICENSE",
+      "source": "https://crates.io/crates/ring/0.17.14",
+      "text_sha256": "f1954d2b51ee6ac825defdc6ee947930241269d40ad6082b9d9e758613ce7b61"
+    },
+    {
+      "component": "Native: libsqlite3-sys 0.30.1 / LICENSE",
+      "source": "https://crates.io/crates/libsqlite3-sys/0.30.1",
+      "text_sha256": "1b22c746764567f538d003a5ed8abf27e3957939727be7e896f928a37724c40f"
+    },
+    {
+      "component": "Native: libsqlite3-sys 0.30.1 / sqlite3/sqlite3.c",
+      "source": "https://crates.io/crates/libsqlite3-sys/0.30.1",
+      "text_sha256": "12e977221ec2e238e70248f2fa8266d6a2dd0a973669b2c39b2e4787c308623a"
+    },
+    {
+      "component": "Native: nlohmann JSON embedded credits",
+      "source": "llama-cpp-sys-2 0.1.158 / llama.cpp/vendor/nlohmann/json.hpp",
+      "text_sha256": "74f66d81af6b689add6460a1d465f41f174f87092d18cda4d269eb7b0a356cd6"
+    },
+    {
+      "component": "Lucide and Feather icons",
+      "source": "src-tauri/icons/menu/LUCIDE-LICENSE",
+      "text_sha256": "ee35498e6684b30c9efaae009415884772f4450b3f6a3ae49103cd550a2c8ceb"
+    },
+    {
+      "component": "Inter font",
+      "source": "static/fonts/Inter-OFL.txt",
+      "text_sha256": "788299d6d20791b4875f14f089346dab18db2e2df527ba8a4b5d285a890009d2"
+    },
+    {
+      "component": "Sora font",
+      "source": "static/fonts/Sora-OFL.txt",
+      "text_sha256": "e431942339ec2b8d1040c3651f3a39644518a4e0b63b91bf3cc5a94881bb4193"
+    },
+    {
+      "component": "Copied dropdown-menu UI",
+      "source": "src/lib/components/ui/dropdown-menu/LICENSE.md",
+      "text_sha256": "dba1ed138be309f81f99859e3ce54be1dcd726f54e7928a000b33203f9522984"
+    },
+    {
+      "component": "Copied resizable UI",
+      "source": "src/lib/components/ui/resizable/LICENSE.md",
+      "text_sha256": "dba1ed138be309f81f99859e3ce54be1dcd726f54e7928a000b33203f9522984"
+    },
+    {
+      "component": "HackerNoon Pixel Icon Library",
+      "source": "https://github.com/hackernoon/pixel-icon-library",
+      "text_sha256": "fb05d5f9e02b9f4a5cebbcda820ecb6c043549b7fc85351b784710ce6b4652c8"
+    }
+  ]
+}

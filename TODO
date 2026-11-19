@@ -1,0 +1,7 @@
+- [ ] Use ~/.config/isoboard/ for the app's configuration.
+- [ ] Validate provider api keys
+- [ ] Make sure style=background:#6bc9c7 makes it through html normalization
+- [ ] Search in history
+- [ ] Hide window when shortcut to capture is pressed, then show it again when the capture is done (if it was visible before)
+- [ ] Cancelling screenshot with ESC should not throw an error
+- [ ] Edit history (postprocess html)

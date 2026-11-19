@@ -1,0 +1,60 @@
+name: Bug report
+description: Something in isoboard does not work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues are public. Never include API keys, license keys, order details or
+        screenshots with confidential content. Use a minimal example instead.
+  - type: input
+    id: version
+    attributes:
+      label: isoboard version
+      description: Settings → General → About.
+      placeholder: '1.0.0'
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version and Mac
+      placeholder: macOS 15.1, MacBook Air M2
+    validations:
+      required: true
+  - type: dropdown
+    id: model
+    attributes:
+      label: Model provider
+      description: The provider used by the profile where the problem happens.
+      options:
+        - Local model (isOCR or other built-in)
+        - OpenAI API
+        - Anthropic
+        - Google Gemini
+        - OpenAI-compatible endpoint
+        - Not related to a provider
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Settings → Profiles and …
+        2. Capture a region containing …
+        3. Paste into …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Error details or logs
+      description: History → failed entry → copy error details, if available.
+      render: text

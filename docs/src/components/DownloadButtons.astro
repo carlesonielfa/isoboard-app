@@ -1,0 +1,74 @@
+---
+// Download buttons styled like the isoboard.app hero: a solid primary button and an outline GitHub button.
+import githubIcon from '../assets/github.svg?raw';
+
+const releases = 'https://github.com/carlesonielfa/isoboard-app/releases';
+// TODO(fact): point at the direct DMG URL once isoboard.app publishes one.
+const download = `${releases}/latest`;
+---
+
+<div class="download-buttons not-content">
+  <a class="button primary" href={download}>
+    Download for Mac
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path>
+    </svg>
+  </a>
+  <a class="button outline" href={releases}>
+    GitHub Releases
+    <span class="github" aria-hidden="true" set:html={githubIcon} />
+  </a>
+</div>
+
+<style>
+  .download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-block: 1.25rem;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    text-decoration: none;
+    transition: background-color 0.15s, border-color 0.15s;
+    user-select: none;
+  }
+  .primary {
+    background-color: var(--sl-color-white);
+    border-color: var(--sl-color-white);
+    color: var(--sl-color-black);
+  }
+  .primary:hover {
+    background-color: rgb(255 255 255 / 85%);
+  }
+  .primary:active {
+    background-color: rgb(255 255 255 / 70%);
+  }
+  .outline {
+    background-color: transparent;
+    border-color: rgb(255 255 255 / 20%);
+    color: var(--sl-color-white);
+  }
+  .outline:hover {
+    border-color: rgb(255 255 255 / 50%);
+    background-color: rgb(255 255 255 / 5%);
+  }
+  .outline:active {
+    background-color: rgb(255 255 255 / 10%);
+  }
+  .github {
+    display: inline-flex;
+  }
+  .github :global(svg) {
+    width: 16px;
+    height: 16px;
+  }
+</style>

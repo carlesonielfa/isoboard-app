@@ -1,0 +1,44 @@
+---
+title: Turn screen captures into editable text
+description: Learn to install and use isoboard, the app that turns what you see on screen into editable text, tables and images, with a local model or your own AI.
+template: splash
+hero:
+  title: '<img class="hero-logo" src="/favicon.svg" alt="" width="64" height="64" />isoboard <span class="hero-docs">Docs</span>'
+  tagline: Guides for installing, using and setting up isoboard, the app that makes what you see on your screen editable.
+  image:
+    html: >-
+      <div class="hero-demo" data-hero-demo role="img" aria-label="isoboard capturing a table from a PDF, then the same table pasted into Word with its rows, columns and images.">
+      <video class="is-active" src="/media/hero-capture.mp4" poster="/media/hero-capture-poster.jpg" width="960" height="540" muted playsinline preload="auto"></video>
+      <video src="/media/hero-paste.mp4" width="800" height="764" muted playsinline preload="metadata"></video>
+      </div>
+      <script src="/media/hero-demo.js" defer></script>
+  actions:
+    - text: Install isoboard
+      link: getting-started/install/
+      icon: right-arrow
+    - text: Browse the docs
+      link: '#browse-the-docs'
+      variant: secondary
+    - text: New to isoboard? Visit isoboard.app
+      link: https://isoboard.app
+      icon: external
+      variant: minimal
+---
+
+import { CardGrid } from '@astrojs/starlight/components';
+import IconLinkCard from '../../components/IconLinkCard.astro';
+
+This is the documentation for isoboard, the app that turns part of your screen into text, tables and images you can edit and paste. isoboard runs on Apple silicon Macs today, with Windows and Linux coming. For an overview, examples and the download, visit [isoboard.app](https://isoboard.app).
+
+## Browse the docs
+
+<CardGrid>
+  <IconLinkCard icon="rocket" title="Get started" description="Check the requirements, install, grant permissions and make your first capture." href="getting-started/what-is-isoboard/" />
+  <IconLinkCard icon="laptop" title="Use isoboard" description="Capture, paste, shape results with Additional Rules, and manage Profiles and History." href="use/capture/" />
+  <IconLinkCard icon="puzzle" title="Models and providers" description="Run isOCR on your Mac or connect OpenAI, Anthropic, Gemini or a local server." href="models/choose-a-model/" />
+  <IconLinkCard icon="star" title="License and purchase" description="Free for personal use. Learn about the seven-day evaluation and the commercial license." href="license/pricing-and-licensing/" />
+  <IconLinkCard icon="padlock" title="Privacy and data" description="See what leaves your Mac, where isoboard stores files and how to delete them." href="privacy/data/" />
+  <IconLinkCard icon="information" title="Troubleshooting" description="Fix capture, shortcut, download and provider problems." href="troubleshooting/capture-and-permissions/" />
+  <IconLinkCard icon="comment" title="Request a feature" description="Suggest ideas, vote on what comes next and report bugs on GitHub." href="community/feedback/" />
+  <IconLinkCard icon="github" title="Developers" description="Build isoboard from source and read how it works." href="developers/" />
+</CardGrid>

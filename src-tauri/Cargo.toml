@@ -1,0 +1,100 @@
+[package]
+name = "isoboard"
+version = "1.0.0"
+description = "Turn screenshots and images into content you can paste into other apps"
+authors = ["Carles Onielfa Pérez"]
+homepage = "https://isoboard.app"
+repository = "https://github.com/carlesonielfa/isoboard-app"
+edition = "2021"
+license-file = "../LICENSE.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "isoboard_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[features]
+default = ["local-inference"]
+local-inference = ["dep:llama-cpp-2", "dep:encoding_rs", "dep:minijinja-contrib"]
+probe-runtime = [
+]
+api-probe = ["probe-runtime", "dep:rpassword"]
+local-probe = ["probe-runtime", "local-inference"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "~2.11", features = ["tray-icon", "macos-private-api"] }
+specta = { version = "=2.0.0-rc.25", features = ["derive"] }
+specta-typescript = "=0.0.12"
+tauri-specta = { version = "=2.0.0-rc.25", features = ["derive", "typescript"] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-global-shortcut = "2"
+base64 = "0.22"
+ammonia = "4.1.3"
+html5ever = "0.38.0"
+arboard = { version = "3.6.1", default-features = false }
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+html2text = "0.16.7"
+minijinja = { version = "2.24", features = ["fuel"] }
+image = { version = "0.25", default-features = false, features = ["jpeg", "png"] }
+notify = "8"
+rusqlite = { version = "0.32", features = ["bundled"] }
+rusqlite_migration = "=1.3.1"
+toml = "0.9"
+tempfile = "3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+jsonc-parser = { version = "=0.34.0", features = ["serde"] }
+sha2 = "0.10"
+sysinfo = { version = "=0.39.6", default-features = false, features = ["system"] }
+url = "2"
+uuid = { version = "1", features = ["v4"] }
+genai = "=0.6.5"
+futures-util = { version = "0.3", default-features = false, features = ["std"] }
+keyring = { version = "3", features = ["apple-native"] }
+reqwest = { version = "0.13", default-features = true, features = ["json"] }
+rpassword = { version = "7", optional = true }
+llama-cpp-2 = { version = "=0.1.158", default-features = false, features = ["mtmd"], optional = true }
+encoding_rs = { version = "0.8", optional = true }
+minijinja-contrib = { version = "2.24", features = ["pycompat"], optional = true }
+rodio = { version = "0.21.1", default-features = false, features = ["playback", "wav"] }
+tokio = { version = "1", features = ["net", "io-util", "time", "signal", "sync", "macros", "rt-multi-thread", "fs"] }
+tokio-util = { version = "0.7", features = ["rt"] }
+tauri-plugin-autostart = "=2.5.1"
+tauri-plugin-updater = "2"
+semver = "1"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+block2 = "0.6"
+objc2 = "0.6"
+objc2-app-kit = { version = "0.3", default-features = false, features = ["NSAccessibility", "NSAnimation", "NSAnimationContext", "NSImage", "NSMenu", "NSMenuItem", "NSResponder", "NSStatusItem", "NSView", "NSWindow", "NSWorkspace", "objc2-core-foundation"] }
+objc2-foundation = { version = "0.3", default-features = false, features = ["NSData", "NSGeometry", "NSBundle", "NSError", "NSString"] }
+objc2-user-notifications = { version = "0.3", default-features = false, features = ["std", "UNUserNotificationCenter", "UNNotificationSettings", "UNNotificationRequest", "UNNotificationContent", "UNNotification", "UNNotificationTrigger", "block2"] }
+
+[[example]]
+name = "api_probe"
+required-features = ["api-probe"]
+
+[[example]]
+name = "api_credentials"
+required-features = ["api-probe"]
+
+[[example]]
+name = "local_probe"
+required-features = ["local-probe"]
+
+
+# Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+panic = "abort"
+strip = true

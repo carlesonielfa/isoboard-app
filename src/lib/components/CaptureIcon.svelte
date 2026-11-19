@@ -1,0 +1,18 @@
+<!-- Canonical geometry: Brand/isoboard-brand-kit-prismatic-v0.3/assets/icons/capture.svg. -->
+<script lang="ts">
+  let { class: className = 'size-5 shrink-0' }: { class?: string } = $props();
+</script>
+
+<svg class={className} viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+  <path
+    d="M7 3H5a2 2 0 0 0-2 2v2m14-4h2a2 2 0 0 1 2 2v2M3 17v2a2 2 0 0 0 2 2h2m10 0h2a2 2 0 0 0 2-2v-2"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  />
+  <path
+    d="M13.334247 2H18.665753V13.334247H30V18.665753H18.665753V30H13.334247V18.665753H2V13.334247H13.334247Z"
+    transform="translate(7 7) scale(.3125)"
+    fill="currentColor"
+  />
+</svg>

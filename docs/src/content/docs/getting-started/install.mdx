@@ -1,0 +1,99 @@
+---
+title: Install isoboard on your Mac
+description: Check the system requirements, download isoboard, open it for the first time and update it. isoboard needs macOS 14 Sonoma or later and runs from the menu bar.
+sidebar:
+  label: Install
+  order: 2
+---
+
+import DownloadButtons from '../../../components/DownloadButtons.astro';
+
+{/* os:macos: this page is macOS-only today. Add Windows and Linux sections beside the macOS headings. */}
+
+isoboard installs like a standard Mac app and runs from the menu bar. It needs macOS 14 Sonoma or later on a Mac with Apple silicon. Download the DMG, drag isoboard to Applications, open it, and the setup guide walks you through permissions and the local model. Plan for about 1 GB of disk space and 2 GB of free memory for the local model.
+
+## What are the system requirements?
+
+{/* os:macos */}
+| Requirement | Details |
+|---|---|
+| Operating system | macOS 14 Sonoma or later |
+| Processor | Apple silicon (M1 or later). Intel Macs are not supported. |
+| Permission | Screen Recording, to capture a region of your screen. See [permissions](../permissions/). |
+| Local model (isOCR™) | About 1 GB to download, about 1 GB of free disk space and about 2 GB of free memory. See [local models](../../models/local-models/). |
+| AI provider | An internet connection and your own account or API key. Provider charges are separate. |
+| License activation | An internet connection to activate a commercial license. After activation, isoboard works offline. See [activate a license](../../license/activate/). |
+
+For compatibility questions before you buy, write to support@isoboard.app.
+
+## Where do I download isoboard?
+
+Download the DMG from [isoboard.app](https://isoboard.app) or from [GitHub Releases](https://github.com/carlesonielfa/isoboard-app/releases) on the isoboard repository. Both offer the same builds.
+
+<DownloadButtons />
+
+Download only from these two sources. Keep the DMG until setup is finished.
+
+## How do I install isoboard on macOS?
+
+{/* os:macos */}
+1. Open the downloaded DMG.
+2. Drag **isoboard** into your **Applications** folder.
+3. Open isoboard from **Applications**. macOS blocks the first launch. Follow the steps in the next section.
+
+After it starts, look for the isoboard icon in the menu bar at the top of your screen.
+
+## How do I open isoboard if macOS blocks it?
+
+{/* os:macos */}
+{/* TODO(fact): remove this section once release builds are notarized */}
+Release builds of isoboard are not notarized by Apple yet, so macOS Gatekeeper blocks the first launch. Allow the app once. macOS remembers the choice.
+
+1. Open isoboard from **Applications**. macOS shows a message that it cannot verify the app. Select **Done**.
+2. Open **System Settings** → **Privacy & Security**.
+3. Scroll down to the **Security** section and select **Open Anyway** next to the message about isoboard.
+4. Confirm with **Open**, and enter your Mac password if macOS asks.
+
+Allow isoboard this way only if you downloaded it from [isoboard.app](https://isoboard.app) or the [isoboard GitHub releases](https://github.com/carlesonielfa/isoboard-app/releases). See Apple's guide to [opening an app from an unidentified developer](https://support.apple.com/en-us/102445).
+
+## What happens the first time I open isoboard?
+
+The settings window opens by itself on the first launch. It shows the setup guide:
+
+1. **License.** Choose **Continue without a license key** to start a seven-day commercial evaluation, or **Activate commercial license** if you have a key. Personal, non-commercial use stays free after the evaluation. See [pricing and licensing](../../license/pricing-and-licensing/).
+2. **Permissions.** Allow Screen Recording, and optionally notifications. See [grant macOS permissions](../permissions/).
+3. **Set up AI Model.** Download isOCR, or choose an AI provider. See [choose a local model or an AI provider](../../models/choose-a-model/).
+4. **Start capturing.** The guide shows your capture shortcut and the **Capture** button.
+
+[Make your first capture](../first-capture/) walks through these steps in order.
+
+## How do I update isoboard?
+
+isoboard checks for updates shortly after launch and every six hours, and downloads a new release in the background. When it is ready, choose **Restart to update** in the menu bar or in the **Settings** tab → **About**. isoboard does not restart on its own. To check now, choose **Check for updates** in **About**. Automatic updates stay within your major version, such as 1.x.
+
+The **Settings** tab → **About** shows the current **Version**. To update by hand, download the new DMG from [isoboard.app](https://isoboard.app), drag isoboard to **Applications** and choose **Replace** when macOS asks. Quit isoboard first if it is running.
+
+Your Profiles, shortcuts, History and license are stored outside the app, so replacing the app keeps them. isoboard opens its settings window after an update so you can see the new version.
+
+{/* os:macos */}
+For where isoboard keeps its data, see [what leaves your Mac](../../privacy/data/).
+
+## How do I uninstall isoboard?
+
+See [uninstall isoboard](../../troubleshooting/uninstall/).
+
+## Frequently asked questions
+
+**Does isoboard run on Intel Macs?**
+
+No. isoboard is built for Apple silicon only.
+
+**Does isoboard start automatically when I log in?**
+
+Not by default. Turn on **Open at login** in the **Settings** tab → **General**. isoboard then starts in the menu bar without opening its window. See [permissions](../permissions/#open-at-login-on-macos).
+
+## Related
+
+- [Grant macOS permissions](../permissions/)
+- [Make your first capture](../first-capture/)
+- [Run isOCR and other local models](../../models/local-models/)

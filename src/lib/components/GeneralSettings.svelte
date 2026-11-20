@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { History, Info, SlidersHorizontal } from '@lucide/svelte';
   import LicenseSettings from '$lib/components/LicenseSettings.svelte';
   import type { LicensingController } from '$lib/licensing.svelte';
-  import SettingsSection from '$lib/components/SettingsSection.svelte';
+  import SettingsGroup from '$lib/components/SettingsGroup.svelte';
   import CaptureOverlaySettings from '$lib/components/CaptureOverlaySettings.svelte';
   import AppUpdates from '$lib/components/AppUpdates.svelte';
   import type { UpdatesController } from '$lib/updates-controller.svelte';
@@ -30,6 +31,9 @@
     loginStartup,
     desktopAvailable,
     configLoaded,
+    overlayEnabled,
+    overlayEnabledDisabled,
+    onOverlayEnabledChange,
     overlayPosition,
     onOverlayPositionChange,
     onLoginStartupChange,
@@ -50,6 +54,9 @@
     loginStartup: LoginStartupState;
     desktopAvailable: boolean;
     configLoaded: boolean;
+    overlayEnabled: boolean;
+    overlayEnabledDisabled: boolean;
+    onOverlayEnabledChange: (enabled: boolean) => void;
     overlayPosition: OverlayPosition;
     onOverlayPositionChange: (position: OverlayPosition) => Promise<void>;
     onLoginStartupChange: (enabled: boolean) => void;
@@ -57,54 +64,44 @@
   } = $props();
 </script>
 
-<div class="flex min-h-full flex-col gap-4">
-  <SettingsSection id="general-heading" title="General">
-    <div class="flex min-h-10 items-center">
-      <SettingsSwitch
-        label="Play sounds"
-        checked={soundsEnabled}
-        disabled={soundsDisabled}
-        onCheckedChange={onSoundsChange}
-      />
-    </div>
-    <div class="flex min-h-10 items-center">
-      <LoginStartupSetting
-        state={loginStartup}
-        disabled={!desktopAvailable}
-        onChange={onLoginStartupChange}
-      />
-    </div>
-    {#if onStartSetup}
-      <div class="flex min-h-10 items-center">
-        <Button variant="outline" size="sm" type="button" onclick={onStartSetup}>
-          Restart initial setup
-        </Button>
-      </div>
-    {/if}
-  </SettingsSection>
-  <SettingsSection id="history-storage-heading" title="History">
-    <div class="flex min-h-10 items-center">
-      <SettingsSwitch
-        label="Keep original screenshots"
-        checked={keepHistoryOriginals}
-        disabled={keepHistoryOriginalsDisabled}
-        onCheckedChange={onKeepHistoryOriginalsChange}
-      />
-    </div>
-    <p class="m-0 text-xs">
-      Keeps the full-resolution image of your {applicationConfig.history.maxOriginals} most recent captures
-      on this computer. Turning this off deletes the ones already kept.
-    </p>
-  </SettingsSection>
+<div class="mx-auto flex min-h-full w-full max-w-[40rem] flex-col gap-6">
+  <SettingsGroup title="General" icon={SlidersHorizontal}>
+    <SettingsSwitch
+      variant="row"
+      label="Play sounds"
+      checked={soundsEnabled}
+      disabled={soundsDisabled}
+      onCheckedChange={onSoundsChange}
+    />
+    <LoginStartupSetting
+      state={loginStartup}
+      disabled={!desktopAvailable}
+      onChange={onLoginStartupChange}
+    />
+  </SettingsGroup>
   {#if configLoaded}
     <CaptureOverlaySettings
+      enabled={overlayEnabled}
+      enabledDisabled={overlayEnabledDisabled}
+      onEnabledChange={onOverlayEnabledChange}
       position={overlayPosition}
       disabled={!desktopAvailable}
       onPositionChange={onOverlayPositionChange}
     />
   {/if}
+  <SettingsGroup title="History" icon={History}>
+    <SettingsSwitch
+      variant="row"
+      label="Keep original screenshots"
+      collapsible
+      description={`Keeps the full-resolution image of your ${applicationConfig.history.maxOriginals} most recent captures on this computer. Turning this off deletes the ones already kept.`}
+      checked={keepHistoryOriginals}
+      disabled={keepHistoryOriginalsDisabled}
+      onCheckedChange={onKeepHistoryOriginalsChange}
+    />
+  </SettingsGroup>
   <LicenseSettings {licensing} />
-  <SettingsSection id="about-heading" title="About">
+  <SettingsGroup title="About" icon={Info}>
     <AppUpdates
       {updates}
       disabled={!desktopAvailable}
@@ -112,7 +109,14 @@
       automaticChecksDisabled={automaticUpdateChecksDisabled}
       onAutomaticChecksChange={onAutomaticUpdateChecksChange}
     />
-    <ConfigurationFile {path} />
-    <ThirdPartyNotices disabled={!desktopAvailable} />
-  </SettingsSection>
+    <ConfigurationFile {path} disabled={!desktopAvailable} />
+    {#snippet footer()}
+      {#if onStartSetup}
+        <Button variant="link" size="sm" type="button" onclick={onStartSetup}>
+          Restart initial setup
+        </Button>
+      {/if}
+      <ThirdPartyNotices disabled={!desktopAvailable} />
+    {/snippet}
+  </SettingsGroup>
 </div>

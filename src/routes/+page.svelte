@@ -72,6 +72,7 @@
   const debug = $derived(config.current.uiMode === 'debug');
   let modeSaving = $state(false);
   let soundsSaving = $state(false);
+  let overlayEnabledSaving = $state(false);
   let updateChecksSaving = $state(false);
   let keepOriginalsSaving = $state(false);
   const profiles = createProcessingProfilesController({ availability, session: config, errors });
@@ -430,6 +431,15 @@
       .finally(() => (updateChecksSaving = false));
   }
 
+  function setOverlayEnabled(enabled: boolean): void {
+    if (!config.state.loaded || overlayEnabledSaving) return;
+    overlayEnabledSaving = true;
+    void config
+      .setOverlayEnabled(enabled)
+      .catch(() => undefined)
+      .finally(() => (overlayEnabledSaving = false));
+  }
+
   function setSounds(enabled: boolean): void {
     if (!config.state.loaded || soundsSaving) return;
     soundsSaving = true;
@@ -639,6 +649,11 @@
         {licensing}
         path={config.current.configPath}
         configLoaded={config.state.loaded}
+        overlayEnabled={config.current.overlayEnabled}
+        overlayEnabledDisabled={!availability.desktopAvailable ||
+          !config.state.loaded ||
+          overlayEnabledSaving}
+        onOverlayEnabledChange={setOverlayEnabled}
         overlayPosition={config.current.overlayPosition}
         onOverlayPositionChange={(position) => config.setOverlayPosition(position).then(() => {})}
         onStartSetup={resumeSetup}

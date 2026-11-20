@@ -17,7 +17,7 @@ isoboard's settings window has five tabs: **History**, **Shortcuts**, **Profiles
 | **Shortcuts** | Capture shortcuts and the open-window shortcut | [Keyboard shortcuts](../keyboard-shortcuts/) |
 | **Profiles** | Model, conversion options and Additional Rules | [Profiles](../../use/profiles/) |
 | **Providers** | API keys and endpoints | [Choose a model](../../models/choose-a-model/) |
-| **Settings** | General, capture overlay, license and about | This page |
+| **Settings** | General, capture status, history storage, license and about | This page |
 
 ## What does the Settings tab contain?
 
@@ -26,16 +26,22 @@ isoboard's settings window has five tabs: **History**, **Shortcuts**, **Profiles
 | Setting | What it does | Default |
 |---|---|---|
 | **Play sounds** | Plays short sounds when region selection starts, when the image is ready, when the result reaches the clipboard and when an error occurs. Turn it off to silence all of them, including errors. | On |
-| **Open at login** | Starts isoboard when you log in to your Mac. A login launch stays in the menu bar and does not open the settings window. | Off |
-| **Restart initial setup** | Shows the setup guide again. It changes no settings. | Not applicable |
+| **Launch at login** | Starts isoboard when you log in to your Mac. A login launch stays in the menu bar and does not open the settings window. | Off |
 
-The setup guide is shown while setup is incomplete. **Set up later** hides it for the current session.
+### Capture status
 
-### Capture overlay
+The capture status is the small overlay that appears on the display where you finish selecting. It shows processing, success and failure.
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Position** | Chooses where the small capture overlay appears on the display where you finish selecting. It shows processing, success and failure. There are nine positions in a 3 × 3 grid: **Top left**, **Top center**, **Top right**, **Middle left**, **Center**, **Middle right**, **Bottom left**, **Bottom center** and **Bottom right**. | **Bottom center** |
+| **Show capture status** | Shows the overlay after each capture. When it is off, the menu bar icon, sounds and History still report each result. | On |
+| **Position** | Chooses where the overlay appears. There are nine positions in a 3 × 3 grid: **Top left**, **Top center**, **Top right**, **Middle left**, **Center**, **Middle right**, **Bottom left**, **Bottom center** and **Bottom right**. It is unavailable while **Show capture status** is off. | **Bottom center** |
+
+### History
+
+| Setting | What it does | Default |
+|---|---|---|
+| **Keep original screenshots** | Keeps the full-resolution image of your most recent captures on this Mac. Turning it off deletes the ones already kept. Select the label to show this note. | On |
 
 ### License
 
@@ -43,9 +49,9 @@ The **License** section shows your license status and the controls to buy, activ
 
 | Control | What it does |
 |---|---|
-| Status line | Shows "Commercial trial ends (date). Personal use is free.", "Free for personal use. License required for commercial use." or "Licensed for personal and commercial use." |
+| Status line | Shows "Commercial trial ends (date). Personal use is free.", "Free for personal use. License required for commercial use." (with **Free** in a heart badge) or "Licensed for personal and commercial use." |
 | **Continue without a license key** | Starts the seven-day evaluation. It appears only before you choose. |
-| **Buy a license** | Opens Polar checkout in your browser. |
+| **Get a license** | Opens Polar checkout in your browser. |
 | **License key** and the activate button | Validates a key you paste. |
 | **Remove license** | Deletes the saved key from this Mac. It does not cancel the purchase. |
 | **Email support** | Opens an email draft to support@isoboard.app. It appears once a license is active. |
@@ -62,8 +68,9 @@ See [pricing and licensing](../../license/pricing-and-licensing/) and [buy and a
 | **Check for updates** | Checks for a newer isoboard release now. When an update has downloaded, it becomes **Restart to update**. |
 | **What's new** | Release notes, newest first. The installed version is marked **Current**. After a check, the newest version is marked **Latest**, including versions you have not installed yet. |
 | **Check for updates automatically** | Checks shortly after launch and every six hours, and downloads updates in the background. isoboard asks before it restarts. On by default. |
-| **Configuration file** | The full path to `config.toml`. You can select and copy it. See the [configuration file reference](../configuration-file/). |
+| **Configuration file** | Select the label to show the full path to `config.toml`, which you can select and copy. **Show file** reveals it in Finder. See the [configuration file reference](../configuration-file/). |
 | **Third-party notices**, **MPL source code** | Open the bundled notices and source-access instructions in your default text viewer. |
+| **Restart initial setup** | Shows the setup guide again. It changes no settings. The setup guide is shown while setup is incomplete, and **Set up later** hides it for the current session. |
 
 ## What do Basic, Advanced and Debug do?
 
@@ -100,7 +107,7 @@ If a Profile has an invalid **Temperature**, **Max output tokens** or **Request 
 ## Where are settings stored?
 
 <!-- os:macos -->
-Most settings live in `~/Library/Application Support/app.isoboard/config.toml`. **Open at login** is registered with macOS instead. API keys and the license key live in the macOS Keychain. See the [configuration file reference](../configuration-file/) and [what leaves your Mac](../../privacy/data/).
+Most settings live in `~/Library/Application Support/app.isoboard/config.toml`. **Launch at login** is registered with macOS instead. API keys and the license key live in the macOS Keychain. See the [configuration file reference](../configuration-file/) and [what leaves your Mac](../../privacy/data/).
 
 ## Frequently asked questions
 

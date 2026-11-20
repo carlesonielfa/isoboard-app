@@ -27,7 +27,7 @@ For each capture History stores:
 - The time and the Profile name.
 - A summary of the settings used: the model for each pass, the Tables, Colors and Images options, and whether Additional Rules ran.
 
-History does not store your API keys, provider endpoints or the text of your Additional Rules. To stop keeping original screenshots, turn off **Keep original screenshots** in Settings > General. This also deletes the screenshots already kept. A capture that is still processing shows as a pending entry with a spinner. It becomes a result when the clipboard copy succeeds, or a failed attempt if it does not.
+History does not store your API keys, provider endpoints or the text of your Additional Rules. To stop keeping original screenshots, turn off **Keep original screenshots** in Settings > History. This also deletes the screenshots already kept. A capture that is still processing shows as a pending entry with a spinner. It becomes a result when the clipboard copy succeeds, or a failed attempt if it does not.
 
 ## How long does History keep entries?
 

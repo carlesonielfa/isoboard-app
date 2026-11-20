@@ -1,8 +1,10 @@
 <script lang="ts">
   import { productConfig } from '$lib/product-config';
   import { openUrl } from '@tauri-apps/plugin-opener';
-  import { Mail, ShoppingCart } from '@lucide/svelte';
-  import SettingsSection from '$lib/components/SettingsSection.svelte';
+  import { Heart, KeyRound, Mail, ShoppingCart } from '@lucide/svelte';
+  import Badge from '$lib/components/Badge.svelte';
+  import SettingsGroup from '$lib/components/SettingsGroup.svelte';
+  import SettingsRow from '$lib/components/SettingsRow.svelte';
   import Button from '$lib/components/Button.svelte';
   import LicenseActivation from '$lib/components/LicenseActivation.svelte';
   import LicenseDocuments from '$lib/components/LicenseDocuments.svelte';
@@ -55,33 +57,55 @@
       ? 'unavailable'
       : value.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
   }
+  const FREE_STATUS = 'Free for personal use. License required for commercial use.';
+  const statusText = $derived.by(() => {
+    if (!licensing.state.loaded) return 'Loading license status…';
+    if (snapshot?.commercial.active) return 'Licensed for personal and commercial use.';
+    if (snapshot?.evaluation === 'active')
+      return `Commercial trial ends ${date(snapshot.expiresAt)}. Personal use is free.`;
+    if (snapshot?.evaluation === 'expired' || snapshot?.evaluation === 'notStarted')
+      return FREE_STATUS;
+    return 'License status unavailable. Personal use is free.';
+  });
+  const verificationError = $derived(
+    licensing.state.error || snapshot?.commercial.error || snapshot?.error || '',
+  );
+  const supportText = $derived.by(() => {
+    const expiresAt = snapshot?.commercial.supportExpiresAt;
+    if (!expiresAt) return 'Status unavailable.';
+    const day = new Date(expiresAt * 1000).toLocaleDateString(undefined, { dateStyle: 'medium' });
+    return snapshot?.commercial.supportActive ? `Active until ${day}.` : `Expired on ${day}.`;
+  });
 </script>
 
-<SettingsSection id="license-heading" title="License">
-  <div class="grid gap-3 py-2 text-sm text-ink">
-    {#if !licensing.state.loaded}
-      <p class="m-0" role="status">Loading license status…</p>
-    {:else if snapshot?.commercial.active}
-      <p class="m-0">Licensed for personal and commercial use.</p>
-    {:else if snapshot?.evaluation === 'active'}
-      <p class="m-0">Commercial trial ends {date(snapshot.expiresAt)}. Personal use is free.</p>
-    {:else if snapshot?.evaluation === 'expired' || snapshot?.evaluation === 'notStarted'}
-      <p class="m-0">Free for personal use. License required for commercial use.</p>
-    {:else}
-      <p class="m-0">License status unavailable. Personal use is free.</p>
-    {/if}
-    {#if snapshot?.evaluation === 'notStarted' && !snapshot.commercial.choiceCompleted}
-      <div>
-        <Button disabled={licensing.state.busy} onclick={() => licensing.continueWithoutKey()}
-          >Continue without a license key</Button
-        >
-      </div>
-    {/if}
-    {#if licensing.state.error || snapshot?.commercial.error || snapshot?.error}
-      <p class="m-0" role="alert">
-        {licensing.state.error || snapshot?.commercial.error || snapshot?.error}
-      </p>
-      <div>
+{#snippet statusErrors()}
+  {#if verificationError}<p class="m-0 text-xs text-danger" role="alert">
+      {verificationError}
+    </p>{/if}
+  {#if purchaseError}<p class="m-0 text-xs text-danger" role="alert">{purchaseError}</p>{/if}
+{/snippet}
+
+{#snippet supportErrors()}
+  <p class="m-0 text-xs text-danger" role="alert">{supportError}</p>
+{/snippet}
+
+{#snippet freeStatus()}
+  <span class="inline-flex flex-wrap items-center gap-x-1.5 gap-y-1">
+    <Badge size="sm">
+      <Heart class="mr-1.5 size-3.5" strokeWidth={1.75} aria-hidden="true" />Free
+    </Badge>
+    for personal use. License required for commercial use.
+  </span>
+{/snippet}
+
+<SettingsGroup title="License" icon={KeyRound}>
+  <SettingsRow
+    label={statusText}
+    labelContent={statusText === FREE_STATUS ? freeStatus : undefined}
+    below={verificationError || purchaseError ? statusErrors : undefined}
+  >
+    {#snippet control()}
+      {#if verificationError}
         <Button
           variant="outline"
           size="sm"
@@ -90,41 +114,15 @@
             snapshot?.commercial.hasSavedKey ? licensing.recheck() : licensing.refresh()}
           >Retry</Button
         >
-      </div>
-    {/if}
-    {#if snapshot?.commercial.active}
-      <div class="flex flex-wrap items-center gap-3">
-        <p class="m-0 text-sm">
-          {#if snapshot.commercial.supportExpiresAt}
-            Priority Email Support {snapshot.commercial.supportActive
-              ? 'active until'
-              : 'expired on'}
-            {new Date(snapshot.commercial.supportExpiresAt * 1000).toLocaleDateString(undefined, {
-              dateStyle: 'medium',
-            })}.
-          {:else}
-            Priority Email Support status unavailable.
-          {/if}
-        </p>
-        <Button variant="outline" size="sm" disabled={openingEmail} onclick={contactSupport}>
-          <Mail class="size-4" strokeWidth={1.75} aria-hidden="true" />
-          Email support
-        </Button>
-      </div>
-      {#if supportError}<p class="m-0 text-xs text-danger" role="alert">{supportError}</p>{/if}
-    {:else}
-      <div class="flex flex-wrap items-start gap-3">
-        <Button variant="primary" disabled={openingCheckout} onclick={buyLicense}>
-          <ShoppingCart class="size-4" strokeWidth={1.75} aria-hidden="true" />
-          Buy a license
-        </Button>
-        <div class="min-w-52 flex-1">
-          <LicenseActivation disabled={licensing.state.busy} onActivate={activate} />
-        </div>
-      </div>
-      {#if purchaseError}<p class="m-0 text-xs text-danger" role="alert">{purchaseError}</p>{/if}
-    {/if}
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+      {/if}
+      {#if snapshot?.evaluation === 'notStarted' && !snapshot.commercial.choiceCompleted}
+        <Button
+          variant="outline"
+          size="sm"
+          disabled={licensing.state.busy}
+          onclick={() => licensing.continueWithoutKey()}>Continue without a license key</Button
+        >
+      {/if}
       {#if snapshot?.commercial.hasSavedKey}
         <Button
           variant="outline"
@@ -133,7 +131,37 @@
           onclick={() => licensing.remove()}>Remove license</Button
         >
       {/if}
-      <LicenseDocuments />
-    </div>
-  </div>
-</SettingsSection>
+      {#if licensing.state.loaded && !snapshot?.commercial.active}
+        <Button variant="outline" size="sm" disabled={openingCheckout} onclick={buyLicense}>
+          <ShoppingCart class="size-4" strokeWidth={1.75} aria-hidden="true" />
+          Get a license
+        </Button>
+      {/if}
+    {/snippet}
+  </SettingsRow>
+  {#if snapshot?.commercial.active}
+    <SettingsRow
+      label="Priority Email Support"
+      description={supportText}
+      below={supportError ? supportErrors : undefined}
+    >
+      {#snippet control()}
+        <Button variant="outline" size="sm" disabled={openingEmail} onclick={contactSupport}>
+          <Mail class="size-4" strokeWidth={1.75} aria-hidden="true" />
+          Email support
+        </Button>
+      {/snippet}
+    </SettingsRow>
+  {:else if licensing.state.loaded}
+    <SettingsRow label="License key">
+      {#snippet control()}
+        <div class="w-72">
+          <LicenseActivation disabled={licensing.state.busy} onActivate={activate} />
+        </div>
+      {/snippet}
+    </SettingsRow>
+  {/if}
+  {#snippet footer()}
+    <LicenseDocuments variant="link" />
+  {/snippet}
+</SettingsGroup>

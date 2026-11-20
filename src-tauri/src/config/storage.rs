@@ -125,9 +125,10 @@ mod tests {
     use std::path::Path;
 
     #[test]
-    fn overlay_position_defaults_and_rejects_unknown_presets() {
+    fn overlay_settings_default_and_reject_unknown_presets() {
         let path = Path::new("config.toml");
         let default = parse_config(path, "version = 1\n").unwrap();
+        assert!(default.config.capture.overlay_enabled);
         assert_eq!(
             default.config.capture.overlay_position,
             OverlayPosition::BottomCenter
@@ -135,9 +136,10 @@ mod tests {
 
         let top_left = parse_config(
             path,
-            "version = 1\n[capture]\noverlay_position = 'top_left'\n",
+            "version = 1\n[capture]\noverlay_enabled = false\noverlay_position = 'top_left'\n",
         )
         .unwrap();
+        assert!(!top_left.config.capture.overlay_enabled);
         assert_eq!(
             top_left.config.capture.overlay_position,
             OverlayPosition::TopLeft

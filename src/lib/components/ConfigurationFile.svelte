@@ -1,10 +1,36 @@
 <script lang="ts">
-  let { path }: { path: string } = $props();
+  import { FolderOpen } from '@lucide/svelte';
+  import { revealItemInDir } from '@tauri-apps/plugin-opener';
+  import Button from '$lib/components/Button.svelte';
+  import SettingsRow from '$lib/components/SettingsRow.svelte';
+
+  let { path, disabled = false }: { path: string; disabled?: boolean } = $props();
+  let error = $state('');
+
+  async function reveal() {
+    error = '';
+    try {
+      await revealItemInDir(path);
+    } catch {
+      error = 'Could not show the file. Open the path above in your file manager.';
+    }
+  }
 </script>
 
+{#snippet failure()}
+  <p class="m-0 text-xs text-danger" role="alert">{error}</p>
+{/snippet}
+
 {#if path}
-  <div class="flex min-w-0 flex-col gap-1 py-2 text-ink">
-    <p class="m-0 text-sm">Configuration file</p>
-    <p class="m-0 select-text text-xs [overflow-wrap:anywhere]">{path}</p>
-  </div>
+  <SettingsRow label="Configuration file" collapsible below={error ? failure : undefined}>
+    {#snippet details()}
+      <span class="select-text font-mono [overflow-wrap:anywhere]">{path}</span>
+    {/snippet}
+    {#snippet control()}
+      <Button variant="outline" size="sm" type="button" {disabled} onclick={() => void reveal()}>
+        <FolderOpen class="size-4" strokeWidth={1.75} aria-hidden="true" />
+        Show file
+      </Button>
+    {/snippet}
+  </SettingsRow>
 {/if}

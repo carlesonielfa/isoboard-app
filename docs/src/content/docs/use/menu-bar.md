@@ -58,7 +58,7 @@ The icon animates while a capture is processing and stays plain otherwise. Click
 
 ## How do I start isoboard automatically?
 
-Turn on **Open at login** in the **Settings** tab → **General**. isoboard then starts in the menu bar with its window hidden. See [grant macOS permissions](../../getting-started/permissions/#open-at-login-on-macos).
+Turn on **Launch at login** in the **Settings** tab → **General**. isoboard then starts in the menu bar with its window hidden. See [grant macOS permissions](../../getting-started/permissions/#launch-at-login-on-macos).
 
 ## Frequently asked questions
 

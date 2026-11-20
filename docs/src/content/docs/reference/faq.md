@@ -43,7 +43,7 @@ Into apps that accept rich clipboard content. Microsoft Word, Excel and Google D
 
 **What does History save?**
 
-History is stored on your Mac. It keeps results, a small thumbnail of each source and a summary of the settings used. It also keeps the original screenshot of your 50 most recent captures unless you turn off **Keep original screenshots** in Settings > General. You can copy a past result again or delete entries. See [History](../../use/history/).
+History is stored on your Mac. It keeps results, a small thumbnail of each source and a summary of the settings used. It also keeps the original screenshot of your 50 most recent captures unless you turn off **Keep original screenshots** in Settings > History. You can copy a past result again or delete entries. See [History](../../use/history/).
 
 **Does isoboard collect telemetry?**
 
@@ -59,7 +59,7 @@ Open the **Shortcuts** tab, select the shortcut field and press the new combinat
 
 **How do I uninstall isoboard?**
 
-Turn off **Open at login**, quit and delete the app, then delete its data folder and Keychain items. See [uninstall isoboard](../../troubleshooting/uninstall/).
+Turn off **Launch at login**, quit and delete the app, then delete its data folder and Keychain items. See [uninstall isoboard](../../troubleshooting/uninstall/).
 
 ## Related
 

@@ -58,7 +58,7 @@ The defaults are `⌘ Cmd` + `⇧ Shift` + `2` for capture and `⌘ Cmd` + `⌥ 
 
 ## Restart the setup guide without resetting
 
-If setup is complete and you only want to see it again, open the **Settings** tab → **General** and select **Restart initial setup**. This changes no settings.
+If setup is complete and you only want to see it again, open the **Settings** tab and select **Restart initial setup** below **About**. This changes no settings.
 
 ## Reset the Screen Recording permission
 

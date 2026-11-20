@@ -1,16 +1,28 @@
 <script lang="ts">
+  import { PictureInPicture2 } from '@lucide/svelte';
   import PositionSelect from '$lib/components/PositionSelect.svelte';
+  import SettingsGroup from '$lib/components/SettingsGroup.svelte';
+  import SettingsRow from '$lib/components/SettingsRow.svelte';
+  import SettingsSwitch from '$lib/components/SettingsSwitch.svelte';
   import type { OverlayPosition } from '$lib/generated/bindings';
 
   let {
+    enabled,
+    enabledDisabled = false,
+    onEnabledChange,
     position,
     disabled = false,
     onPositionChange,
   }: {
+    enabled: boolean;
+    enabledDisabled?: boolean;
+    onEnabledChange: (enabled: boolean) => void;
     position: OverlayPosition;
     disabled?: boolean;
     onPositionChange: (position: OverlayPosition) => Promise<void>;
   } = $props();
+
+  const positionDisabled = $derived(disabled || !enabled);
 
   const positions: { value: OverlayPosition; label: string }[] = [
     { value: 'top_left', label: 'Top left' },
@@ -26,23 +38,31 @@
 
   async function changePosition(value: string): Promise<void> {
     const position = positions.find((option) => option.value === value)?.value;
-    if (!position || disabled) return;
+    if (!position || positionDisabled) return;
     await onPositionChange(position);
   }
 </script>
 
-<div class="ml-4 flex flex-col gap-2">
-  <h3 class="m-0 text-sm font-semibold">Capture overlay</h3>
-  <div
-    class="ml-4 mr-12 grid min-w-0 grid-cols-[minmax(12rem,max-content)_minmax(0,16rem)] items-center gap-2"
-  >
-    <span class="min-w-0 px-2 text-sm">Position</span>
-    <PositionSelect
-      label="Capture overlay position"
-      value={position}
-      options={positions}
-      {disabled}
-      onValueChange={changePosition}
-    />
-  </div>
-</div>
+<SettingsGroup title="Capture status" icon={PictureInPicture2}>
+  <SettingsSwitch
+    variant="row"
+    label="Show capture status"
+    description="Shows progress and results after you capture."
+    checked={enabled}
+    disabled={enabledDisabled}
+    onCheckedChange={onEnabledChange}
+  />
+  <SettingsRow label="Position" disabled={positionDisabled}>
+    {#snippet control()}
+      <div class="w-56">
+        <PositionSelect
+          label="Capture status position"
+          value={position}
+          options={positions}
+          disabled={positionDisabled}
+          onValueChange={changePosition}
+        />
+      </div>
+    {/snippet}
+  </SettingsRow>
+</SettingsGroup>

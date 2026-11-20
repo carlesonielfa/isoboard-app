@@ -1,8 +1,10 @@
 <script lang="ts">
+  import { RefreshCw } from '@lucide/svelte';
   import AppChangelog from '$lib/components/AppChangelog.svelte';
   import AppVersion from '$lib/components/AppVersion.svelte';
   import BrandLogo from '$lib/components/BrandLogo.svelte';
   import Button from '$lib/components/Button.svelte';
+  import SettingsRow from '$lib/components/SettingsRow.svelte';
   import SettingsSwitch from '$lib/components/SettingsSwitch.svelte';
   import StatusIndicator from '$lib/components/StatusIndicator.svelte';
   import type { UpdatesController } from '$lib/updates-controller.svelte';
@@ -46,21 +48,25 @@
   const busy = $derived(indicator?.status === 'busy');
 </script>
 
-<div class="grid min-w-0">
-  <div class="flex min-w-0 flex-wrap items-center gap-x-5 gap-y-2 py-2">
-    <div class="flex min-w-0 items-center gap-3">
-      <BrandLogo />
-      <div class="grid min-w-0 gap-0.5">
-        <p class="m-0 text-sm font-semibold text-ink">isoboard <AppVersion /></p>
-        <div class="min-h-5">
-          {#if indicator}
-            <StatusIndicator size="xs" status={indicator.status} label={indicator.label} />
-          {:else}
-            <span class="text-xs text-ink">Not checked yet</span>
-          {/if}
-        </div>
-      </div>
-    </div>
+{#snippet changelog()}
+  <AppChangelog entries={updates.state.changelog} />
+{/snippet}
+
+<SettingsRow label="isoboard" below={updates.state.changelog.length > 0 ? changelog : undefined}>
+  {#snippet leading()}<BrandLogo />{/snippet}
+  {#snippet labelContent()}<span class="font-display font-semibold">isoboard</span>{/snippet}
+  {#snippet details()}
+    <span class="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+      <AppVersion />
+      <span aria-hidden="true">·</span>
+      {#if indicator}
+        <StatusIndicator size="xs" status={indicator.status} label={indicator.label} />
+      {:else}
+        <span>Not checked yet</span>
+      {/if}
+    </span>
+  {/snippet}
+  {#snippet control()}
     {#if status.status === 'ready' || status.status === 'installing'}
       <Button
         variant="primary"
@@ -79,17 +85,20 @@
         disabled={disabled || busy}
         onclick={() => void updates.check()}
       >
+        <RefreshCw
+          class={`size-4 ${busy ? 'animate-spin motion-reduce:animate-none' : ''}`}
+          strokeWidth={1.75}
+          aria-hidden="true"
+        />
         Check for updates
       </Button>
     {/if}
-  </div>
-  <div class="flex min-h-10 items-center">
-    <SettingsSwitch
-      label="Check for updates automatically"
-      checked={automaticChecks}
-      disabled={automaticChecksDisabled}
-      onCheckedChange={onAutomaticChecksChange}
-    />
-  </div>
-  <AppChangelog entries={updates.state.changelog} />
-</div>
+  {/snippet}
+</SettingsRow>
+<SettingsSwitch
+  variant="row"
+  label="Check for updates automatically"
+  checked={automaticChecks}
+  disabled={automaticChecksDisabled}
+  onCheckedChange={onAutomaticChecksChange}
+/>

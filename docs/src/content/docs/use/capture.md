@@ -51,11 +51,12 @@ The menu bar icon animates while a capture is processing, and its menu shows the
 
 ![The capture overlay in three states: Processing capture, Copied to clipboard, and Capture failed with the reason inference timed out.](../../../assets/screenshots/capture-overlay-states.png)
 
-## How do I move the overlay or turn off sounds?
+## How do I move or hide the overlay, or turn off sounds?
 
-1. Open the **Settings** tab → **General**.
-2. Under **Capture overlay**, set **Position**. You can choose one of nine places on the screen. The default is bottom center.
-3. Turn **Play sounds** off to silence the capture sounds, including error sounds.
+1. Open the **Settings** tab → **Capture status**.
+2. Set **Position**. You can choose one of nine places on the screen. The default is bottom center.
+3. Turn **Show capture status** off to hide the overlay. The menu bar icon, sounds and History still report each result.
+4. To silence the capture sounds, including error sounds, turn **Play sounds** off in **General**.
 
 ## How do I assign a shortcut to a specific Profile?
 

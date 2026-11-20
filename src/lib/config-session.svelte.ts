@@ -38,6 +38,7 @@ export type ConfigSession = {
   setKeepHistoryOriginals: (enabled: boolean) => Promise<ConfigMutationResponse>;
   setAutomaticUpdateChecks: (enabled: boolean) => Promise<ConfigMutationResponse>;
   setUiMode: (mode: UiMode) => Promise<ConfigMutationResponse>;
+  setOverlayEnabled: (enabled: boolean) => Promise<ConfigMutationResponse>;
   setOverlayPosition: (position: OverlayPosition) => Promise<ConfigMutationResponse>;
 };
 
@@ -47,6 +48,7 @@ export type ConfigSessionEnvironment = {
     Partial<
       Pick<
         typeof commands,
+        | 'setOverlayEnabled'
         | 'setOverlayPosition'
         | 'setSoundsEnabled'
         | 'setKeepHistoryOriginals'
@@ -87,6 +89,7 @@ export function createConfigSession(
       soundsEnabled: true,
       keepHistoryOriginals: true,
       automaticUpdateChecks: true,
+      overlayEnabled: true,
       overlayPosition: 'bottom_center',
       configPath: '',
       registered: false,
@@ -252,6 +255,15 @@ export function createConfigSession(
     );
   }
 
+  function setOverlayEnabled(enabled: boolean): Promise<ConfigMutationResponse> {
+    return mutate((expectedRevision) =>
+      commandApi.setOverlayEnabled(enabled, expectedRevision),
+    ).catch((error) => {
+      if (!isConfigError(error)) reportError(error, 'config');
+      throw error;
+    });
+  }
+
   function setOverlayPosition(position: OverlayPosition): Promise<ConfigMutationResponse> {
     return mutate((expectedRevision) =>
       commandApi.setOverlayPosition(position, expectedRevision),
@@ -355,6 +367,7 @@ export function createConfigSession(
     setSoundsEnabled,
     setKeepHistoryOriginals,
     setAutomaticUpdateChecks,
+    setOverlayEnabled,
     setOverlayPosition,
   };
 }

@@ -162,7 +162,7 @@ reference. Stale asynchronous readiness for an older credential does not
 complete a stage. An incomplete unused Profile does not trigger or
 replace setup for an already configured active Profile. Set up later
 becomes available after screen access and a provider are connected and hides
-the guide for the current session. Settings exposes Restart initial setup under General so a user can
+the guide for the current session. Settings exposes Restart initial setup below About so a user can
 resume it, including after a partial setup.
 
 ## Licensing setup and evaluation
@@ -234,7 +234,7 @@ the local entitlement and its
 Keychain entry without calling Polar or resetting trial dates. Failed secret
 cleanup is retained for retry. It cannot restore the removed entitlement.
 
-A primary Buy a license button opens the configured Polar hosted checkout in the
+A Get a license button opens the configured Polar hosted checkout in the
 default browser. Opening failures show a retryable inline error. Opening checkout
 does not grant commercial entitlement. Company seat delivery and refund operations
 are managed in Polar. Validation accepts keys for the configured benefit and does
@@ -316,10 +316,13 @@ Changes apply to subsequent cues without restarting. The Settings tab uses a cog
   Its compact translucent surface has animated processing dots
   and fades before closing. All states keep the same compact size. Full failure
   details are available in History. Hovering pauses
-  automatic dismissal. Leaving resumes the remaining time. The user chooses
-  one of nine position presets
-  in Settings with a dropdown containing a 3×3 screen grid or in
-  `[capture].overlay_position`. `bottom_center` is the default.
+  automatic dismissal. Leaving resumes the remaining time. Settings has a
+  Capture status section. Show capture status turns the overlay on or off
+  (`[capture].overlay_enabled`, on by default). Turning it off hides an
+  overlay that is showing, and the menu bar, sounds, and History still report
+  results. Position chooses one of nine presets with a dropdown containing a
+  3×3 screen grid (`[capture].overlay_position`, `bottom_center` by default).
+  Position is unavailable while the overlay is off.
   Success closes quickly and failure remains longer. The menu bar keeps the
   latest status.
 - Explain missing capture permissions, unavailable models, and provider errors
@@ -504,6 +507,7 @@ version = 1
 
 [capture]
 bindings = [{ id = "default", shortcut = "CommandOrControl+Shift+2" }]
+overlay_enabled = true
 overlay_position = "bottom_center"
 
 [shortcuts]

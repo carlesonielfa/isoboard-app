@@ -134,6 +134,26 @@ pub fn set_automatic_update_checks(
     emit_profile_result(&app, result)
 }
 
+/// Turning the overlay off also hides one that is showing.
+#[tauri::command(rename_all = "camelCase")]
+#[specta::specta]
+pub fn set_overlay_enabled(
+    app: AppHandle,
+    state: State<'_, SharedConfig>,
+    enabled: bool,
+    expected_revision: u64,
+) -> Result<ConfigSnapshot, ConfigError> {
+    let result = state
+        .lock()
+        .expect("config lock poisoned")
+        .set_overlay_enabled(enabled, expected_revision);
+    let result = emit_profile_result(&app, result);
+    if result.is_ok() && !enabled {
+        crate::capture_overlay::hide(&app);
+    }
+    result
+}
+
 #[tauri::command(rename_all = "camelCase")]
 #[specta::specta]
 pub fn set_overlay_position(

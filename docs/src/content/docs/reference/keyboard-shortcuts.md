@@ -57,7 +57,7 @@ The shortcut picks its Profile when you press it. See [Profiles](../../use/profi
 | `⎋ Escape` | A shortcut field while recording | Cancels recording and keeps the current shortcut. |
 | `⎋ Escape` | Model picker list | Closes the list and restores the current model. |
 | `↩ Return` | Model picker | Uses the text you typed as the model ID. |
-| `←` `→` `↑` `↓` | **Position** grid for the capture overlay | Moves between the nine positions. |
+| `←` `→` `↑` `↓` | Capture status **Position** grid | Moves between the nine positions. |
 | `↖ Home` and `↘ End` | **Position** grid | Jumps to the first and last position. |
 | `↑` and `↓` | **Position** dropdown button | Opens the grid. |
 | `←` and `→` | Settings tabs | Moves between tabs. |

@@ -64,6 +64,7 @@ pub(crate) fn builder() -> Builder<tauri::Wry> {
             crate::config::commands::set_sounds_enabled,
             crate::config::commands::set_keep_history_originals,
             crate::config::commands::set_automatic_update_checks,
+            crate::config::commands::set_overlay_enabled,
             crate::config::commands::set_overlay_position,
             crate::config::commands::set_capture_binding_profile,
             crate::config::commands::delete_capture_binding,

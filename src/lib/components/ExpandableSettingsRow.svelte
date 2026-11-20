@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import Icon from '$lib/components/Icon.svelte';
+  import { ChevronDown } from '@lucide/svelte';
 
   let {
     title,
@@ -60,9 +60,9 @@
       <span class="min-w-0 truncate">{title}</span>
       {#if subtitle}<span class="min-w-0 truncate text-xs font-normal">{subtitle}</span>{/if}
       {#if showChevron}
-        <Icon
-          name="chevron"
-          class={`ml-auto transition-transform duration-150 motion-reduce:transition-none ${expanded ? 'rotate-180' : ''}`}
+        <ChevronDown
+          aria-hidden="true"
+          class={`ml-auto size-4 shrink-0 transition-transform duration-150 motion-reduce:transition-none ${expanded ? 'rotate-180' : ''}`}
         />
       {/if}
     </button>

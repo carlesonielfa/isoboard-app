@@ -1,11 +1,31 @@
-# Formatting, lint, type checks, binding drift and tests on every pull request
-# and push to main. Runs on Apple Silicon macOS, the only supported target.
+# Formatting, lint, type checks, binding drift and tests on pull requests and
+# pushes to main that touch the app's source, tooling or build inputs. Changes
+# limited to docs/, Markdown and other repository files skip it. Runs on Apple
+# Silicon macOS, the only supported target.
 name: CI
 
 on:
   pull_request:
+    paths: &app-paths
+      - 'src/**'
+      - 'src-tauri/**'
+      - 'static/**'
+      - 'tests/**'
+      - 'config/**'
+      - 'scripts/**'
+      - 'package.json'
+      - 'bun.lock'
+      - 'Makefile'
+      - '*.config.js'
+      - 'tsconfig.json'
+      - 'knip.ts'
+      - 'components.json'
+      - '.prettierrc'
+      - '.prettierignore'
+      - '.github/workflows/ci.yml'
   push:
     branches: [main]
+    paths: *app-paths
 
 permissions:
   contents: read

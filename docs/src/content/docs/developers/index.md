@@ -80,8 +80,19 @@ Paths are relative to the root of the [isoboard-app repository](https://github.c
 - Keep operating-system APIs behind narrow interfaces, with the platform implementation in its own module.
 - Keep secrets out of TOML, JSONC, logs, and History. They belong in the Keychain through the secret store.
 - Add tests for product behavior only. Do not add trivial tests or tests for one-off scripts.
-- Update `docs/SPEC.md` and these pages when behavior, scope, or setup changes.
+- Update the [product specification](./spec/) and these pages when behavior, scope, or setup changes.
 - Coding agents read [AGENTS.md](https://github.com/carlesonielfa/isoboard-app/blob/main/AGENTS.md) before working in the repository.
+
+## Documentation site
+
+These pages are an [Astro Starlight](https://starlight.astro.build) site in `docs/`, published at docs.isoboard.app on Cloudflare as static assets. Run commands from `docs/`:
+
+```bash
+bun install --frozen-lockfile
+bun run dev
+```
+
+`bun run build` writes the site to `docs/dist/` and fails on broken internal links.
 
 ## License and contributing
 

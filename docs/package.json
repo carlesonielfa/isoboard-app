@@ -7,12 +7,16 @@
     "dev": "astro dev --host 127.0.0.1",
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
-    "check": "astro check"
+    "check": "astro check",
+    "deploy:dry-run": "bun run build && bunx wrangler deploy --dry-run"
   },
   "dependencies": {
     "@astrojs/starlight": "0.42.8",
     "astro": "7.4.13",
     "sharp": "0.35.5",
     "starlight-llms-txt": "0.12.0"
+  },
+  "devDependencies": {
+    "wrangler": "4.158.0"
   }
 }

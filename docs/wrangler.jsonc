@@ -1,0 +1,15 @@
+// Publishes the static Starlight build to docs.isoboard.app as a Worker with
+// static assets only. Cloudflare Workers Builds deploys it from `main`.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "isoboard-docs",
+  "compatibility_date": "2026-11-20",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "docs.isoboard.app", "custom_domain": true }],
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

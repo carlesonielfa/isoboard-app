@@ -36,6 +36,7 @@ An empty file, a file containing only `version = 1` and a file with omitted sect
 version = 1
 
 [capture]
+overlay_enabled = true
 overlay_position = "bottom_center"
 
 [[capture.bindings]]
@@ -95,6 +96,7 @@ Unknown fields are errors, and unknown values are errors. Omitted fields use the
 
 ```toml
 [capture]
+overlay_enabled = true
 overlay_position = "top_right"
 
 [[capture.bindings]]
@@ -109,6 +111,7 @@ profile_id = "profile-1"
 
 | Field | Type | Default | Notes |
 |---|---|---|---|
+| `overlay_enabled` | boolean | `true` | Shows the capture status overlay after each capture. |
 | `overlay_position` | string | `"bottom_center"` | One of `top_left`, `top_center`, `top_right`, `middle_left`, `center`, `middle_right`, `bottom_left`, `bottom_center`, `bottom_right`. |
 | `bindings` | array of tables | One default binding | Capture shortcuts. Must contain exactly one binding with `id = "default"`. |
 | `bindings[].id` | string | None | Not empty and unique. The default binding uses `"default"`. isoboard names new ones `binding-1`, `binding-2` and so on. |

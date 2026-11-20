@@ -15,6 +15,7 @@ const config: ConfigSnapshot = {
   soundsEnabled: true,
   keepHistoryOriginals: true,
   automaticUpdateChecks: true,
+  overlayEnabled: true,
   overlayPosition: 'bottom_center',
   registered: true,
   registrationError: null,

@@ -34,6 +34,7 @@ function snapshot(model: ModelSettingsSnapshot | null = remote): ConfigSnapshot 
     soundsEnabled: true,
     keepHistoryOriginals: true,
     automaticUpdateChecks: true,
+    overlayEnabled: true,
     overlayPosition: 'bottom_center',
     configPath: 'config.toml',
     registered: true,

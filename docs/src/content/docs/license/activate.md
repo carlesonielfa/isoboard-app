@@ -10,7 +10,7 @@ You buy an isoboard commercial license through Polar checkout, which emails you 
 
 ## How do I buy a license?
 
-1. Open the **Settings** tab and find the **License** section. Select **Buy a license**. isoboard opens Polar checkout in your default browser.
+1. Open the **Settings** tab and find the **License** section. Select **Get a license**. isoboard opens Polar checkout in your default browser.
 2. Review the price, currency, taxes and total shown at checkout. The price is [€50 per user](../pricing-and-licensing/).
 3. Complete the payment. Polar is the seller and merchant of record.
 4. Polar emails an order confirmation with a link to its customer portal. Your license key is in the portal.

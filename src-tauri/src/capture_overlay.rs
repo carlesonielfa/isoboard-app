@@ -173,6 +173,30 @@ fn with_current_overlay<R: Runtime>(
     }
 }
 
+/// Hides the overlay and forgets the capture it was showing.
+pub(crate) fn hide<R: Runtime>(app: &AppHandle<R>) {
+    let state = app.state::<CaptureOverlay>();
+    let generation = {
+        let mut clock = state
+            .dismissal
+            .lock()
+            .expect("overlay dismissal lock poisoned");
+        *clock = Dismissal::default();
+        state.next_generation()
+    };
+    state.positioned_sequence.store(0, Ordering::Release);
+    state.opened_sequence.store(0, Ordering::Release);
+    *state
+        .history_entry
+        .lock()
+        .expect("overlay History target lock poisoned") = None;
+    with_current_overlay(app, generation, |overlay| {
+        if let Err(error) = overlay.hide() {
+            eprintln!("isoboard: could not hide capture overlay: {error}");
+        }
+    });
+}
+
 pub(crate) fn update<R: Runtime>(app: &AppHandle<R>, status: &CaptureStatus) {
     let Some(overlay) = app.get_webview_window(WINDOW_LABEL) else {
         eprintln!("isoboard: capture overlay window is unavailable");
@@ -180,31 +204,20 @@ pub(crate) fn update<R: Runtime>(app: &AppHandle<R>, status: &CaptureStatus) {
     };
     let state = app.state::<CaptureOverlay>();
 
-    if matches!(
-        status,
-        CaptureStatus::Idle { .. }
-            | CaptureStatus::Started { .. }
-            | CaptureStatus::Cancelled { .. }
-    ) {
-        let generation = {
-            let mut clock = state
-                .dismissal
-                .lock()
-                .expect("overlay dismissal lock poisoned");
-            *clock = Dismissal::default();
-            state.next_generation()
-        };
-        state.positioned_sequence.store(0, Ordering::Release);
-        state.opened_sequence.store(0, Ordering::Release);
-        *state
-            .history_entry
-            .lock()
-            .expect("overlay History target lock poisoned") = None;
-        with_current_overlay(app, generation, |overlay| {
-            if let Err(error) = overlay.hide() {
-                eprintln!("isoboard: could not hide capture overlay: {error}");
-            }
-        });
+    let enabled = app
+        .state::<SharedConfig>()
+        .lock()
+        .expect("config lock poisoned")
+        .overlay_enabled();
+    if !enabled
+        || matches!(
+            status,
+            CaptureStatus::Idle { .. }
+                | CaptureStatus::Started { .. }
+                | CaptureStatus::Cancelled { .. }
+        )
+    {
+        hide(app);
         return;
     }
 

@@ -7,7 +7,7 @@ sidebar:
 ---
 
 <!-- os:macos -->
-Dragging isoboard to the Trash removes the app but leaves its data. To remove everything, turn off **Open at login**, quit and delete the app, then delete its data folder, its Keychain items and its permissions. This page covers every location, and it is written for macOS.
+Dragging isoboard to the Trash removes the app but leaves its data. To remove everything, turn off **Launch at login**, quit and delete the app, then delete its data folder, its Keychain items and its permissions. This page covers every location, and it is written for macOS.
 
 ## Which parts of isoboard stay on my Mac after I delete the app?
 
@@ -21,12 +21,12 @@ Dragging isoboard to the Trash removes the app but leaves its data. To remove ev
 
 ## Uninstall isoboard on macOS
 
-1. Open the **Settings** tab → **General** and turn off **Open at login**.
+1. Open the **Settings** tab → **General** and turn off **Launch at login**.
 2. Choose **Quit isoboard** in the [menu bar](../../use/menu-bar/).
 3. Open your **Applications** folder and drag **isoboard** to the Trash.
 4. Empty the Trash.
 
-Do these steps in this order. Turning off **Open at login** while the app still exists removes the login item cleanly.
+Do these steps in this order. Turning off **Launch at login** while the app still exists removes the login item cleanly.
 
 ## Delete the isoboard data folder
 
@@ -71,7 +71,7 @@ Revoke API keys you no longer need in your provider account too. Deleting the Ke
 
 ## Remove the login item
 
-Turning off **Open at login** before you delete the app is the cleanest route. If you already deleted the app:
+Turning off **Launch at login** before you delete the app is the cleanest route. If you already deleted the app:
 
 1. Open **System Settings** → **General** → **Login Items & Extensions**.
 2. Look for **isoboard** under **Open at Login** and **Allow in the Background**, and turn it off or remove it.

@@ -125,6 +125,7 @@ impl Default for ShortcutConfig {
 pub(crate) struct CaptureConfig {
     #[serde(default = "default_bindings")]
     pub(crate) bindings: Vec<ShortcutBinding>,
+    pub(crate) overlay_enabled: bool,
     pub(crate) overlay_position: OverlayPosition,
 }
 
@@ -159,6 +160,7 @@ impl Default for CaptureConfig {
     fn default() -> Self {
         Self {
             bindings: default_bindings(),
+            overlay_enabled: true,
             overlay_position: OverlayPosition::default(),
         }
     }
@@ -294,6 +296,7 @@ pub(crate) struct ConfigSnapshot {
     pub(crate) sounds_enabled: bool,
     pub(crate) keep_history_originals: bool,
     pub(crate) automatic_update_checks: bool,
+    pub(crate) overlay_enabled: bool,
     pub(crate) overlay_position: OverlayPosition,
     pub(crate) config_path: String,
     pub(crate) registered: bool,

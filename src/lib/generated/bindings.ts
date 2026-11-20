@@ -30,6 +30,8 @@ export const commands = {
 	/**  Turning originals off also deletes the ones already kept. */
 	setKeepHistoryOriginals: (enabled: boolean, expectedRevision: number) => __TAURI_INVOKE<ConfigSnapshot_Serialize>("set_keep_history_originals", { enabled, expectedRevision }),
 	setAutomaticUpdateChecks: (enabled: boolean, expectedRevision: number) => __TAURI_INVOKE<ConfigSnapshot_Serialize>("set_automatic_update_checks", { enabled, expectedRevision }),
+	/**  Turning the overlay off also hides one that is showing. */
+	setOverlayEnabled: (enabled: boolean, expectedRevision: number) => __TAURI_INVOKE<ConfigSnapshot_Serialize>("set_overlay_enabled", { enabled, expectedRevision }),
 	setOverlayPosition: (position: OverlayPosition, expectedRevision: number) => __TAURI_INVOKE<ConfigSnapshot_Serialize>("set_overlay_position", { position, expectedRevision }),
 	setCaptureBindingProfile: (id: string, profileId: string, expectedRevision: number) => __TAURI_INVOKE<ConfigSnapshot_Serialize>("set_capture_binding_profile", { id, profileId, expectedRevision }),
 	deleteCaptureBinding: (id: string, expectedRevision: number) => __TAURI_INVOKE<ConfigSnapshot_Serialize>("delete_capture_binding", { id, expectedRevision }),
@@ -205,6 +207,7 @@ export type ConfigSnapshot_Deserialize = {
 	soundsEnabled: boolean,
 	keepHistoryOriginals: boolean,
 	automaticUpdateChecks: boolean,
+	overlayEnabled: boolean,
 	overlayPosition: OverlayPosition,
 	configPath: string,
 	registered: boolean,
@@ -223,6 +226,7 @@ export type ConfigSnapshot_Serialize = {
 	soundsEnabled: boolean,
 	keepHistoryOriginals: boolean,
 	automaticUpdateChecks: boolean,
+	overlayEnabled: boolean,
 	overlayPosition: OverlayPosition,
 	configPath: string,
 	registered: boolean,

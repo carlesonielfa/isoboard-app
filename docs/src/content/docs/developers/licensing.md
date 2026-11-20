@@ -37,7 +37,7 @@ All licensing constants are build-time values in `config/product.jsonc`, parsed 
 | `polar.organizationId`, `polar.benefitId` | The identities a key must match |
 | `polar.validationUrl` | Customer-portal validation endpoint |
 | `polar.requestTimeoutSeconds`, `polar.connectTimeoutSeconds` | 15 s overall, 5 s connect |
-| `checkoutUrl` | Polar hosted checkout opened by Buy a license |
+| `checkoutUrl` | Polar hosted checkout opened by Get a license |
 
 The production Polar environment is used in development builds too. Local storage stays isolated.
 

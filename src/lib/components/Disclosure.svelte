@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import Icon from '$lib/components/Icon.svelte';
+  import { ChevronDown } from '@lucide/svelte';
 
   let {
     label,
@@ -16,7 +16,7 @@
 </script>
 
 <div class="grid min-w-0">
-  <div class="flex min-h-10 items-center">
+  <div class="flex items-center">
     <button
       type="button"
       class="inline-flex items-center gap-1.5 rounded-sm text-sm font-semibold text-ink outline-none hover:text-ink/80 focus-visible:ring-2 focus-visible:ring-focus/30"
@@ -25,14 +25,14 @@
       onclick={() => (expanded = !expanded)}
     >
       {label}
-      <Icon
-        name="chevron"
-        class={`size-3.5 transition-transform duration-150 motion-reduce:transition-none ${expanded ? 'rotate-180' : ''}`}
+      <ChevronDown
+        aria-hidden="true"
+        class={`size-4 transition-transform duration-150 motion-reduce:transition-none ${expanded ? 'rotate-180' : ''}`}
       />
     </button>
   </div>
   {#if expanded}
-    <div {id} class="mb-2 min-w-0 border-l-2 border-border pl-4">
+    <div {id} class="mt-2 min-w-0 border-l-2 border-border pl-4">
       {@render children()}
     </div>
   {/if}

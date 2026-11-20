@@ -91,6 +91,7 @@ impl ConfigController {
             sounds_enabled: self.current.ui.sounds_enabled,
             keep_history_originals: self.current.history.keep_originals,
             automatic_update_checks: self.current.updates.check_automatically,
+            overlay_enabled: self.current.capture.overlay_enabled,
             overlay_position: self.current.capture.overlay_position,
             config_path: self.path.display().to_string(),
             registered: self.is_fully_registered(),
@@ -373,6 +374,21 @@ impl ConfigController {
         self.check_profile_revision(expected_revision)?;
         let mut candidate = self.current.clone();
         candidate.ui.mode = mode;
+        self.apply_candidate(candidate, true)
+    }
+
+    pub(crate) fn overlay_enabled(&self) -> bool {
+        self.current.capture.overlay_enabled
+    }
+
+    pub fn set_overlay_enabled(
+        &mut self,
+        enabled: bool,
+        expected_revision: u64,
+    ) -> Result<ConfigSnapshot, ConfigError> {
+        self.check_profile_revision(expected_revision)?;
+        let mut candidate = self.current.clone();
+        candidate.capture.overlay_enabled = enabled;
         self.apply_candidate(candidate, true)
     }
 

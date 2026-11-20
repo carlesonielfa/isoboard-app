@@ -1,5 +1,5 @@
 <script lang="ts">
-  type IconName = 'plus' | 'pencil' | 'trash' | 'close' | 'chevron';
+  type IconName = 'plus' | 'pencil' | 'trash' | 'close';
 
   let {
     name,
@@ -19,9 +19,6 @@
       'M4 18V10H5V2H6V1H18V2H19V10H20V18H4zM18 11H17V3H7V11H6V16H18V11zM21 21L21 19L3 19L3 21L4 21L4 22L9 22L9 23L15 23L15 22L20 22L20 21L21 21z',
     close:
       'M3 1H7V5H11V9H13V5H17V1H21V5H17V9H15V11H17V15H21V19H17V15H13V13H11V15H7V19H3V15H7V11H9V9H7V5H3V1z',
-    // This compact disclosure glyph is app-owned.
-    chevron:
-      'M3 17H7V15H9V13H11V11H13V13H15V15H17V17H21V15H19V13H17V11H15V9H13V7H11V9H9V11H7V13H5V15H3V17z',
   };
 </script>
 

@@ -58,6 +58,7 @@ function snapshot(
     soundsEnabled: true,
     keepHistoryOriginals: true,
     automaticUpdateChecks: true,
+    overlayEnabled: true,
     overlayPosition: 'bottom_center',
     configPath: 'config.toml',
     processing: {

@@ -13,12 +13,11 @@
   } = $props();
 </script>
 
-<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
-  <SettingsSwitch
-    label="Open at login"
-    checked={state.enabled}
-    disabled={disabled || state.loading || state.saving}
-    onCheckedChange={onChange}
-  />
-  <span class="text-xs text-ink">Starts in the menu bar.</span>
-</div>
+<SettingsSwitch
+  variant="row"
+  label="Launch at login"
+  description="Starts in the menu bar."
+  checked={state.enabled}
+  disabled={disabled || state.loading || state.saving}
+  onCheckedChange={onChange}
+/>

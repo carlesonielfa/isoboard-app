@@ -23,7 +23,7 @@
 <p align="center">
   <a href="https://isoboard.app">isoboard.app</a> ·
   <a href="https://docs.isoboard.app">Documentation</a> ·
-  <a href="https://github.com/carlesonielfa/isoboard-app/releases/latest">Download</a>
+  <a href="https://isoboard.app/download">Download</a>
 </p>
 
 isoboard is a macOS menu bar app. Press a shortcut, select a region of your screen, and paste the result into another app. Text, tables, styling and embedded images come through as content you can edit.

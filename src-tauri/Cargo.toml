@@ -1,6 +1,6 @@
 [package]
 name = "isoboard"
-version = "1.0.0"
+version = "1.0.1"
 description = "Turn screenshots and images into content you can paste into other apps"
 authors = ["Carles Onielfa Pérez"]
 homepage = "https://isoboard.app"
@@ -75,7 +75,7 @@ semver = "1"
 block2 = "0.6"
 objc2 = "0.6"
 objc2-app-kit = { version = "0.3", default-features = false, features = ["NSAccessibility", "NSAnimation", "NSAnimationContext", "NSImage", "NSMenu", "NSMenuItem", "NSResponder", "NSStatusItem", "NSView", "NSWindow", "NSWorkspace", "objc2-core-foundation"] }
-objc2-foundation = { version = "0.3", default-features = false, features = ["NSData", "NSGeometry", "NSBundle", "NSError", "NSString"] }
+objc2-foundation = { version = "0.3", default-features = false, features = ["block2", "NSData", "NSGeometry", "NSBundle", "NSError", "NSNotification", "NSOperation", "NSString"] }
 objc2-user-notifications = { version = "0.3", default-features = false, features = ["std", "UNUserNotificationCenter", "UNNotificationSettings", "UNNotificationRequest", "UNNotificationContent", "UNNotification", "UNNotificationTrigger", "block2"] }
 
 [[example]]

@@ -19,12 +19,36 @@ pub(crate) fn set_menu<R: Runtime>(
 
 #[cfg(target_os = "macos")]
 mod macos {
-    use objc2::{AllocAnyThread, MainThreadMarker};
-    use objc2_app_kit::{NSImage, NSMenu};
-    use objc2_foundation::{NSData, NSSize};
+    use std::{cell::RefCell, ptr::NonNull};
+
+    use block2::RcBlock;
+    use objc2::{rc::Retained, runtime::ProtocolObject, AllocAnyThread, MainThreadMarker};
+    use objc2_app_kit::{NSImage, NSMenu, NSMenuDidBeginTrackingNotification, NSStatusItem};
+    use objc2_foundation::{
+        NSData, NSNotification, NSNotificationCenter, NSObjectProtocol, NSOperationQueue, NSSize,
+    };
     use tauri::menu::MenuItemKind;
 
     use super::*;
+
+    /// Artwork for one menu row, mirroring the menu's item order.
+    struct Row {
+        svg: Option<&'static [u8]>,
+        children: Vec<Row>,
+    }
+
+    /// The installed tray menu's artwork and the status item that shows it.
+    struct Installed {
+        status_item: Retained<NSStatusItem>,
+        rows: Vec<Row>,
+    }
+
+    thread_local! {
+        // Main-thread only: AppKit objects and the tracking observer live here.
+        static INSTALLED: RefCell<Option<Installed>> = const { RefCell::new(None) };
+        static OBSERVER: RefCell<Option<Retained<ProtocolObject<dyn NSObjectProtocol>>>> =
+            const { RefCell::new(None) };
+    }
 
     fn artwork(id: &str, status: &CaptureStatus) -> Option<&'static [u8]> {
         Some(match id {
@@ -53,36 +77,97 @@ mod macos {
         })
     }
 
-    fn decorate<R: Runtime>(
-        native: &NSMenu,
+    fn rows<R: Runtime>(
         items: Vec<MenuItemKind<R>>,
         status: &CaptureStatus,
-    ) -> Result<(), String> {
+    ) -> Result<Vec<Row>, String> {
+        items
+            .into_iter()
+            .map(|item| {
+                let children = match &item {
+                    MenuItemKind::Submenu(submenu) => {
+                        rows(submenu.items().map_err(|error| error.to_string())?, status)?
+                    }
+                    _ => Vec::new(),
+                };
+                Ok(Row {
+                    svg: artwork(item.id().as_ref(), status),
+                    children,
+                })
+            })
+            .collect()
+    }
+
+    fn decorate(native: &NSMenu, rows: &[Row]) -> Result<(), String> {
         let native_items = native.itemArray();
-        if native_items.len() != items.len() {
+        if native_items.len() != rows.len() {
             return Err("Native menu items do not match the tray menu.".into());
         }
-        for (native_item, item) in native_items.iter().zip(items) {
-            if let Some(svg) = artwork(item.id().as_ref(), status) {
+        for (native_item, row) in native_items.iter().zip(rows) {
+            if let Some(svg) = row.svg {
                 let data = NSData::with_bytes(svg);
-                let image = NSImage::initWithData(NSImage::alloc(), &data).ok_or_else(|| {
-                    format!("Could not load menu icon for {}.", item.id().as_ref())
-                })?;
+                let image = NSImage::initWithData(NSImage::alloc(), &data)
+                    .ok_or_else(|| "Could not load a menu icon.".to_string())?;
                 image.setSize(NSSize::new(16.0, 16.0));
                 image.setTemplate(true);
                 native_item.setImage(Some(&image));
             }
-            if let MenuItemKind::Submenu(submenu) = item {
-                if let Some(native_submenu) = native_item.submenu() {
-                    decorate(
-                        &native_submenu,
-                        submenu.items().map_err(|error| error.to_string())?,
-                        status,
-                    )?;
-                }
+            if let Some(native_submenu) = native_item.submenu() {
+                decorate(&native_submenu, &row.children)?;
             }
         }
         Ok(())
+    }
+
+    /// Decorates the tray menu as AppKit starts tracking it. Tauri's tray keeps
+    /// the native menu private and attaches it to the status item only while
+    /// the menu is open, so the menu is reachable from the status item here.
+    fn on_menu_tracking(notification: &NSNotification, mtm: MainThreadMarker) {
+        let Some(object) = notification.object() else {
+            return;
+        };
+        INSTALLED.with_borrow(|installed| {
+            let Some(installed) = installed else {
+                return;
+            };
+            let Some(menu) = installed.status_item.menu(mtm) else {
+                return;
+            };
+            let is_tray_menu = std::ptr::eq(
+                Retained::as_ptr(&menu).cast::<()>(),
+                Retained::as_ptr(&object).cast::<()>(),
+            );
+            if !is_tray_menu {
+                return;
+            }
+            if let Err(error) = decorate(&menu, &installed.rows) {
+                eprintln!("isoboard: could not set menu icons: {error}");
+            }
+        });
+    }
+
+    fn observe_menu_tracking() {
+        OBSERVER.with_borrow_mut(|observer| {
+            if observer.is_some() {
+                return;
+            }
+            let block = RcBlock::new(|notification: NonNull<NSNotification>| {
+                // The observer runs on the main queue.
+                if let Some(mtm) = MainThreadMarker::new() {
+                    on_menu_tracking(unsafe { notification.as_ref() }, mtm);
+                }
+            });
+            // SAFETY: The block captures nothing and runs on the main queue,
+            // and the observer is retained for the life of the app.
+            *observer = Some(unsafe {
+                NSNotificationCenter::defaultCenter().addObserverForName_object_queue_usingBlock(
+                    Some(NSMenuDidBeginTrackingNotification),
+                    None,
+                    Some(&NSOperationQueue::mainQueue()),
+                    &block,
+                )
+            });
+        });
     }
 
     pub(super) fn set_menu<R: Runtime>(
@@ -92,24 +177,19 @@ mod macos {
     ) -> Result<(), String> {
         let handle = tray.clone();
         tray.with_inner_tray_icon(move |inner| {
-            // Install and decorate together so concurrent refreshes cannot pair
-            // one menu's item order with another menu's native objects.
+            // Tauri runs this closure on the main thread. Install the menu and
+            // record its artwork together so concurrent refreshes cannot pair
+            // one menu's rows with another menu's native items.
             handle
                 .set_menu(Some(menu.clone()))
                 .map_err(|error| error.to_string())?;
-            // Tauri runs this closure on the main thread. Borrow native objects
-            // through its status item so their ownership stays with the tray.
-            let mtm = MainThreadMarker::new()
-                .ok_or_else(|| "Menu icons require the main thread.".to_string())?;
-            let native = inner
+            let status_item = inner
                 .ns_status_item()
-                .and_then(|item| item.menu(mtm))
-                .ok_or_else(|| "Native tray menu is unavailable.".to_string())?;
-            decorate(
-                &native,
-                menu.items().map_err(|error| error.to_string())?,
-                &status,
-            )
+                .ok_or_else(|| "Native tray status item is unavailable.".to_string())?;
+            let rows = rows(menu.items().map_err(|error| error.to_string())?, &status)?;
+            observe_menu_tracking();
+            INSTALLED.set(Some(Installed { status_item, rows }));
+            Ok(())
         })
         .map_err(|error| error.to_string())?
     }

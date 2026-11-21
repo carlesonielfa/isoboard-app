@@ -18,6 +18,8 @@ The app version appears in three files that you update together:
 | `src-tauri/Cargo.toml` | `[package] version` |
 | `src-tauri/tauri.conf.json` | `version` |
 
+The version moves with the changes, not at release time. When a user-visible change lands and the current version already has a `v<version>` tag, bump the version in the same change: a fix bumps the patch version, and a new feature bumps the minor version. If the current version is not released yet, keep it, unless a feature lands in a pending patch version. Then change it to the next minor version, for example 1.0.1 to 1.1.0. Documentation and internal changes do not bump the version.
+
 `src-tauri/Cargo.lock` records the crate version, so build once after a bump and commit the lock file with it. The About screen and the launch logic that opens the settings window after an update read the bundle version. The commercial license covers a major release series, which `coveredMajor` in `config/product.jsonc` sets. Change it only for a new major version, and read [Licensing](../licensing/) first.
 
 ## Build a signed release
@@ -108,19 +110,18 @@ The settings window is decorated, transparent, and uses the native Popover backd
 
 ## Release checklist
 
-1. Update the version in the three files and rebuild to refresh `Cargo.lock`.
-2. Add a section to `CHANGELOG.md` (see below).
-3. Run `make check`, `make lint`, `make format-check`, and `make test`. See [Testing and CI](../testing-and-ci/).
-4. Review the third-party notices if dependencies, assets, or targets changed (below).
-5. Commit, then push a tag `v<version>` on that commit. The release workflow builds, notarizes and drafts the GitHub release. To build locally instead, run `make release`.
-6. Install the DMG from the draft release. Verify that it opens without a Gatekeeper warning, and check the packaged legal files and both **Settings** → **About** actions (below).
-7. Publish the draft release, and update the download on [isoboard.app](https://isoboard.app). Installed apps then find the update.
-8. With the previous release installed, choose **Check for updates**, then **Restart to update**, and confirm the new version in **About**.
-9. Retain the exact MPL source archives with every distributed release.
+1. Confirm that the version in the three files is the one to release, and that its `CHANGELOG.md` section lists every user-visible change since the previous release (see below). Both are updated as changes land.
+2. Run `make check`, `make lint`, `make format-check`, and `make test`. See [Testing and CI](../testing-and-ci/).
+3. Review the third-party notices if dependencies, assets, or targets changed (below).
+4. Commit, then push a tag `v<version>` on that commit. The release workflow builds, notarizes and drafts the GitHub release. To build locally instead, run `make release`.
+5. Install the DMG from the draft release. Verify that it opens without a Gatekeeper warning, and check the packaged legal files and both **Settings** → **About** actions (below).
+6. Publish the draft release, and update the download on [isoboard.app](https://isoboard.app). Installed apps then find the update.
+7. With the previous release installed, choose **Check for updates**, then **Restart to update**, and confirm the new version in **About**.
+8. Retain the exact MPL source archives with every distributed release.
 
 ## Changelog
 
-`CHANGELOG.md` at the repository root lists user-visible changes by version. Write entries as short, user-facing sentences, grouped under the version heading. The changelog starts at version 1.0.
+`CHANGELOG.md` at the repository root lists user-visible changes by version. Write entries as short, user-facing sentences, grouped under the version heading. Add each entry in the change that makes it, under the current version (see [Versioning](#versioning)). There is no `Unreleased` section, because the build rejects any heading that is not a version. The changelog starts at version 1.0.
 
 The app renders the changelog in **Settings** → **About** → **What's new**, so its format is strict. `build.rs` parses it with `src-tauri/src/changelog/parse.rs` and fails every build, including `make release`, when it breaks these rules:
 

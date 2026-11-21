@@ -59,18 +59,20 @@ function activeProcessingProfile(config: ConfigSnapshot) {
   );
 }
 
+const LOCAL_SETUP_PROFILE_NAME = 'isOCR - default';
+
 export function localSetupProfileName(config: ConfigSnapshot): string {
   const active = activeProcessingProfile(config);
-  if (!active) return 'isOCR';
+  if (!active) return LOCAL_SETUP_PROFILE_NAME;
   if (active.id !== 'default' || active.name !== 'Default') return active.name;
   const names = new Set(
     config.processing.profiles
       .filter((profile) => profile.id !== active.id)
       .map((profile) => profile.name.toLowerCase()),
   );
-  let name = 'isOCR';
+  let name = LOCAL_SETUP_PROFILE_NAME;
   let suffix = 2;
-  while (names.has(name.toLowerCase())) name = `isOCR ${suffix++}`;
+  while (names.has(name.toLowerCase())) name = `${LOCAL_SETUP_PROFILE_NAME} ${suffix++}`;
   return name;
 }
 

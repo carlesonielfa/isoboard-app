@@ -4,6 +4,8 @@
   import ModelLicenseNotice from '$lib/components/ModelLicenseNotice.svelte';
   import ProgressBar from '$lib/components/ProgressBar.svelte';
   import SetupProgress from '$lib/components/SetupProgress.svelte';
+  import InfoLink from '$lib/components/InfoLink.svelte';
+  import { docsLinks } from '$lib/docs-links';
   import type { LocalModelSnapshot } from '$lib/generated/bindings';
   import { modelSize } from '$lib/model-size';
 
@@ -71,9 +73,10 @@
               class="m-0 text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
             >
               Download <strong class="font-bold">isOCR™</strong>
+              <InfoLink {...docsLinks.isocr} size="sm" class="align-middle" />
             </h1>
             <p class="m-0 max-w-[36ch] text-sm leading-relaxed text-ink">
-              Turn screenshots into editable content locally.
+              Turn screenshots into editable content <strong class="font-bold">locally</strong>.
             </p>
           </div>
           <div class="min-h-10">

@@ -3,6 +3,7 @@
   import Button from '$lib/components/Button.svelte';
   import FitHtmlPreview from '$lib/components/FitHtmlPreview.svelte';
   import HistoryMetadataRow from '$lib/components/HistoryMetadataRow.svelte';
+  import { docsLinks } from '$lib/docs-links';
   import HistorySettingsSummary from '$lib/components/HistorySettingsSummary.svelte';
   import ResizableSplitPane from '$lib/components/ResizableSplitPane.svelte';
   import type { HistoryDebugKind } from '$lib/generated/bindings';
@@ -229,6 +230,7 @@
             <HistoryMetadataRow
               label="Original screenshot"
               value={entry.hasOriginal ? 'Kept' : 'Not kept'}
+              infoLink={docsLinks.keepOriginals}
             />
           {/if}
         </dl>

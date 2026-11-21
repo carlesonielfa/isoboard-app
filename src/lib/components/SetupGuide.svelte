@@ -1,8 +1,10 @@
 <script lang="ts">
   import Button from '$lib/components/Button.svelte';
+  import CaptureInstructions from '$lib/components/CaptureInstructions.svelte';
   import SetupProgress from '$lib/components/SetupProgress.svelte';
+  import InfoLink from '$lib/components/InfoLink.svelte';
+  import { docsLinks } from '$lib/docs-links';
   import type { SetupPath, SetupStep } from '$lib/setup-state';
-  import { presentShortcut } from '$lib/shortcut-presentation';
 
   export type SetupGuideStep = 'provider' | 'profile' | 'capture';
 
@@ -52,12 +54,18 @@
         ? 'Complete profile setup'
         : 'Start capturing',
   );
+  const stepDocs = $derived(
+    step === 'provider'
+      ? docsLinks.chooseModel
+      : step === 'profile'
+        ? docsLinks.profileModel
+        : docsLinks.firstCapture,
+  );
   const complete: SetupStep[] = $derived([
     ...(progress.permissions ? ['permissions' as const] : []),
     ...(progress.provider ? ['provider' as const] : []),
     ...(progress.profile ? ['local' as const, 'profile' as const] : []),
   ]);
-  const shortcut = $derived(presentShortcut(captureShortcut, 'macos'));
   const onStepSection = $derived(currentSection === expectedSection);
   const stepReady = $derived(step === 'provider' ? progress.provider : progress.profile);
 </script>
@@ -75,7 +83,10 @@
       aria-live="polite"
     >
       <div class="min-w-0">
-        <h2 class="m-0 text-sm font-semibold text-ink">{label}</h2>
+        <h2 class="m-0 flex items-center gap-1 text-sm font-semibold text-ink">
+          {label}
+          <InfoLink {...stepDocs} />
+        </h2>
         {#if step === 'provider'}
           <p class="m-0 mt-0.5 text-xs text-ink">
             {progress.profile
@@ -91,11 +102,7 @@
             {configurationNotice ?? 'No usable default is available. Configure a profile below.'}
           </p>
         {:else}
-          <p class="m-0 mt-0.5 text-xs text-ink">
-            Press your keyboard shortcut (<span class="font-mono text-ink"
-              >{shortcut.display || captureShortcut}</span
-            >) or the top-right Capture button to start a capture.
-          </p>
+          <CaptureInstructions shortcut={captureShortcut} class="m-0 mt-0.5 text-xs text-ink" />
           {#if captureShortcutError}
             <p class="m-0 mt-1 text-xs text-danger">{captureShortcutError}</p>
           {/if}

@@ -5,6 +5,7 @@ import {
   modelPickerDisplayValue,
   resolveModelPickerModel,
   modelVisibleInMode,
+  localModelSuggested,
 } from '../src/lib/model-picker-state';
 import type { InferenceModel } from '../src/lib/model-catalog-state';
 
@@ -54,4 +55,16 @@ test('model visibility follows Basic, Advanced and Debug mode ordering', () => {
       modelVisibleInMode('debug', mode as import('../src/lib/generated/bindings').UiMode),
     ),
   ).toEqual([false, false, true]);
+});
+
+test('text-only stages hide extraction-only local models', () => {
+  const ocr = { minimumUiMode: 'basic', supportsText: false } as const;
+  const text = { minimumUiMode: 'basic', supportsText: true } as const;
+  expect(localModelSuggested(ocr, 'basic', false)).toBe(true);
+  expect(localModelSuggested(ocr, 'debug', true)).toBe(false);
+  expect(localModelSuggested(text, 'basic', true)).toBe(true);
+  expect(
+    localModelSuggested({ minimumUiMode: 'advanced', supportsText: true }, 'basic', true),
+  ).toBe(false);
+  expect(localModelSuggested(undefined, 'basic', false)).toBe(false);
 });

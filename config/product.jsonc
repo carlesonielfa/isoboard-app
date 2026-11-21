@@ -2,6 +2,8 @@
 {
   "supportEmail": "support@isoboard.app",
   "checkoutUrl": "https://buy.polar.sh/polar_cl_xC3ihQZGNhAP7RnVMwfyv6QpF22Pwqg4l0XWd4cDsJo",
+  // User documentation site; in-app help links append page paths and section anchors.
+  "docsUrl": "https://docs.isoboard.app",
   "licensing": {
     // Starts once, when the user continues without a key.
     "trialDays": 7,

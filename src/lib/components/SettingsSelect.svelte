@@ -1,5 +1,6 @@
 <script lang="ts">
   import * as Select from '$lib/components/ui/select/index.js';
+  import InfoLink, { type InfoLinkTarget } from '$lib/components/InfoLink.svelte';
   import {
     createSettingsSelectChangeController,
     createSettingsSelectValueChangeHandler,
@@ -23,6 +24,8 @@
     options: readonly SettingsSelectOption[];
     placeholder?: string;
     onValueChange: (value: string) => void | Promise<void>;
+    /** Adds an info button after the label that opens related documentation. */
+    infoLink?: InfoLinkTarget;
   };
 
   let {
@@ -37,6 +40,7 @@
     options,
     placeholder: placeholderProp,
     onValueChange,
+    infoLink,
   }: Props = $props();
 
   // svelte-ignore state_referenced_locally
@@ -63,8 +67,16 @@
   );
 </script>
 
-<label class="grid min-w-0 gap-1 text-xs font-semibold">
-  <span class:sr-only={labelHidden}>{label}</span>
+<!-- The trigger carries its own accessible name, so a row with an info button
+     uses a div: a label must not contain a second interactive control. -->
+<svelte:element this={infoLink ? 'div' : 'label'} class="grid min-w-0 gap-1 text-xs font-semibold">
+  {#if infoLink && !labelHidden}
+    <span class="flex min-w-0 items-center gap-1"
+      >{label}<InfoLink {...infoLink} class="-my-0.5" /></span
+    >
+  {:else}
+    <span class:sr-only={labelHidden}>{label}</span>
+  {/if}
 
   <Select.Root
     type="single"
@@ -94,4 +106,4 @@
       </Select.Group>
     </Select.Content>
   </Select.Root>
-</label>
+</svelte:element>

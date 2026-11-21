@@ -51,7 +51,7 @@
   --animate-attention-glow: attention-glow 2.4s ease-in-out infinite;
   --shadow-glow: inset 0 0 8px 1px rgba(215, 188, 255, 0.045);
   --background-image-prismatic:
-    linear-gradient(135deg, rgba(242, 165, 203, 0.25), transparent 45%, rgba(127, 190, 239, 0.25)),
+    linear-gradient(90deg, rgba(242, 165, 203, 0.25), transparent 45%, rgba(127, 190, 239, 0.25)),
     radial-gradient(ellipse at 55% 100%, rgba(193, 161, 244, 0.25), transparent 70%);
 }
 

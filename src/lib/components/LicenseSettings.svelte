@@ -9,6 +9,7 @@
   import LicenseActivation from '$lib/components/LicenseActivation.svelte';
   import LicenseDocuments from '$lib/components/LicenseDocuments.svelte';
   import type { LicensingController } from '$lib/licensing.svelte';
+  import { docsLinks } from '$lib/docs-links';
   let { licensing }: { licensing: LicensingController } = $props();
   let purchaseError = $state('');
   let openingCheckout = $state(false);
@@ -98,7 +99,7 @@
   </span>
 {/snippet}
 
-<SettingsGroup title="License" icon={KeyRound}>
+<SettingsGroup title="License" icon={KeyRound} infoLink={docsLinks.license}>
   <SettingsRow
     label={statusText}
     labelContent={statusText === FREE_STATUS ? freeStatus : undefined}
@@ -144,6 +145,7 @@
       label="Priority Email Support"
       description={supportText}
       below={supportError ? supportErrors : undefined}
+      infoLink={docsLinks.prioritySupport}
     >
       {#snippet control()}
         <Button variant="outline" size="sm" disabled={openingEmail} onclick={contactSupport}>
@@ -153,7 +155,7 @@
       {/snippet}
     </SettingsRow>
   {:else if licensing.state.loaded}
-    <SettingsRow label="License key">
+    <SettingsRow label="License key" infoLink={docsLinks.licenseKey}>
       {#snippet control()}
         <div class="w-72">
           <LicenseActivation disabled={licensing.state.busy} onActivate={activate} />

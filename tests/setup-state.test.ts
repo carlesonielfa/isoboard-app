@@ -185,14 +185,14 @@ test('setup prefers the newly connected provider and only selects usable profile
 
 test('local setup names the default profile without overwriting custom names or colliding', () => {
   const config = snapshot(null);
-  expect(localSetupProfileName(config)).toBe('isOCR');
+  expect(localSetupProfileName(config)).toBe('isOCR - default');
   config.processing.profiles.push({
     ...processingProfileSnapshotFromDraft('other'),
-    name: 'ISOCR',
+    name: 'ISOCR - Default',
   });
-  expect(localSetupProfileName(config)).toBe('isOCR 2');
+  expect(localSetupProfileName(config)).toBe('isOCR - default 2');
   config.processing.profiles[0].name = 'My workflow';
   expect(localSetupProfileName(config)).toBe('My workflow');
   config.processing.activeProfileId = 'other';
-  expect(localSetupProfileName(config)).toBe('ISOCR');
+  expect(localSetupProfileName(config)).toBe('ISOCR - Default');
 });

@@ -71,6 +71,7 @@ See [pricing and licensing](../../license/pricing-and-licensing/) and [buy and a
 | **Configuration file** | Select the label to show the full path to `config.toml`, which you can select and copy. **Show file** reveals it in Finder. See the [configuration file reference](../configuration-file/). |
 | **Third-party notices**, **MPL source code** | Open the bundled notices and source-access instructions in your default text viewer. |
 | **Restart initial setup** | Shows the setup guide again. It changes no settings. The setup guide is shown while setup is incomplete, and **Set up later** hides it for the current session. |
+| **Documentation** | Opens this documentation site in your browser. Info buttons (**i**) next to settings across the window open the page about that setting. |
 
 ## What do Basic, Advanced and Debug do?
 

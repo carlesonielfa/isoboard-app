@@ -1,5 +1,6 @@
 <script lang="ts">
   import SettingsSwitch from '$lib/components/SettingsSwitch.svelte';
+  import { docsLinks } from '$lib/docs-links';
 
   let {
     value,
@@ -38,6 +39,7 @@
     checked={automaticSeparatePass || separatePass}
     disabled={disabled || automaticSeparatePass}
     onCheckedChange={onSeparatePassChange}
+    infoLink={docsLinks.rulesSeparatePass}
   />
   {#if automaticSeparatePass}
     <p class="m-0 text-xs">

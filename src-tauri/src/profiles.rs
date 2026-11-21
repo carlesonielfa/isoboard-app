@@ -140,6 +140,17 @@ impl ProcessingProfileDraft {
                 crate::inference::params::default_postprocessing_prompt_template(),
             )
             .map_err(|error| format!("postprocessing prompt template: {error}"))?;
+        // The independent rules stage receives text without an image, so an
+        // extraction-only local model cannot run it.
+        if self.rules_model_mode == RulesModelMode::Independent
+            && self.rules_model_settings.as_ref().is_some_and(|settings| {
+                settings.provider == crate::inference_profiles::InferenceBackend::Local
+                    && crate::local_models::definition(settings.model.trim())
+                        .is_some_and(|model| !model.supports_text)
+            })
+        {
+            return Err("rules model must support text processing".into());
+        }
         Ok(ProcessingProfile {
             name: self.name,
             model_settings: self

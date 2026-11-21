@@ -14,6 +14,8 @@
   import Button from '$lib/components/Button.svelte';
   import ThirdPartyNotices from '$lib/components/ThirdPartyNotices.svelte';
   import { applicationConfig } from '$lib/application-config';
+  import { docsLinks } from '$lib/docs-links';
+  import DocumentationLink from '$lib/components/DocumentationLink.svelte';
 
   let {
     licensing,
@@ -98,6 +100,7 @@
       checked={keepHistoryOriginals}
       disabled={keepHistoryOriginalsDisabled}
       onCheckedChange={onKeepHistoryOriginalsChange}
+      infoLink={docsLinks.keepOriginals}
     />
   </SettingsGroup>
   <LicenseSettings {licensing} />
@@ -116,6 +119,7 @@
           Restart initial setup
         </Button>
       {/if}
+      <DocumentationLink />
       <ThirdPartyNotices disabled={!desktopAvailable} />
     {/snippet}
   </SettingsGroup>

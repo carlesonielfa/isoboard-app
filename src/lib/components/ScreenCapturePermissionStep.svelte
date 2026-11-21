@@ -8,6 +8,7 @@
   import NotificationPermissionControl from '$lib/components/NotificationPermissionControl.svelte';
   import type { NotificationPermissionState } from '$lib/notification-permission.svelte';
   import type { ScreenCapturePermissionViewState } from '$lib/screen-capture-permission.svelte';
+  import { docsLinks } from '$lib/docs-links';
 
   let {
     state,
@@ -47,6 +48,7 @@
 
     <ActionCard
       title="Screen Recording"
+      infoLink={docsLinks.screenRecording}
       description="Allow isoboard to capture the screen region you select."
       error={state.error}
       actionsVisible={!granted && state.status !== 'unsupported'}

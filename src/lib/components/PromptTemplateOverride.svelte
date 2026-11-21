@@ -1,6 +1,7 @@
 <script lang="ts">
   import Button from '$lib/components/Button.svelte';
   import ExpandableSettingsRow from '$lib/components/ExpandableSettingsRow.svelte';
+  import InfoLink, { type InfoLinkTarget } from '$lib/components/InfoLink.svelte';
   import { promptTemplateOverrideFromValue } from '$lib/processing-profile-state';
 
   let {
@@ -11,6 +12,7 @@
     onInput,
     onBlur,
     onReset,
+    infoLink,
   }: {
     label: string;
     value: string | null;
@@ -19,6 +21,8 @@
     onInput: (value: string | null) => void;
     onBlur?: (event: FocusEvent) => void;
     onReset?: () => void;
+    /** Adds an info button beside the row actions that opens related documentation. */
+    infoLink?: InfoLinkTarget;
   } = $props();
 
   const displayedValue = $derived(value ?? defaultValue);
@@ -55,6 +59,7 @@
         onclick={reset}>Reset to default</Button
       >
     {/if}
+    {#if infoLink}<InfoLink {...infoLink} size="sm" />{/if}
   {/snippet}
   <textarea
     class="box-border min-h-48 min-w-0 resize-y rounded-control border border-border bg-surface px-3 py-2 font-mono text-xs font-normal leading-relaxed text-ink outline-none transition-[background-color,border-color,box-shadow] duration-150 ease-in-out focus:border-border-strong focus:ring-2 focus:ring-focus/30 disabled:cursor-not-allowed disabled:opacity-45"

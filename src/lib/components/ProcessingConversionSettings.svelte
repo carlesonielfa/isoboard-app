@@ -6,6 +6,7 @@
   import SettingsSelect from '$lib/components/SettingsSelect.svelte';
   import ConversionOptions from '$lib/components/ConversionOptions.svelte';
   import ConversionSkeletonPreview from '$lib/components/ConversionSkeletonPreview.svelte';
+  import { docsLinks } from '$lib/docs-links';
 
   let {
     conversion,
@@ -45,6 +46,7 @@
   {#if advanced}
     <SettingsSelect
       label="Conversion settings application"
+      infoLink={docsLinks.conversionApplication}
       value={applicationModeOverride ?? ''}
       {disabled}
       options={[

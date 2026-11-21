@@ -3,7 +3,7 @@
   import * as Tabs from '$lib/components/ui/tabs/index.js';
 
   let {
-    value = $bindable(undefined),
+    value = $bindable(''),
     onValueChange,
     children,
     ...restProps

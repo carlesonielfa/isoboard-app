@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Bell, LoaderCircle, Settings2, ShieldCheck } from '@lucide/svelte';
   import ActionCard from '$lib/components/ActionCard.svelte';
+  import { docsLinks } from '$lib/docs-links';
   import Button from '$lib/components/Button.svelte';
   import StatusIndicator from '$lib/components/StatusIndicator.svelte';
   import type { NotificationPermissionState } from '$lib/notification-permission.svelte';
@@ -19,6 +20,7 @@
 
 <ActionCard
   title="Notifications"
+  infoLink={docsLinks.notifications}
   description="You’ll only be notified about model downloads."
   error={state.error}
   actionsVisible={!granted && state.status !== 'unsupported'}

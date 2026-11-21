@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import { ChevronDown } from '@lucide/svelte';
+  import InfoLink, { type InfoLinkTarget } from '$lib/components/InfoLink.svelte';
 
   let {
     label,
@@ -13,6 +14,7 @@
     control,
     below,
     disabled = false,
+    infoLink,
   }: {
     label: string;
     /** Id of the control the label activates; omit when the control labels itself. */
@@ -30,6 +32,8 @@
     below?: Snippet;
     /** Dims the whole row for a control that cannot be used right now. */
     disabled?: boolean;
+    /** Adds an info button after the label that opens related documentation. */
+    infoLink?: InfoLinkTarget;
   } = $props();
 
   const id = $props.id();
@@ -42,27 +46,30 @@
   <div class="flex min-h-9 min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
     {#if leading}<div class="shrink-0">{@render leading()}</div>{/if}
     <div class="grid min-w-48 flex-1 gap-0.5">
-      {#if collapsible && hasInfo}
-        <button
-          type="button"
-          class="inline-flex w-fit cursor-pointer items-center gap-1.5 rounded-sm text-left text-sm text-ink outline-none hover:text-ink/80 focus-visible:ring-2 focus-visible:ring-focus/30"
-          aria-expanded={expanded}
-          aria-controls={`${id}-info`}
-          onclick={() => (expanded = !expanded)}
-        >
-          {label}
-          <ChevronDown
-            aria-hidden="true"
-            class={`size-4 transition-transform duration-150 motion-reduce:transition-none ${expanded ? 'rotate-180' : ''}`}
-          />
-        </button>
-      {:else if labelFor}
-        <label for={labelFor} class="cursor-pointer text-sm">{label}</label>
-      {:else if labelContent}
-        <span class="text-sm" aria-label={label}>{@render labelContent()}</span>
-      {:else}
-        <span class="text-sm">{label}</span>
-      {/if}
+      <div class="flex min-w-0 items-center gap-1">
+        {#if collapsible && hasInfo}
+          <button
+            type="button"
+            class="inline-flex w-fit cursor-pointer items-center gap-1.5 rounded-sm text-left text-sm text-ink outline-none hover:text-ink/80 focus-visible:ring-2 focus-visible:ring-focus/30"
+            aria-expanded={expanded}
+            aria-controls={`${id}-info`}
+            onclick={() => (expanded = !expanded)}
+          >
+            {label}
+            <ChevronDown
+              aria-hidden="true"
+              class={`size-4 transition-transform duration-150 motion-reduce:transition-none ${expanded ? 'rotate-180' : ''}`}
+            />
+          </button>
+        {:else if labelFor}
+          <label for={labelFor} class="cursor-pointer text-sm">{label}</label>
+        {:else if labelContent}
+          <span class="text-sm" aria-label={label}>{@render labelContent()}</span>
+        {:else}
+          <span class="text-sm">{label}</span>
+        {/if}
+        {#if infoLink}<InfoLink {...infoLink} />{/if}
+      </div>
       {#if infoVisible}
         <div id={`${id}-info`} class="min-w-0 text-xs leading-relaxed">
           {#if details}{@render details()}{:else}<p class="m-0">{description}</p>{/if}

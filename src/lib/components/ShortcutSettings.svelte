@@ -4,6 +4,8 @@
   import CaptureBindingDraftRow from '$lib/components/CaptureBindingDraftRow.svelte';
   import CaptureBindingRow from '$lib/components/CaptureBindingRow.svelte';
   import ShortcutRecorder from '$lib/components/ShortcutRecorder.svelte';
+  import InfoLink from '$lib/components/InfoLink.svelte';
+  import { docsLinks } from '$lib/docs-links';
 
   let {
     state,
@@ -93,7 +95,10 @@
         </ul>
       {/if}
       {#if profileBindings.length > 0 || config.processing.profiles.length > 1}
-        <h4 class="m-0 mt-2 ml-4 text-sm font-semibold">Profile shortcuts</h4>
+        <h4 class="m-0 mt-2 ml-4 flex items-center gap-1 text-sm font-semibold">
+          Profile shortcuts
+          <InfoLink {...docsLinks.profileShortcuts} />
+        </h4>
         <ul
           class="m-0 ml-4 flex min-w-0 list-none flex-col gap-2 p-0"
           aria-label="Profile capture shortcuts"

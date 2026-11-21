@@ -210,6 +210,28 @@ deletion. Shortcut profile selects remain selection-only.
   for primary and independent rules settings. Keep autosave transactional and
   preserve local edits when external snapshots refresh unchanged fields.
 
+### Versions and changelog
+
+`build.rs` parses `CHANGELOG.md` and fails every build on a heading that is
+not a version, so there is no `## Unreleased` section. The release script also
+requires a section for the exact version being released. See
+[releases](docs/src/content/docs/developers/releases-and-notices.md) for the
+format.
+
+Add a changelog line with every user-visible change:
+
+- If the current version is already released (its `v<version>` tag exists),
+  bump the version and add a new section at the top of `CHANGELOG.md`. A fix
+  bumps the patch version; a new feature bumps the minor version.
+- If the current version is unreleased, add the line to its section. When a
+  feature lands in a pending patch version, change it to the next minor
+  version, for example 1.0.1 to 1.1.0, and rename its section.
+- Keep the version the same in `package.json`, `src-tauri/Cargo.toml`, and
+  `src-tauri/tauri.conf.json`, and rebuild to refresh `Cargo.lock`.
+
+Changes users cannot see, such as documentation and internal refactors, need
+no changelog line or version bump.
+
 ### Testing
 
 Keep tests lean and high-value. Write the minimum set of tests needed to cover meaningful behavior and important edge cases, with minimal overlap.

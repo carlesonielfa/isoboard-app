@@ -1500,3 +1500,53 @@ fn ocr_rules_automatically_require_an_independent_text_model() {
     ));
     finish(directory);
 }
+
+#[test]
+fn independent_rules_model_rejects_extraction_only_local_models() {
+    let directory = test_path();
+    let path = directory.join("config.toml");
+    let (mut controller, _) = controller(&path);
+    let original = fs::read_to_string(&path).unwrap();
+    let draft = |model: &str, rules_model_mode| ProcessingProfileDraft {
+        name: "Default".into(),
+        model_settings: None,
+        rules_model_settings: Some(crate::inference_profiles::ModelSettingsDraft {
+            provider: crate::inference_profiles::InferenceBackend::Local,
+            model: model.into(),
+            options: None,
+        }),
+        rules_model_mode,
+        conversion: Default::default(),
+        additional_rules: "Translate".into(),
+        additional_rules_separate_pass: true,
+        application_mode_override: None,
+        conversion_prompt_template: None,
+        postprocessing_prompt_template: None,
+    };
+    let error = controller
+        .update_processing_profile(
+            "default".into(),
+            draft("isocr1-0.8b", crate::profiles::RulesModelMode::Independent),
+            controller.snapshot().revision,
+        )
+        .unwrap_err();
+    assert_eq!(error.kind, ConfigErrorKind::Validation);
+    assert_eq!(fs::read_to_string(&path).unwrap(), original);
+
+    // A remembered but inactive independent selection does not block saves.
+    let snapshot = controller
+        .update_processing_profile(
+            "default".into(),
+            draft("isocr1-0.8b", crate::profiles::RulesModelMode::Same),
+            error.revision,
+        )
+        .unwrap();
+    controller
+        .update_processing_profile(
+            "default".into(),
+            draft("qwen3.5-2b", crate::profiles::RulesModelMode::Independent),
+            snapshot.revision,
+        )
+        .unwrap();
+    finish(directory);
+}

@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import InfoLink, { type InfoLinkTarget } from '$lib/components/InfoLink.svelte';
 
   let {
     title,
@@ -10,6 +11,7 @@
     feedback = null,
     actionsVisible = true,
     error = null,
+    infoLink,
   }: {
     title: string;
     description: string;
@@ -19,6 +21,8 @@
     feedback?: string | null;
     actionsVisible?: boolean;
     error?: string | null;
+    /** Adds an info button after the title that opens related documentation. */
+    infoLink?: InfoLinkTarget;
   } = $props();
 </script>
 
@@ -30,6 +34,7 @@
     <h2 class="m-0 flex items-center gap-2 text-base font-semibold text-ink">
       {@render icon()}
       {title}
+      {#if infoLink}<InfoLink {...infoLink} class="-ml-1" />{/if}
     </h2>
     {#if status}{@render status()}{/if}
   </div>

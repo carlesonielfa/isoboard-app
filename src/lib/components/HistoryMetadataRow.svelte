@@ -1,17 +1,21 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import { cn } from '$lib/utils';
+  import InfoLink, { type InfoLinkTarget } from '$lib/components/InfoLink.svelte';
 
   let {
     label,
     value,
     children,
     class: className = '',
+    infoLink,
   }: {
     label: string;
     value?: string;
     children?: Snippet;
     class?: string;
+    /** Adds an info button after the label that opens related documentation. */
+    infoLink?: InfoLinkTarget;
   } = $props();
 </script>
 
@@ -21,7 +25,10 @@
     className,
   )}
 >
-  <dt class="font-semibold">{label}</dt>
+  <dt class="flex min-w-0 items-center gap-1 font-semibold">
+    {label}
+    {#if infoLink}<InfoLink {...infoLink} />{/if}
+  </dt>
   <dd class="m-0 min-w-0 justify-self-end text-right">
     {#if children}
       {@render children()}

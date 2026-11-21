@@ -30,6 +30,7 @@
   } from '$lib/processing-profile-state';
   import type { ModelCatalogState } from '$lib/model-catalog-controller.svelte';
   import { modelDisplayName, modelsForProvider } from '$lib/model-catalog-state';
+  import { docsLinks } from '$lib/docs-links';
 
   let {
     profile,
@@ -191,7 +192,12 @@
     oninput={(event) => update({ name: event.currentTarget.value })}
     onblur={() => void save()}
   />
-  <SettingsSection id={`${modelPickerId}-conversion-section`} title="Conversion" variant="panel">
+  <SettingsSection
+    id={`${modelPickerId}-conversion-section`}
+    title="Conversion"
+    variant="panel"
+    infoLink={docsLinks.conversionOptions}
+  >
     <ProcessingConversionSettings
       conversion={draft.conversion}
       applicationModeOverride={draft.applicationModeOverride}
@@ -209,6 +215,7 @@
     {#if advanced && promptTemplateDefaults}
       <PromptTemplateOverride
         label="Conversion prompt template"
+        infoLink={docsLinks.promptTemplates}
         value={draft.conversionPromptTemplate}
         defaultValue={promptTemplateDefaults.conversion}
         {disabled}
@@ -218,7 +225,12 @@
       />
     {/if}
   </SettingsSection>
-  <SettingsSection id={`${modelPickerId}-section`} title="Model" variant="panel">
+  <SettingsSection
+    id={`${modelPickerId}-section`}
+    title="Model"
+    variant="panel"
+    infoLink={docsLinks.profileModel}
+  >
     <ModelSettingsEditor
       draft={draft.modelSettings ?? emptyModel}
       providers={inferenceProviders}
@@ -234,7 +246,12 @@
       onSave={(value) => saveModel('modelSettings', value)}
     />
   </SettingsSection>
-  <SettingsSection id={`${modelPickerId}-rules-section`} title="Rules" variant="panel">
+  <SettingsSection
+    id={`${modelPickerId}-rules-section`}
+    title="Rules"
+    variant="panel"
+    infoLink={docsLinks.additionalRules}
+  >
     <ProcessingAdditionalRules
       value={draft.additionalRules}
       separatePass={draft.additionalRulesSeparatePass}
@@ -252,6 +269,7 @@
         id={`${modelPickerId}-rules-model-section`}
         title="Rules model"
         variant="nested"
+        infoLink={docsLinks.rulesModel}
       >
         <fieldset class="w-full min-w-0" {disabled}>
           <legend class="mb-1 text-xs font-semibold">Model usage</legend>
@@ -294,6 +312,7 @@
             modelPickerId={`${modelPickerId}-rules`}
             {advanced}
             modelCapability="text-output"
+            requireTextSupport
             modelCatalog={modelCatalog.snapshot}
             modelCatalogLoading={modelCatalog.loading}
             modelCatalogStatus={modelCatalog.status}
@@ -303,6 +322,7 @@
         {#if advanced && promptTemplateDefaults}
           <PromptTemplateOverride
             label="Postprocessing prompt template"
+            infoLink={docsLinks.promptTemplates}
             value={draft.postprocessingPromptTemplate}
             defaultValue={promptTemplateDefaults.postprocessing}
             {disabled}

@@ -5,6 +5,7 @@
   import SettingsRow from '$lib/components/SettingsRow.svelte';
   import SettingsSwitch from '$lib/components/SettingsSwitch.svelte';
   import type { OverlayPosition } from '$lib/generated/bindings';
+  import { docsLinks } from '$lib/docs-links';
 
   let {
     enabled,
@@ -43,7 +44,7 @@
   }
 </script>
 
-<SettingsGroup title="Capture status" icon={PictureInPicture2}>
+<SettingsGroup title="Capture status" icon={PictureInPicture2} infoLink={docsLinks.captureStatus}>
   <SettingsSwitch
     variant="row"
     label="Show capture status"

@@ -5,6 +5,7 @@
   import type { InferenceOptionsForm } from '$lib/inference-profile-state';
   import type { ReasoningLevel } from '$lib/generated/bindings';
   import { resolveModelReasoningControls, type InferenceModel } from '$lib/model-catalog-state';
+  import { docsLinks } from '$lib/docs-links';
 
   let {
     value,
@@ -82,6 +83,7 @@
 {#if showReasoning}
   <SettingsSelect
     label="Reasoning"
+    infoLink={docsLinks.reasoning}
     value={value.reasoning ?? ''}
     disabled={disabled || !controls.visible}
     options={reasoningOptions}

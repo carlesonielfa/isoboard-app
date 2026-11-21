@@ -144,8 +144,9 @@ profile for the provider just connected, regardless of other connected providers
 It falls back to another usable profile for that same provider, preserving user
 edits and never recreating deleted profiles. Without a newly connected provider,
 setup preserves a ready external selection or selects a usable connected-provider
-profile. Local setup fills the active profile with isOCR and skips model editing
-when its configuration is ready. Only missing or incomplete defaults require
+profile. Local setup fills the active profile with isOCR, renames the untouched
+Default profile to "isOCR - default" (with a number suffix on a name collision),
+and skips model editing when its configuration is ready. Only missing or incomplete defaults require
 manual configuration, with the specific readiness issue shown in the guide.
 The manual Model step uses the canonical Profile editor. Continue requires the
 active stages and their provider access to be ready. The final stage opens the Shortcuts tab and

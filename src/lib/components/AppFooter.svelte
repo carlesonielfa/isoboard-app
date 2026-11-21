@@ -2,6 +2,8 @@
   import DebugResourceUsage from '$lib/components/DebugResourceUsage.svelte';
   import CaptureStatusIndicator from '$lib/components/CaptureStatusIndicator.svelte';
   import SegmentedControl from '$lib/components/SegmentedControl.svelte';
+  import InfoLink from '$lib/components/InfoLink.svelte';
+  import { docsLinks } from '$lib/docs-links';
   import type { UiMode } from '$lib/generated/bindings';
   import type { CaptureViewState } from '$lib/page-types';
   import type { CaptureReadiness } from '$lib/capture-readiness';
@@ -48,13 +50,16 @@
       {#if mode === 'debug'}<DebugResourceUsage />{/if}
     </div>
 
-    <SegmentedControl
-      options={modeOptions}
-      value={mode}
-      onChange={(value) => onModeChange(value as UiMode)}
-      aria-label="Display mode"
-      {disabled}
-      class="text-xs"
-    />
+    <div class="flex shrink-0 items-center gap-1">
+      <InfoLink {...docsLinks.displayMode} />
+      <SegmentedControl
+        options={modeOptions}
+        value={mode}
+        onChange={(value) => onModeChange(value as UiMode)}
+        aria-label="Display mode"
+        {disabled}
+        class="text-xs"
+      />
+    </div>
   </div>
 </footer>

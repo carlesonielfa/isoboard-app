@@ -8,6 +8,7 @@
   import SettingsSwitch from '$lib/components/SettingsSwitch.svelte';
   import StatusIndicator from '$lib/components/StatusIndicator.svelte';
   import type { UpdatesController } from '$lib/updates-controller.svelte';
+  import { docsLinks } from '$lib/docs-links';
 
   let {
     updates,
@@ -101,4 +102,5 @@
   checked={automaticChecks}
   disabled={automaticChecksDisabled}
   onCheckedChange={onAutomaticChecksChange}
+  infoLink={docsLinks.updates}
 />

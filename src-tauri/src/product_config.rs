@@ -8,6 +8,7 @@ use std::sync::LazyLock;
 pub(crate) struct ProductConfig {
     pub support_email: String,
     pub checkout_url: String,
+    pub docs_url: String,
     pub licensing: LicensingConfig,
     pub polar: PolarConfig,
     pub legal_documents: Vec<LegalDocument>,
@@ -60,7 +61,11 @@ mod tests {
         assert!(PRODUCT.licensing.status_refresh_milliseconds >= 1000);
         assert!(!PRODUCT.licensing.key_prefix.is_empty());
         assert!(PRODUCT.support_email.contains('@'));
-        for value in [&PRODUCT.checkout_url, &PRODUCT.polar.validation_url] {
+        for value in [
+            &PRODUCT.checkout_url,
+            &PRODUCT.docs_url,
+            &PRODUCT.polar.validation_url,
+        ] {
             assert_eq!(reqwest::Url::parse(value).unwrap().scheme(), "https");
         }
         for value in [

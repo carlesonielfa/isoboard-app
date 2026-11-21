@@ -8,6 +8,7 @@
     availability,
     advanced,
     debug,
+    captureShortcut,
     onSelect,
     onFormattingChange,
     onRestore,
@@ -22,6 +23,7 @@
     availability: { desktopAvailable: boolean };
     advanced: boolean;
     debug: boolean;
+    captureShortcut: string;
     onSelect: (id: string) => void;
     onFormattingChange: (
       id: string,
@@ -57,6 +59,7 @@
     resultCopied={state.resultCopied}
     failureCopiedId={state.failureCopiedId}
     disabled={!availability.desktopAvailable}
+    {captureShortcut}
     {onSelect}
     {onRestore}
     {onCopyPlainText}

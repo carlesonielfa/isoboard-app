@@ -8,7 +8,7 @@
   import { useLocalModels } from '$lib/local-models-controller.svelte';
   import { modelSize } from '$lib/model-size';
   import LocalModelControls from '$lib/components/LocalModelControls.svelte';
-  import { modelVisibleInMode } from '$lib/model-picker-state';
+  import { localModelSuggested } from '$lib/model-picker-state';
   import ModelPicker from '$lib/components/ModelPicker.svelte';
   import type {
     InferenceModelCatalogSnapshot,
@@ -41,6 +41,7 @@
     modelCatalogLoading = false,
     modelCatalogStatus,
     modelCapability = 'vision-text',
+    requireTextSupport = false,
     advanced = false,
   }: {
     draft: ModelSettingsDraft;
@@ -55,6 +56,8 @@
     modelCatalogLoading?: boolean;
     modelCatalogStatus?: ModelCatalogStatus;
     modelCapability?: ModelCapabilityFilter;
+    /** Hide local models that only extract from images, such as isOCR. */
+    requireTextSupport?: boolean;
     advanced?: boolean;
   } = $props();
 
@@ -111,10 +114,11 @@
 
   const localModels = useLocalModels();
   function localModelVisible(model: InferenceModel): boolean {
-    const minimum =
-      localModels?.controller.state.snapshot.models.find((item) => item.id === model.id)
-        ?.minimumUiMode ?? 'debug';
-    return modelVisibleInMode(minimum, localModels?.uiMode() ?? 'basic');
+    return localModelSuggested(
+      localModels?.controller.state.snapshot.models.find((item) => item.id === model.id),
+      localModels?.uiMode() ?? 'basic',
+      requireTextSupport,
+    );
   }
 
   const modelDescriptions = $derived(

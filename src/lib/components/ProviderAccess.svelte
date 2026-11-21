@@ -8,6 +8,8 @@
   import ExpandableSettingsRow from '$lib/components/ExpandableSettingsRow.svelte';
   import InferenceProviderEditor from '$lib/components/InferenceProviderEditor.svelte';
   import ProviderLogo from '$lib/components/ProviderLogo.svelte';
+  import InfoLink from '$lib/components/InfoLink.svelte';
+  import { providerDocsLinks } from '$lib/docs-links';
   import { INFERENCE_BACKEND_LABELS, providerConnected } from '$lib/inference-profile-state';
 
   let {
@@ -71,6 +73,9 @@
         >
           {#snippet leading()}
             <ProviderLogo backend={item.id as InferenceBackend} />
+          {/snippet}
+          {#snippet actions()}
+            <InfoLink {...providerDocsLinks[item.id as InferenceBackend].about} size="sm" />
           {/snippet}
           <InferenceProviderEditor
             draft={providerDraft(item.id as InferenceBackend)}

@@ -3,6 +3,7 @@
   import { revealItemInDir } from '@tauri-apps/plugin-opener';
   import Button from '$lib/components/Button.svelte';
   import SettingsRow from '$lib/components/SettingsRow.svelte';
+  import { docsLinks } from '$lib/docs-links';
 
   let { path, disabled = false }: { path: string; disabled?: boolean } = $props();
   let error = $state('');
@@ -22,7 +23,12 @@
 {/snippet}
 
 {#if path}
-  <SettingsRow label="Configuration file" collapsible below={error ? failure : undefined}>
+  <SettingsRow
+    label="Configuration file"
+    collapsible
+    below={error ? failure : undefined}
+    infoLink={docsLinks.configurationFile}
+  >
     {#snippet details()}
       <span class="select-text font-mono [overflow-wrap:anywhere]">{path}</span>
     {/snippet}

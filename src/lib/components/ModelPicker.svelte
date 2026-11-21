@@ -70,6 +70,9 @@
         (!providerHasCatalog(catalog, provider) && builtInModels.length === 0)),
   );
   const normalizedSearch = $derived(searchQuery.trim().toLocaleLowerCase());
+  // Trailing actions describe the committed model, so they would overlap the
+  // placeholder or the query while nothing is selected or the user searches.
+  const showActions = $derived(Boolean(actions) && Boolean(value.trim()) && !editing && !open);
   const options = $derived.by(() => {
     const catalogModels = modelsForProvider(catalog, provider, capability, value);
     const catalogById = new Map(catalogModels.map((model) => [model.id, model]));
@@ -204,7 +207,7 @@
         bind:ref={inputElement}
         id={fieldId}
         type="text"
-        class={`h-10 w-full rounded-control border border-border bg-surface-control px-3 text-sm font-normal text-foreground outline-none placeholder:text-foreground focus:border-border-strong focus:ring-2 focus:ring-focus aria-invalid:border-danger-border aria-invalid:ring-2 aria-invalid:ring-danger/30 disabled:cursor-not-allowed disabled:opacity-60 ${actions ? 'pr-12' : ''}`}
+        class={`h-10 w-full rounded-control border border-border bg-surface-control px-3 text-sm font-normal text-foreground outline-none placeholder:text-foreground focus:border-border-strong focus:ring-2 focus:ring-focus aria-invalid:border-danger-border aria-invalid:ring-2 aria-invalid:ring-danger/30 disabled:cursor-not-allowed disabled:opacity-60 ${showActions ? 'pr-12' : ''}`}
         {disabled}
         style={!editing && !open && modelDescriptions[value] ? 'color: transparent' : undefined}
         aria-describedby={modelDescriptions[value] ? `${fieldId}-size` : undefined}
@@ -236,7 +239,7 @@
       {#if !editing && !open && modelDescriptions[value]}
         <span
           aria-hidden="true"
-          class={`pointer-events-none absolute inset-0 flex min-w-0 items-center gap-1 overflow-hidden px-3 text-sm font-normal ${actions ? 'pr-12' : ''} ${disabled ? 'opacity-60' : ''}`}
+          class={`pointer-events-none absolute inset-0 flex min-w-0 items-center gap-1 overflow-hidden px-3 text-sm font-normal ${showActions ? 'pr-12' : ''} ${disabled ? 'opacity-60' : ''}`}
         >
           <span class="min-w-0 truncate"
             >{selectedModel ? modelDisplayName(selectedModel) : value}</span
@@ -247,7 +250,7 @@
       {#if modelDescriptions[value]}<span id={`${fieldId}-size`} class="sr-only"
           >Download size: {modelDescriptions[value]}</span
         >{/if}
-      {#if actions}<div class="absolute inset-y-0 right-1 flex items-center">
+      {#if showActions && actions}<div class="absolute inset-y-0 right-1 flex items-center">
           {@render actions()}
         </div>{/if}
     </div>

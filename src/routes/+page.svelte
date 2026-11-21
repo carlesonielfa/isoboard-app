@@ -582,6 +582,7 @@
         {availability}
         {advanced}
         {debug}
+        {captureShortcut}
         onSelect={history.select}
         onRestore={history.restore}
         onCopyPlainText={history.copyPlainText}

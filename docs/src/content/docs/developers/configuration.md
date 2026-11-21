@@ -97,7 +97,7 @@ Four files under `config/` hold public settings that ship inside the app. Rust e
 
 | File | Owns | Rust schema |
 |---|---|---|
-| `config/product.jsonc` | Support address, checkout URL, bundled legal and third-party document paths, evaluation days, support months, covered major version, license-key prefix, Polar identifiers, validation URL and timeouts, validation and polling intervals | `product_config.rs` (`PRODUCT`) |
+| `config/product.jsonc` | Support address, checkout URL, documentation URL, bundled legal and third-party document paths, evaluation days, support months, covered major version, license-key prefix, Polar identifiers, validation URL and timeouts, validation and polling intervals | `product_config.rs` (`PRODUCT`) |
 | `config/application.jsonc` | Shared validation limits (Additional Rules and prompt template bytes, Profile name length, temperature range, output tokens, request timeouts), History retention defaults, UI and native feedback timings | `application_config.rs` (`APPLICATION`) |
 | `config/services.jsonc` | Endpoints and timeouts per integration: models.dev and Hugging Face | `application_config.rs` (`SERVICES`) |
 | `config/model-defaults.jsonc` | The setup local model ID, provider display labels, and the built-in Profile definitions | `application_config.rs` (`MODEL_DEFAULTS`) |

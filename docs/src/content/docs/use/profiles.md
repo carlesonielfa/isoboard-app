@@ -68,7 +68,7 @@ Advanced mode also shows the **Conversion prompt template** and the model's temp
 
 ## Which Profiles come with isoboard?
 
-- **Default.** The Profile you start with. Setup fills it with isOCR when you choose the local model.
+- **Default.** The Profile you start with. Setup fills it with isOCR and names it **isOCR - default** when you choose the local model.
 - **Efficient** and **Accurate** Profiles for each provider you connect. Connecting OpenAI, Anthropic or Gemini adds two Profiles named after the provider, for example **Anthropic - Efficient** and **Anthropic - Accurate**.
 
 | Built-in Profile | Use it for |

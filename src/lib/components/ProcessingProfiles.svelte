@@ -24,6 +24,8 @@
   import { assessProfile, type CredentialReadiness } from '$lib/processing-profile-state';
   import { useLocalModels } from '$lib/local-models-controller.svelte';
   import { CircleAlert, CopyPlus, Trash2 } from '@lucide/svelte';
+  import InfoLink from '$lib/components/InfoLink.svelte';
+  import { docsLinks } from '$lib/docs-links';
   import type { ModelCatalogState } from '$lib/model-catalog-controller.svelte';
 
   let {
@@ -168,7 +170,7 @@
             </SidebarTabRow>
           {/each}
         </SidebarTabList>
-        <div class="flex shrink-0 justify-center px-2 pb-2">
+        <div class="flex shrink-0 items-center justify-center gap-1 px-2 pb-2">
           <Button
             variant="ghost"
             size="icon-sm"
@@ -179,6 +181,7 @@
           >
             <Icon name="plus" />
           </Button>
+          <InfoLink {...docsLinks.profiles} size="sm" />
         </div>
       </div>
       <div class="min-h-0 min-w-0 overflow-hidden">

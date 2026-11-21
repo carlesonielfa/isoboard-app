@@ -1,5 +1,6 @@
 <script lang="ts">
   import SettingsSwitch from '$lib/components/SettingsSwitch.svelte';
+  import { docsLinks } from '$lib/docs-links';
   import type { LoginStartupState } from '$lib/login-startup.svelte';
 
   let {
@@ -20,4 +21,5 @@
   checked={state.enabled}
   disabled={disabled || state.loading || state.saving}
   onCheckedChange={onChange}
+  infoLink={docsLinks.launchAtLogin}
 />

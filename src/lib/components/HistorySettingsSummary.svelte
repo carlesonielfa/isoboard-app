@@ -2,6 +2,7 @@
   import ConversionOptions from '$lib/components/ConversionOptions.svelte';
   import type { HistoryViewState } from '$lib/page-types';
   import HistoryMetadataRow from '$lib/components/HistoryMetadataRow.svelte';
+  import { docsLinks } from '$lib/docs-links';
   import { providerLabel } from '$lib/history-search';
   import type {
     ConversionSettingsApplicationMode,
@@ -66,10 +67,15 @@
     <HistoryMetadataRow
       label="Conversion mode"
       value={applicationModeLabels[snapshot.applicationMode]}
+      infoLink={docsLinks.conversionApplication}
     />
   {/if}
   {#if advanced || snapshot.additionalRulesApplied}
-    <HistoryMetadataRow label="Additional Rules" value={rulesLabel(snapshot)} />
+    <HistoryMetadataRow
+      label="Additional Rules"
+      value={rulesLabel(snapshot)}
+      infoLink={docsLinks.historyRules}
+    />
   {/if}
 {:else}
   <HistoryMetadataRow label="Settings" value="Unavailable" />
@@ -78,7 +84,11 @@
 
 {#snippet options()}
   {#if formatting}
-    <HistoryMetadataRow label="Options" class="grid-cols-[auto_minmax(0,1fr)]">
+    <HistoryMetadataRow
+      label="Options"
+      class="grid-cols-[auto_minmax(0,1fr)]"
+      infoLink={docsLinks.historyOptions}
+    >
       <ConversionOptions
         value={formatting.settings}
         {disabled}
@@ -87,6 +97,7 @@
           colors: !restores && snapshot?.colors === false,
           images: !restores && snapshot?.images === false,
         }}
+        disabledOptionHint="This option was off when this was captured, so it can’t be turned on."
         onChange={onFormattingChange}
       />
       {#if formatting.loading}<span role="status" class="sr-only">Updating preview…</span>{/if}

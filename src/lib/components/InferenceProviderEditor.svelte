@@ -6,6 +6,7 @@
   } from '$lib/generated/bindings';
   import SettingsInput from '$lib/components/SettingsInput.svelte';
   import { backendMetadataFor, inferenceProviderIsValid } from '$lib/inference-profile-state';
+  import { docsLinks, providerDocsLinks } from '$lib/docs-links';
 
   let {
     draft: initialDraft,
@@ -76,6 +77,7 @@
   {#if backend.supportsCustomEndpoint}
     <SettingsInput
       label="Endpoint"
+      infoLink={docsLinks.endpoint}
       value={draft.endpoint ?? ''}
       disabled={savingDisabled}
       oninput={(event) => updateDraft({ endpoint: event.currentTarget.value, credentialRef: null })}
@@ -89,6 +91,7 @@
     <div class="grid min-w-0 gap-1">
       <SettingsInput
         label={backend.credentialOptional ? 'API key (optional)' : 'API key'}
+        infoLink={providerDocsLinks[draft.backend].apiKey ?? undefined}
         type="password"
         value={credential}
         disabled={savingDisabled}

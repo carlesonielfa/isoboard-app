@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+- Frame the menu bar icon with capture brackets while you select a region.
+
 ## 1.0.1
 
 - Restore the icons next to the items in the menu bar menu.

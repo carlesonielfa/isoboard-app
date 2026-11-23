@@ -307,7 +307,8 @@ Changes apply to subsequent cues without restarting. The Settings tab uses a cog
 - Image files, when exposed, use the same processing flow as screenshots.
 - Menu-bar capture, capture shortcuts, and file-picker flows leave the settings
   window in its current state. The header Capture action hides it before selection.
-- Keep the menu bar icon monochrome, animate it while processing, and report the
+- Keep the menu bar icon monochrome, frame it with capture brackets while a region
+  is being selected, animate it while processing, and report the
   latest status in the tooltip and status row. Open isoboard reveals the settings
   window for capture details. A floating overlay appears after region selection
   and shows processing, clipboard success, and failures. It uses the display

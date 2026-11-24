@@ -116,7 +116,7 @@ The settings window is decorated, transparent, and uses the native Popover backd
 4. Commit, then push a tag `v<version>` on that commit. The release workflow builds, notarizes and drafts the GitHub release. To build locally instead, run `make release`.
 5. Install the DMG from the draft release. Verify that it opens without a Gatekeeper warning, and check the packaged legal files and both **Settings** → **About** actions (below).
 6. Publish the draft release, and update the download on [isoboard.app](https://isoboard.app). Installed apps then find the update.
-7. With the previous release installed, choose **Check for updates**, then **Restart to update**, and confirm the new version in **About**.
+7. With the previous release installed, choose **Check for updates**, then **Update & relaunch**, and confirm the new version in **About**.
 8. Retain the exact MPL source archives with every distributed release.
 
 ## Changelog

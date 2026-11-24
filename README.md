@@ -1,9 +1,7 @@
 <h1 align="center">
   <a href="https://isoboard.app">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/public/media/lockup-white.svg">
-      <img src="docs/public/media/lockup-ink.svg" alt="isoboard" width="320">
-    </picture>
+    <img src="docs/public/media/lockup-black.svg#gh-light-mode-only" alt="isoboard" width="320">
+    <img src="docs/public/media/lockup-white.svg#gh-dark-mode-only" alt="isoboard" width="320">
   </a>
 </h1>
 

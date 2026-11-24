@@ -3,15 +3,12 @@
   let {
     title,
     description,
-    featured = false,
     icon,
     children,
     actions,
   }: {
     title: string;
     description: string;
-    /** Emphasizes the card's border, for the option an equal-height group recommends. */
-    featured?: boolean;
     icon: Snippet;
     children?: Snippet;
     actions: Snippet;
@@ -19,7 +16,7 @@
 </script>
 
 <section
-  class={`flex min-w-0 flex-col rounded-surface border bg-surface-control p-5 ${featured ? 'border-border-strong' : 'border-border'}`}
+  class="flex min-w-0 flex-col rounded-surface border border-border bg-surface-control p-5"
   aria-label={title}
 >
   <div class="mb-4 flex items-center gap-3">

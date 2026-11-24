@@ -65,7 +65,7 @@ See [pricing and licensing](../../license/pricing-and-licensing/) and [buy and a
 | Item | What it shows |
 |---|---|
 | **Version** | The installed isoboard version. |
-| **Check for updates** | Checks for a newer isoboard release now. When an update has downloaded, it becomes **Restart to update**. |
+| **Check for updates** | Checks for a newer isoboard release now. When an update has downloaded, it becomes **Update & relaunch**. |
 | **What's new** | Release notes, newest first. The installed version is marked **Current**. After a check, the newest version is marked **Latest**, including versions you have not installed yet. |
 | **Check for updates automatically** | Checks shortly after launch and every six hours, and downloads updates in the background. isoboard asks before it restarts. On by default. |
 | **Configuration file** | Select the label to show the full path to `config.toml`, which you can select and copy. **Show file** reveals it in Finder. See the [configuration file reference](../configuration-file/). |

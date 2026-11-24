@@ -37,7 +37,7 @@ It depends on where the server runs. A server on your own Mac keeps the image on
 ## Where is my API key stored?
 
 <!-- os:macos -->
-In the macOS Keychain, never in the configuration file. See [where isoboard stores your data](../../privacy/data/).
+In the macOS Keychain, never in the configuration file. A saved key appears as dots in **API key (optional)**. Paste a new key to replace it, or click the trash button next to the field and confirm **Remove key** to delete it from this Mac. The endpoint stays saved. See [where isoboard stores your data](../../privacy/data/).
 
 ## Troubleshooting
 

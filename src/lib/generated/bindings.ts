@@ -11,6 +11,12 @@ export const commands = {
 	recheckCommercialLicense: () => __TAURI_INVOKE<LicenseSnapshot>("recheck_commercial_license"),
 	continueWithoutLicenseKey: () => __TAURI_INVOKE<LicenseSnapshot>("continue_without_license_key"),
 	dismissEvaluationNotice: () => __TAURI_INVOKE<LicenseSnapshot>("dismiss_evaluation_notice"),
+	/**  Price of one commercial seat, or `None` when Polar cannot provide it. */
+	getCommercialSeatPrice: () => __TAURI_INVOKE<{
+	amountMinor: number,
+	/**  Uppercase ISO 4217 code. */
+	currency: string,
+} | null>("get_commercial_seat_price"),
 	startRegionCaptureCommand: () => __TAURI_INVOKE<null>("start_region_capture_command"),
 	openImageCommand: () => __TAURI_INVOKE<null>("open_image_command"),
 	getCaptureSnapshot: () => __TAURI_INVOKE<CaptureStatus>("get_capture_snapshot"),
@@ -45,6 +51,12 @@ export const commands = {
 	saveProviderWithCredential: (provider: string, endpoint: string | null, credential: string, expectedRevision: number) => __TAURI_INVOKE<ConfigSnapshot_Serialize>("save_provider_with_credential", { provider, endpoint, credential, expectedRevision }),
 	getInferenceCredentialReadiness: (provider: string) => __TAURI_INVOKE<InferenceCredentialReadinessSnapshot>("get_inference_credential_readiness", { provider }),
 	deleteUnreferencedInferenceCredential: (kind: string, credentialRef: string, expectedRevision: number) => __TAURI_INVOKE<ConfigSnapshot_Serialize>("delete_unreferenced_inference_credential", { kind, credentialRef, expectedRevision }),
+	/**
+	 *  Asks for confirmation, then removes a provider's stored API key from the
+	 *  configuration and secure storage. A cancelled dialog returns the current
+	 *  snapshot unchanged.
+	 */
+	clearProviderCredential: (provider: string, providerLabel: string, expectedRevision: number) => __TAURI_INVOKE<ConfigSnapshot_Serialize>("clear_provider_credential", { provider, providerLabel, expectedRevision }),
 	getInferenceModelCatalog: () => __TAURI_INVOKE<ModelCatalogSnapshot_Serialize>("get_inference_model_catalog"),
 	listHistory: (beforeSequence: number | null, minSequence: number | null, limit: number, filter: HistoryFilter) => __TAURI_INVOKE<HistoryWindowSnapshot>("list_history", { beforeSequence, minSequence, limit, filter }),
 	/**
@@ -646,6 +658,7 @@ export type PolarConfig = {
 	benefitId: string,
 	productId: string,
 	validationUrl: string,
+	storefrontUrl: string,
 	requestTimeoutSeconds: number,
 	connectTimeoutSeconds: number,
 };
@@ -780,6 +793,13 @@ export type RuntimeStatus = "sleeping" | "loading" | "ready" | "processing" | "f
 
 export type ScreenCapturePermissionStatus = "granted" | "restartRequired" | "required" | "unsupported";
 
+/**  Price of one commercial seat in the currency's minor units. */
+export type SeatPrice = {
+	amountMinor: number,
+	/**  Uppercase ISO 4217 code. */
+	currency: string,
+};
+
 export type ServiceConfig = {
 	modelsDev: ModelsDevService,
 	huggingFace: HuggingFaceService,
@@ -834,6 +854,6 @@ function makeEvent<T>(name: string, serialize?: (payload: T) => unknown, deseria
 
 
 export const DEFAULT_INFERENCE_BACKEND_METADATA: InferenceBackendMetadata[] = [{"id":"openai_api","credentialKind":"api_key","credentialOptional":false,"supportsCustomEndpoint":false,"builtInProfiles":[]},{"id":"anthropic_api","credentialKind":"api_key","credentialOptional":false,"supportsCustomEndpoint":false,"builtInProfiles":[]},{"id":"gemini_api","credentialKind":"api_key","credentialOptional":false,"supportsCustomEndpoint":false,"builtInProfiles":[]},{"id":"openai_compatible","credentialKind":"api_key","credentialOptional":true,"supportsCustomEndpoint":true,"builtInProfiles":[]},{"id":"local","credentialKind":"none","credentialOptional":false,"supportsCustomEndpoint":false,"builtInProfiles":[]}];
-export const PRODUCT_CONFIG = {"checkoutUrl":"https://buy.polar.sh/polar_cl_xC3ihQZGNhAP7RnVMwfyv6QpF22Pwqg4l0XWd4cDsJo","docsUrl":"https://docs.isoboard.app","legalDocuments":[{"label":"License terms","resource":"legal/SOURCE-LICENSE.md"},{"label":"Commercial terms","resource":"legal/COMMERCIAL-TERMS.md"},{"label":"Privacy","resource":"legal/PRIVACY-NOTICE.md"}],"licensing":{"backgroundPollSeconds":60,"coveredMajor":1,"keyPrefix":"ISOAPP-","statusRefreshMilliseconds":60000,"supportMonths":12,"trialDays":7,"validationIntervalSeconds":86400},"polar":{"benefitId":"28056087-ae7b-4ea3-8e05-55c10b23d084","connectTimeoutSeconds":5,"organizationId":"f9a76de5-56ce-4525-8d75-ee10f3cba16b","productId":"51438471-fde7-4f98-96dc-6b0198a5e39a","requestTimeoutSeconds":15,"validationUrl":"https://api.polar.sh/v1/customer-portal/license-keys/validate"},"supportEmail":"support@isoboard.app","thirdPartyDocuments":[{"label":"Third-party notices","resource":"legal/THIRD_PARTY_NOTICES.txt"},{"label":"MPL source code","resource":"legal/MPL-SOURCE-ACCESS.txt"}]} satisfies ProductConfig;
+export const PRODUCT_CONFIG = {"checkoutUrl":"https://buy.polar.sh/polar_cl_xC3ihQZGNhAP7RnVMwfyv6QpF22Pwqg4l0XWd4cDsJo","docsUrl":"https://docs.isoboard.app","legalDocuments":[{"label":"License terms","resource":"legal/SOURCE-LICENSE.md"},{"label":"Commercial terms","resource":"legal/COMMERCIAL-TERMS.md"},{"label":"Privacy","resource":"legal/PRIVACY-NOTICE.md"}],"licensing":{"backgroundPollSeconds":60,"coveredMajor":1,"keyPrefix":"ISOAPP-","statusRefreshMilliseconds":60000,"supportMonths":12,"trialDays":7,"validationIntervalSeconds":86400},"polar":{"benefitId":"28056087-ae7b-4ea3-8e05-55c10b23d084","connectTimeoutSeconds":5,"organizationId":"f9a76de5-56ce-4525-8d75-ee10f3cba16b","productId":"51438471-fde7-4f98-96dc-6b0198a5e39a","requestTimeoutSeconds":15,"storefrontUrl":"https://api.polar.sh/v1/customer-portal/organizations/isoboard","validationUrl":"https://api.polar.sh/v1/customer-portal/license-keys/validate"},"supportEmail":"support@isoboard.app","thirdPartyDocuments":[{"label":"Third-party notices","resource":"legal/THIRD_PARTY_NOTICES.txt"},{"label":"MPL source code","resource":"legal/MPL-SOURCE-ACCESS.txt"}]} satisfies ProductConfig;
 export const APPLICATION_CONFIG = {"feedback":{"captureCursorPollMilliseconds":50,"captureExitGraceMilliseconds":320,"captureFadeMilliseconds":220,"captureFailureMilliseconds":12000,"captureSuccessMilliseconds":4000,"copyMilliseconds":1600,"resourcePollMilliseconds":2000,"trayFrameMilliseconds":[300,300,300,500]},"history":{"maxBytes":524288000,"maxEntries":1000,"maxOriginalBytes":1073741824,"maxOriginals":50},"limits":{"additionalRulesBytes":65536,"maxOutputTokens":4294967295,"profileNameCharacters":80,"promptTemplateBytes":65536,"requestTimeoutMaxSeconds":3600,"requestTimeoutMinSeconds":1,"temperatureMax":2.0,"temperatureMin":0.0}} satisfies ApplicationConfig;
-export const MODEL_DEFAULTS = {"builtinProfiles":[{"backend":"openai_api","explanation":"Favors faster, lower-cost everyday captures.","id":"builtin:openai_api:efficient","model":"gpt-6-luna","name":"OpenAI API - Efficient","tier":"efficient"},{"backend":"openai_api","explanation":"Favors difficult captures; may take longer and cost more.","id":"builtin:openai_api:accurate","model":"gpt-6.1-sol","name":"OpenAI API - Accurate","tier":"accurate"},{"backend":"anthropic_api","explanation":"Favors faster, lower-cost everyday captures.","id":"builtin:anthropic_api:efficient","model":"claude-haiku-5.5","name":"Anthropic - Efficient","tier":"efficient"},{"backend":"anthropic_api","explanation":"Favors difficult captures; may take longer and cost more.","id":"builtin:anthropic_api:accurate","model":"claude-sonnet-5-5","name":"Anthropic - Accurate","tier":"accurate"},{"backend":"gemini_api","explanation":"Favors faster, lower-cost everyday captures.","id":"builtin:gemini_api:efficient","model":"gemini-3.8-flash","name":"Gemini - Efficient","tier":"efficient"},{"backend":"gemini_api","explanation":"Favors difficult captures; may take longer and cost more.","id":"builtin:gemini_api:accurate","model":"gemini-4-argon","name":"Gemini - Accurate","tier":"accurate"}],"providerLabels":{"anthropic_api":"Anthropic","gemini_api":"Gemini","local":"Local","openai_api":"OpenAI","openai_compatible":"OpenAI-compatible"},"setupLocalModel":"isocr1-0.8b"} satisfies ModelDefaults;
+export const MODEL_DEFAULTS = {"builtinProfiles":[{"backend":"openai_api","explanation":"Favors faster, lower-cost everyday captures.","id":"builtin:openai_api:efficient","model":"gpt-6.1-terra","name":"OpenAI API - Efficient","tier":"efficient"},{"backend":"openai_api","explanation":"Favors difficult captures; may take longer and cost more.","id":"builtin:openai_api:accurate","model":"gpt-6.2-sol","name":"OpenAI API - Accurate","tier":"accurate"},{"backend":"anthropic_api","explanation":"Favors faster, lower-cost everyday captures.","id":"builtin:anthropic_api:efficient","model":"claude-haiku-5.5","name":"Anthropic - Efficient","tier":"efficient"},{"backend":"anthropic_api","explanation":"Favors difficult captures; may take longer and cost more.","id":"builtin:anthropic_api:accurate","model":"claude-sonnet-5-5","name":"Anthropic - Accurate","tier":"accurate"},{"backend":"gemini_api","explanation":"Favors faster, lower-cost everyday captures.","id":"builtin:gemini_api:efficient","model":"gemini-4-argon","name":"Gemini - Efficient","tier":"efficient"},{"backend":"gemini_api","explanation":"Favors difficult captures; may take longer and cost more.","id":"builtin:gemini_api:accurate","model":"gemini-4-carbon","name":"Gemini - Accurate","tier":"accurate"}],"providerLabels":{"anthropic_api":"Anthropic","gemini_api":"Gemini","local":"Local","openai_api":"OpenAI","openai_compatible":"OpenAI-compatible"},"setupLocalModel":"isocr1-0.8b"} satisfies ModelDefaults;

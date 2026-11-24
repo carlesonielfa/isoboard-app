@@ -51,6 +51,66 @@ impl ConfigController {
         Ok(self.snapshot())
     }
 
+    /// Remove a provider's API key: clear its reference in the configuration,
+    /// then delete the secret once no provider references it. The endpoint is
+    /// kept. A failed configuration write leaves both the reference and the
+    /// secret in place.
+    pub fn clear_provider_credential(
+        &mut self,
+        provider: String,
+        credentials: &ManagedCredentialStore,
+        expected_revision: u64,
+    ) -> Result<ConfigSnapshot, ConfigError> {
+        self.check_profile_revision(expected_revision)?;
+        let backend = parse_inference_backend(&provider, &self.path)
+            .map_err(|error| self.remember_error(error))?;
+        if backend.credential_kind() != crate::inference_profiles::CredentialKind::ApiKey {
+            return Err(self.remember_error(ConfigError::validation(
+                &self.path,
+                "provider does not accept API keys",
+                None,
+            )));
+        }
+        let Some(reference) = self
+            .current_provider(backend)
+            .and_then(|config| config.credential_ref.clone())
+        else {
+            return Ok(self.snapshot());
+        };
+        let reference = ManagedSecretRef::parse(&reference).map_err(|_| {
+            self.remember_error(ConfigError::validation(
+                &self.path,
+                "managed credential reference is invalid",
+                None,
+            ))
+        })?;
+        let mut candidate = self.current.clone();
+        if let Some(config) = candidate.inference.providers.get_mut(backend.id()) {
+            config.credential_ref = None;
+        }
+        let snapshot = self.apply_candidate(candidate, true)?;
+        let reference_text = reference.to_string();
+        if self
+            .current
+            .inference
+            .providers
+            .values()
+            .any(|provider| provider.credential_ref.as_deref() == Some(reference_text.as_str()))
+        {
+            return Ok(snapshot);
+        }
+        credentials
+            .delete(ManagedSecretKind::ApiKey, &reference)
+            .map_err(|_| {
+                self.remember_error(ConfigError::runtime(
+                    &self.path,
+                    "the API key was removed from settings but could not be deleted from secure storage",
+                    None,
+                ))
+            })?;
+        Ok(snapshot)
+    }
+
     pub fn save_provider_with_secret(
         &mut self,
         provider: String,

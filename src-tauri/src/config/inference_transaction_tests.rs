@@ -283,3 +283,58 @@ fn blank_key_connects_only_openai_compatible_without_storing_a_secret() {
     assert_eq!(state.values.len(), 1);
     assert!(state.values.contains_key(&old));
 }
+
+#[test]
+fn clearing_provider_credential_removes_reference_and_secret_but_keeps_endpoint() {
+    let dir = tempfile::tempdir().unwrap();
+    let path = dir.path().join("config.toml");
+    let mut controller = controller(&path);
+    let (credentials, state) = credentials();
+    let keyed = controller
+        .save_provider_with_secret(
+            "openai_compatible".into(),
+            Some("http://localhost:11434/v1".into()),
+            b"local-key",
+            &credentials,
+            controller.snapshot().revision,
+        )
+        .unwrap();
+    let cleared = controller
+        .clear_provider_credential("openai_compatible".into(), &credentials, keyed.revision)
+        .unwrap();
+    let provider = &cleared.inference.providers[0];
+    assert!(provider.credential_ref.is_none());
+    assert_eq!(
+        provider.endpoint.as_deref(),
+        Some("http://localhost:11434/v1")
+    );
+    assert!(state.lock().unwrap().values.is_empty());
+    assert!(!std::fs::read_to_string(&path)
+        .unwrap()
+        .contains("credential_ref"));
+}
+
+#[cfg(unix)]
+#[test]
+fn clearing_provider_credential_keeps_secret_when_config_write_fails() {
+    use std::os::unix::fs::PermissionsExt;
+    let dir = tempfile::tempdir().unwrap();
+    let path = dir.path().join("config.toml");
+    let mut controller = controller(&path);
+    let (credentials, state) = credentials();
+    let first = save_api(&mut controller, &credentials);
+    let reference = first.inference.providers[0].credential_ref.clone().unwrap();
+    fs::set_permissions(path.parent().unwrap(), fs::Permissions::from_mode(0o500)).unwrap();
+    let error = controller
+        .clear_provider_credential("openai_api".into(), &credentials, first.revision)
+        .unwrap_err();
+    fs::set_permissions(path.parent().unwrap(), fs::Permissions::from_mode(0o700)).unwrap();
+    assert_eq!(error.kind, super::types::ConfigErrorKind::Io);
+    assert_eq!(
+        controller
+            .current_provider(crate::inference_profiles::InferenceBackend::OpenaiApi)
+            .and_then(|provider| provider.credential_ref.clone()),
+        Some(reference.clone())
+    );
+    assert!(state.lock().unwrap().values.contains_key(&reference));
+}

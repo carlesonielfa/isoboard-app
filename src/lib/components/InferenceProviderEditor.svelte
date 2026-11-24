@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { Trash2 } from '@lucide/svelte';
+  import Button from '$lib/components/Button.svelte';
   import type { InferenceProviderDraft } from '$lib/page-types';
   import type {
     InferenceBackendMetadata,
@@ -14,6 +16,7 @@
     readiness,
     disabled,
     onSave,
+    onClearCredential,
     embedded = false,
   }: {
     draft: InferenceProviderDraft;
@@ -21,6 +24,8 @@
     readiness?: InferenceCredentialReadinessSnapshot;
     disabled: boolean;
     onSave: (draft: InferenceProviderDraft, credential: string) => Promise<boolean>;
+    /** Removes the stored API key; the backend asks for confirmation. */
+    onClearCredential?: () => Promise<boolean>;
     embedded?: boolean;
   } = $props();
 
@@ -44,14 +49,24 @@
   const backend = $derived(backendMetadataFor(draft.backend, metadata));
   const valid = $derived(inferenceProviderIsValid(draft, metadata));
   const savingDisabled = $derived(disabled || saving);
-  const readinessLabels: Record<string, string> = {
-    missing: 'Missing',
-    ready: 'Ready',
-    locked: 'Locked',
-    corrupt: 'Unavailable',
-    unavailable: 'Unavailable',
-    unknown: 'Configured',
-  };
+
+  // Readiness reports a reference only while the provider has a saved key;
+  // missing means the reference points at nothing that can be used.
+  const keyStored = $derived(
+    readiness?.credentialRef != null &&
+      readiness.provider === draft.backend &&
+      readiness.readiness !== 'missing',
+  );
+
+  async function clearCredential(): Promise<void> {
+    if (savingDisabled || !onClearCredential) return;
+    saving = true;
+    try {
+      if (await onClearCredential()) credential = '';
+    } finally {
+      saving = false;
+    }
+  }
 
   function updateDraft(changes: Partial<InferenceProviderDraft>): void {
     draft = { ...draft, ...changes };
@@ -89,19 +104,34 @@
     <p class="m-0">Available. Choose a model in Profiles.</p>
   {:else}
     <div class="grid min-w-0 gap-1">
-      <SettingsInput
-        label={backend.credentialOptional ? 'API key (optional)' : 'API key'}
-        infoLink={providerDocsLinks[draft.backend].apiKey ?? undefined}
-        type="password"
-        value={credential}
-        disabled={savingDisabled}
-        autocomplete="off"
-        oninput={(event) => (credential = event.currentTarget.value)}
-        onblur={() => void save(credential)}
-      />
-      {#if readiness}<span class="text-xs font-normal"
-          >{readinessLabels[readiness.readiness] ?? 'Unavailable'}</span
-        >{/if}
+      <div class="flex min-w-0 items-end gap-1">
+        <div class="min-w-0 flex-1">
+          <SettingsInput
+            label={backend.credentialOptional ? 'API key (optional)' : 'API key'}
+            infoLink={providerDocsLinks[draft.backend].apiKey ?? undefined}
+            type="password"
+            value={credential}
+            placeholder={keyStored ? '••••••••' : undefined}
+            disabled={savingDisabled}
+            autocomplete="off"
+            oninput={(event) => (credential = event.currentTarget.value)}
+            onblur={() => void save(credential)}
+          />
+        </div>
+        {#if keyStored && onClearCredential}
+          <span title="Remove API key" class="inline-flex shrink-0 pb-1">
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="Remove API key"
+              disabled={savingDisabled}
+              onclick={() => void clearCredential()}
+            >
+              <Trash2 class="size-4" aria-hidden="true" />
+            </Button>
+          </span>
+        {/if}
+      </div>
     </div>
   {/if}
 </div>

@@ -2099,7 +2099,7 @@ pub(crate) fn build_tray_menu<R: Runtime>(
         .and_then(|manager| manager.ready_version());
     if let Some(version) = ready_update {
         let update_item =
-            MenuItemBuilder::with_id("install-update", format!("Restart to update to {version}"))
+            MenuItemBuilder::with_id("install-update", format!("Update & relaunch to {version}"))
                 .enabled(!capture_busy)
                 .build(app)
                 .map_err(|error| error.to_string())?;

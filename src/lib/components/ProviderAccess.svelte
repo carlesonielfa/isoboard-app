@@ -18,6 +18,7 @@
     providers,
     availability,
     onSaveProvider,
+    onClearCredential,
     onRefreshReadiness,
   }: {
     state: InferenceProfilesViewState;
@@ -29,6 +30,7 @@
       endpoint: string | null,
       credential: string,
     ) => Promise<boolean>;
+    onClearCredential: (provider: InferenceBackend, label: string) => Promise<boolean>;
     onRefreshReadiness: (provider: string) => Promise<void>;
   } = $props();
 
@@ -85,6 +87,7 @@
             embedded
             onSave={(value, credential) =>
               onSaveProvider(value.backend, value.endpoint, credential)}
+            onClearCredential={() => onClearCredential(item.id as InferenceBackend, providerLabel)}
           />
         </ExpandableSettingsRow>
       </li>

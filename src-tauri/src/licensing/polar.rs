@@ -23,17 +23,20 @@ pub(super) struct Polar {
     client: Option<reqwest::Client>,
 }
 
+/// HTTP client for Polar's public endpoints with the configured timeouts.
+pub(super) fn client() -> Option<reqwest::Client> {
+    reqwest::Client::builder()
+        .user_agent(concat!("isoboard/", env!("CARGO_PKG_VERSION")))
+        .timeout(Duration::from_secs(PRODUCT.polar.request_timeout_seconds))
+        .connect_timeout(Duration::from_secs(PRODUCT.polar.connect_timeout_seconds))
+        .redirect(reqwest::redirect::Policy::none())
+        .build()
+        .ok()
+}
+
 impl Polar {
     pub(super) fn new() -> Self {
-        Self {
-            client: reqwest::Client::builder()
-                .user_agent(concat!("isoboard/", env!("CARGO_PKG_VERSION")))
-                .timeout(Duration::from_secs(PRODUCT.polar.request_timeout_seconds))
-                .connect_timeout(Duration::from_secs(PRODUCT.polar.connect_timeout_seconds))
-                .redirect(reqwest::redirect::Policy::none())
-                .build()
-                .ok(),
-        }
+        Self { client: client() }
     }
 }
 

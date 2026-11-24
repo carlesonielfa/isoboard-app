@@ -19,3 +19,4 @@ export function saveInferenceProviderWithCredential(
 
 export const getInferenceCredentialReadiness = commands.getInferenceCredentialReadiness;
 export const deleteUnreferencedInferenceCredential = commands.deleteUnreferencedInferenceCredential;
+export const clearProviderCredential = commands.clearProviderCredential;

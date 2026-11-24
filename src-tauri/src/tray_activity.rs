@@ -6,7 +6,7 @@ use tauri::image::Image;
 use tauri::tray::TrayIcon;
 use tauri::{Manager, Runtime};
 
-use crate::capture::CaptureStatus;
+use crate::capture::{CaptureSource, CaptureStatus};
 
 const FRAME_BYTES: [&[u8]; 4] = [
     include_bytes!("../icons/tray-animation/frame-1.png"),
@@ -14,22 +14,40 @@ const FRAME_BYTES: [&[u8]; 4] = [
     include_bytes!("../icons/tray-animation/frame-3.png"),
     include_bytes!("../icons/tray-animation/frame-4.png"),
 ];
+const SELECTING_BYTES: &[u8] = include_bytes!("../icons/tray-animation/selecting.png");
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 struct ActivityState {
     generation: u64,
     sequence: Option<u64>,
+    selecting: bool,
     frame: usize,
 }
 
 impl ActivityState {
-    fn start(&mut self, sequence: u64, frame_count: usize) -> Option<(u64, usize)> {
+    /// Marks a region selection as active. Returns false when the sequence is
+    /// already shown.
+    fn select(&mut self, sequence: u64) -> bool {
         if self.sequence == Some(sequence) {
+            return false;
+        }
+
+        self.generation = self.generation.wrapping_add(1);
+        self.sequence = Some(sequence);
+        self.selecting = true;
+        self.frame = 0;
+        true
+    }
+
+    /// Starts processing, taking over from that sequence's selection icon.
+    fn start(&mut self, sequence: u64, frame_count: usize) -> Option<(u64, usize)> {
+        if self.sequence == Some(sequence) && !self.selecting {
             return None;
         }
 
         self.generation = self.generation.wrapping_add(1);
         self.sequence = Some(sequence);
+        self.selecting = false;
         self.frame = 0;
         Some((self.generation, self.frame % frame_count.max(1)))
     }
@@ -41,12 +59,17 @@ impl ActivityState {
 
         self.generation = self.generation.wrapping_add(1);
         self.sequence = None;
+        self.selecting = false;
         self.frame = 0;
         true
     }
 
     fn next_frame(&mut self, generation: u64, frame_count: usize) -> Option<usize> {
-        if self.sequence.is_none() || self.generation != generation || frame_count == 0 {
+        if self.sequence.is_none()
+            || self.selecting
+            || self.generation != generation
+            || frame_count == 0
+        {
             return None;
         }
 
@@ -63,13 +86,35 @@ impl ActivityState {
 trait TrayActivityPresenter: Send + Sync {
     fn frame_count(&self) -> usize;
     fn show_idle(&self);
+    fn show_selecting(&self);
     fn show_processing_frame(&self, frame: usize);
 }
 
 struct TauriTrayActivityPresenter<R: Runtime> {
     tray: TrayIcon<R>,
     idle: Option<Image<'static>>,
+    selecting: Image<'static>,
     processing_frames: Vec<Image<'static>>,
+}
+
+impl<R: Runtime> TauriTrayActivityPresenter<R> {
+    fn show(&self, icon: Image<'static>, label: &str) {
+        if let Err(error) = self
+            .tray
+            .set_icon_with_as_template(Some(icon), cfg!(target_os = "macos"))
+        {
+            eprintln!("isoboard: could not update {label} tray icon: {error}");
+        }
+    }
+}
+
+fn decode_icon(bytes: &[u8]) -> Result<Image<'static>, String> {
+    let decoded = image::load_from_memory(bytes)
+        .map_err(|error| format!("could not load tray icon: {error}"))?
+        .into_rgba8();
+    let width = decoded.width();
+    let height = decoded.height();
+    Ok(Image::new_owned(decoded.into_raw(), width, height))
 }
 
 impl<R: Runtime> TrayActivityPresenter for TauriTrayActivityPresenter<R> {
@@ -84,28 +129,18 @@ impl<R: Runtime> TrayActivityPresenter for TauriTrayActivityPresenter<R> {
     }
 
     fn show_idle(&self) {
-        let Some(icon) = self.idle.clone() else {
-            return;
-        };
-
-        if let Err(error) = self
-            .tray
-            .set_icon_with_as_template(Some(icon), cfg!(target_os = "macos"))
-        {
-            eprintln!("isoboard: could not restore tray icon: {error}");
+        if let Some(icon) = self.idle.clone() {
+            self.show(icon, "idle");
         }
     }
 
-    fn show_processing_frame(&self, frame: usize) {
-        let Some(icon) = self.processing_frames.get(frame).cloned() else {
-            return;
-        };
+    fn show_selecting(&self) {
+        self.show(self.selecting.clone(), "selecting");
+    }
 
-        if let Err(error) = self
-            .tray
-            .set_icon_with_as_template(Some(icon), cfg!(target_os = "macos"))
-        {
-            eprintln!("isoboard: could not update processing tray icon: {error}");
+    fn show_processing_frame(&self, frame: usize) {
+        if let Some(icon) = self.processing_frames.get(frame).cloned() {
+            self.show(icon, "processing");
         }
     }
 }
@@ -129,20 +164,12 @@ impl TrayActivityController {
     ) -> Result<Self, String> {
         let processing_frames = FRAME_BYTES
             .iter()
-            .map(|bytes| -> Result<Image<'static>, String> {
-                let decoded = image::load_from_memory(bytes)
-                    .map_err(|error| format!("could not load processing tray icon: {error}"))?
-                    .into_rgba8();
-                let width = decoded.width();
-                let height = decoded.height();
-                let rgba = decoded.into_raw();
-                let image: Image<'static> = Image::new_owned(rgba, width, height);
-                Ok(image)
-            })
+            .map(|bytes| decode_icon(bytes))
             .collect::<Result<Vec<_>, _>>()?;
         let presenter = TauriTrayActivityPresenter {
             tray,
             idle,
+            selecting: decode_icon(SELECTING_BYTES)?,
             processing_frames,
         };
         Ok(Self {
@@ -163,9 +190,34 @@ impl TrayActivityController {
             CaptureStatus::Completed { sequence, .. }
             | CaptureStatus::Cancelled { sequence, .. }
             | CaptureStatus::Failed { sequence, .. } => self.stop_processing(*sequence),
+            // The bracketed icon confirms that this app's shortcut started the
+            // region selection. It stays until processing or a terminal status.
+            CaptureStatus::Started {
+                sequence,
+                source: CaptureSource::Region,
+                ..
+            } => self.start_selecting(*sequence),
             CaptureStatus::Idle { .. }
             | CaptureStatus::Started { .. }
             | CaptureStatus::ImageReady { .. } => {}
+        }
+    }
+
+    fn start_selecting(&self, sequence: u64) {
+        let _render_guard = self
+            .inner
+            .render_lock
+            .lock()
+            .expect("tray activity render lock poisoned");
+        let selecting = self
+            .inner
+            .state
+            .lock()
+            .expect("tray activity state lock poisoned")
+            .select(sequence);
+        if selecting {
+            self.cancel_animation_task();
+            self.inner.presenter.show_selecting();
         }
     }
 
@@ -298,6 +350,21 @@ mod tests {
         assert!(!state.stop(11));
         assert_eq!(state.next_frame(generation, 3), None);
         assert_eq!(state.next_frame(2, 3), Some(1));
+    }
+
+    #[test]
+    fn region_selection_hands_off_to_processing_and_cancel_restores_idle() {
+        let mut state = ActivityState::default();
+
+        assert!(state.select(5));
+        assert!(!state.select(5));
+        assert_eq!(state.next_frame(1, 4), None);
+        assert_eq!(state.start(5, 4), Some((2, 0)));
+        assert_eq!(state.next_frame(2, 4), Some(1));
+
+        assert!(state.select(6));
+        assert!(state.stop(6));
+        assert!(state.sequence.is_none() && !state.selecting);
     }
 
     #[test]

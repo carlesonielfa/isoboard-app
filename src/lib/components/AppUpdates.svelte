@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { RefreshCw } from '@lucide/svelte';
+  import { RefreshCw, Rocket } from '@lucide/svelte';
   import AppChangelog from '$lib/components/AppChangelog.svelte';
   import AppVersion from '$lib/components/AppVersion.svelte';
   import BrandLogo from '$lib/components/BrandLogo.svelte';
@@ -76,7 +76,8 @@
         disabled={disabled || status.status === 'installing'}
         onclick={() => void updates.install()}
       >
-        Restart to update
+        <Rocket class="size-4" strokeWidth={1.75} aria-hidden="true" />
+        Update &amp; relaunch
       </Button>
     {:else}
       <Button

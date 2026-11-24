@@ -1,6 +1,7 @@
 //! Local evaluation permissions and cached commercial licensing.
 pub(crate) mod commercial;
 mod polar;
+mod pricing;
 use commercial::{CommercialService, CommercialSnapshot};
 use serde::{Deserialize, Serialize};
 use specta::Type;
@@ -293,6 +294,13 @@ pub(crate) async fn recheck_commercial_license(
     }
     commercial.recheck(true).await?;
     get_license_status(state, commercial)
+}
+
+/// Price of one commercial seat, or `None` when Polar cannot provide it.
+#[tauri::command]
+#[specta::specta]
+pub(crate) async fn get_commercial_seat_price() -> Option<pricing::SeatPrice> {
+    pricing::fetch_seat_price().await
 }
 
 pub(crate) fn needs_attention(store: &LicenseStore, commercial: &CommercialService) -> bool {

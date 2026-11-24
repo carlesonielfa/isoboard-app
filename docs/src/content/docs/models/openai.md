@@ -14,7 +14,7 @@ You can use isoboard with your own OpenAI API key. Create a key in your OpenAI a
 1. Sign in to the [OpenAI API keys page](https://platform.openai.com/api-keys) and create a new secret key. Copy it when it is shown.
 2. In isoboard, open Settings and select the **Providers** tab.
 3. Expand **OpenAI** and paste the key into **API key**.
-4. Click outside the field. A status below it shows **Ready** or **Configured**. Configured means the key is saved and isoboard has not used it yet.
+4. Click outside the field. The key is saved and the field shows dots (••••••••) in its place.
 
 isoboard then creates two starting Profiles, **OpenAI API - Efficient** and **OpenAI API - Accurate**. Efficient favors faster, lower-cost captures. Accurate favors difficult captures and may take longer and cost more. You can edit or delete both. See [Profiles](../../use/profiles/).
 
@@ -29,7 +29,7 @@ Any OpenAI model that accepts images as input. In the **Profiles** tab, choose *
 ## Where does isoboard store my key?
 
 <!-- os:macos -->
-In the macOS Keychain, never in the configuration file. isoboard does not show the key again after you save it, and you replace it by pasting a new one. See [where isoboard stores your data](../../privacy/data/).
+In the macOS Keychain, never in the configuration file. isoboard does not show the key again after you save it. A saved key appears as dots in **API key**. Paste a new key to replace it, or click the trash button next to the field and confirm **Remove key** to delete it from this Mac. See [where isoboard stores your data](../../privacy/data/).
 
 ## Who pays for the usage?
 

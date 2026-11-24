@@ -144,6 +144,16 @@ export function createInferenceProfilesController({
     });
   }
 
+  /** Removes the provider's stored API key after native confirmation. */
+  function clearProviderCredential(provider: InferenceBackend, label: string): Promise<boolean> {
+    return enqueueMutation('provider-credential', (expectedRevision) =>
+      bridge.clearProviderCredential(provider, label, expectedRevision),
+    ).then((cleared) => {
+      if (cleared) void refreshReadiness(provider);
+      return cleared;
+    });
+  }
+
   async function refreshReadiness(providerId: string): Promise<void> {
     if (!availability.desktopAvailable || disposed) return;
     const provider = currentProviders().find(
@@ -207,6 +217,7 @@ export function createInferenceProfilesController({
   return {
     state,
     saveProvider,
+    clearProviderCredential,
     refreshReadiness,
     mount,
     dispose,

@@ -79,7 +79,7 @@ Installing isoboard does not give its author access to your local files. isoboar
 | One History entry | Open the **History** tab, open the entry's menu and choose **Delete** |
 | All History | Quit isoboard and delete `history.sqlite3`. The History tab has no clear-all action |
 | A downloaded model | Use the remove control next to the model. See [local models](../../models/local-models/) |
-| An API key | Delete its Keychain item. See the key section of the provider page ([OpenAI](../../models/openai/), [Anthropic](../../models/anthropic/), [Gemini](../../models/gemini/) or [OpenAI-compatible](../../models/openai-compatible/)) and the [Keychain steps](../../troubleshooting/uninstall/#remove-api-keys-and-the-license-key-from-the-keychain) |
+| An API key | **Providers** tab → expand the provider → click the trash button next to **API key** and confirm. See the key section of the provider page ([OpenAI](../../models/openai/), [Anthropic](../../models/anthropic/), [Gemini](../../models/gemini/) or [OpenAI-compatible](../../models/openai-compatible/)) and the [Keychain steps](../../troubleshooting/uninstall/#remove-api-keys-and-the-license-key-from-the-keychain) |
 | The license key | **Settings** tab → **License** → **Remove license**. See [buy and activate a license](../../license/activate/) |
 | Settings and Profiles | See [reset the configuration](../../troubleshooting/reset-configuration/) |
 | Everything | See [uninstall isoboard](../../troubleshooting/uninstall/) |

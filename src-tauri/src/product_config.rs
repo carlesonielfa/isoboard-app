@@ -34,6 +34,7 @@ pub(crate) struct PolarConfig {
     pub benefit_id: String,
     pub product_id: String,
     pub validation_url: String,
+    pub storefront_url: String,
     pub request_timeout_seconds: u64,
     pub connect_timeout_seconds: u64,
 }
@@ -65,6 +66,7 @@ mod tests {
             &PRODUCT.checkout_url,
             &PRODUCT.docs_url,
             &PRODUCT.polar.validation_url,
+            &PRODUCT.polar.storefront_url,
         ] {
             assert_eq!(reqwest::Url::parse(value).unwrap().scheme(), "https");
         }

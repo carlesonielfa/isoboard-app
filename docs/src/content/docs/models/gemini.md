@@ -14,7 +14,7 @@ You can use isoboard with your own Google Gemini API key. Create a key in Google
 1. Open [Google AI Studio's API key page](https://aistudio.google.com/apikey) and create a key. Copy it.
 2. In isoboard, open Settings and select the **Providers** tab.
 3. Expand **Gemini** and paste the key into **API key**.
-4. Click outside the field. A status below it shows **Ready** or **Configured**. Configured means the key is saved and isoboard has not used it yet.
+4. Click outside the field. The key is saved and the field shows dots (••••••••) in its place.
 
 isoboard then creates two starting Profiles, **Gemini - Efficient** and **Gemini - Accurate**. Efficient favors faster, lower-cost captures. Accurate favors difficult captures and may take longer and cost more. You can edit or delete both. See [Profiles](../../use/profiles/).
 
@@ -25,7 +25,7 @@ Any Gemini model that accepts images. In the **Profiles** tab, choose **Gemini**
 ## Where does isoboard store my key?
 
 <!-- os:macos -->
-In the macOS Keychain, never in the configuration file. isoboard does not show the key again after you save it, and you replace it by pasting a new one. See [where isoboard stores your data](../../privacy/data/).
+In the macOS Keychain, never in the configuration file. isoboard does not show the key again after you save it. A saved key appears as dots in **API key**. Paste a new key to replace it, or click the trash button next to the field and confirm **Remove key** to delete it from this Mac. See [where isoboard stores your data](../../privacy/data/).
 
 ## Who pays for the usage?
 

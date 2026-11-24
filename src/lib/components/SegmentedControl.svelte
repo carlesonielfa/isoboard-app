@@ -78,7 +78,7 @@
         value={option.value}
         disabled={disabled || option.disabled}
         class={fullWidth
-          ? 'min-w-0 whitespace-normal break-words disabled:cursor-not-allowed disabled:opacity-45 group-data-[variant=small]/tabs-list:w-full group-data-[variant=small]/tabs-list:px-3 group-data-[variant=small]/tabs-list:py-2 group-data-[variant=small]/tabs-list:text-xs group-data-[variant=small]/tabs-list:leading-snug'
+          ? 'min-w-0 whitespace-normal break-words disabled:cursor-not-allowed disabled:opacity-45 group-data-[variant=small]/tabs-list:w-full group-data-[variant=small]/tabs-list:px-2.5 group-data-[variant=small]/tabs-list:py-1 group-data-[variant=small]/tabs-list:text-xs group-data-[variant=small]/tabs-list:leading-snug'
           : undefined}
       >
         {#if optionContent}

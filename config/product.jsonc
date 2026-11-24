@@ -23,9 +23,12 @@
     "organizationId": "f9a76de5-56ce-4525-8d75-ee10f3cba16b",
     // The license-key benefit checked when granting commercial permission.
     "benefitId": "28056087-ae7b-4ea3-8e05-55c10b23d084",
-    // Reference metadata; validation uses organizationId and benefitId.
+    // The commercial seat product; validation uses organizationId and benefitId,
+    // and the license screen reads this product's price from storefrontUrl.
     "productId": "51438471-fde7-4f98-96dc-6b0198a5e39a",
     "validationUrl": "https://api.polar.sh/v1/customer-portal/license-keys/validate",
+    // Public organization storefront for the "isoboard" organization slug.
+    "storefrontUrl": "https://api.polar.sh/v1/customer-portal/organizations/isoboard",
     "requestTimeoutSeconds": 15,
     "connectTimeoutSeconds": 5,
   },

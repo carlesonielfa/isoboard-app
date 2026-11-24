@@ -642,6 +642,7 @@
           if (saved && setupVisible && setupStep === 'provider') setupConnectedProvider = provider;
           return saved;
         }}
+        onClearCredential={inference.clearProviderCredential}
         onRefreshReadiness={inference.refreshReadiness}
       />
     {/snippet}

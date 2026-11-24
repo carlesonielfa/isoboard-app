@@ -1,8 +1,9 @@
 <script lang="ts">
   import { productConfig } from '$lib/product-config';
   import { openUrl } from '@tauri-apps/plugin-opener';
+  import { isTauri } from '@tauri-apps/api/core';
   import { ArrowRight, BriefcaseBusiness, ShoppingCart, UserRound } from '@lucide/svelte';
-  import type { LicenseSnapshot } from '$lib/generated/bindings';
+  import { commands, type LicenseSnapshot } from '$lib/generated/bindings';
   import Button from '$lib/components/Button.svelte';
   import CheckList from '$lib/components/CheckList.svelte';
   import ChoiceCard from '$lib/components/ChoiceCard.svelte';
@@ -41,6 +42,34 @@
         })
       : '',
   );
+  // Undefined while loading; null when Polar cannot provide the price.
+  let seatPrice = $state<string | null | undefined>(undefined);
+  let priceRequested = false;
+  $effect(() => {
+    if (licensed || priceRequested) return;
+    priceRequested = true;
+    void loadSeatPrice();
+  });
+
+  async function loadSeatPrice() {
+    if (!isTauri()) {
+      seatPrice = null;
+      return;
+    }
+    try {
+      const price = await commands.getCommercialSeatPrice();
+      seatPrice = price
+        ? new Intl.NumberFormat(undefined, {
+            style: 'currency',
+            currency: price.currency,
+            minimumFractionDigits: price.amountMinor % 100 === 0 ? 0 : 2,
+          }).format(price.amountMinor / 100)
+        : null;
+    } catch {
+      seatPrice = null;
+    }
+  }
+
   let openingCheckout = $state(false);
   let checkoutError = $state('');
 
@@ -90,7 +119,6 @@
       </ChoiceCard>
       <ChoiceCard
         title="Commercial"
-        featured
         description={licensed
           ? 'Licensed for personal and commercial use.'
           : 'For work, including freelance and organizations.'}
@@ -102,10 +130,22 @@
           />{/snippet}
         <div class="grid gap-4">
           {#if !licensed}
-            <p class="m-0 text-sm">
-              <span class="mr-1 font-display text-3xl font-semibold tracking-tight">One-time</span
-              >per user
-            </p>
+            <div class="flex h-9 items-end" aria-live="polite">
+              {#if seatPrice === undefined}
+                <span
+                  class="mb-0.5 h-8 w-28 animate-pulse rounded-md bg-ink/10"
+                  aria-label="Loading price"
+                ></span>
+              {:else if seatPrice}
+                <p class="m-0 text-sm">
+                  <span class="mr-1 font-display text-3xl font-semibold tracking-tight"
+                    >{seatPrice}</span
+                  >per user
+                </p>
+              {:else}
+                <p class="m-0 text-xs">Price shown at checkout.</p>
+              {/if}
+            </div>
           {/if}
           <CheckList items={commercialFeatures} />
         </div>

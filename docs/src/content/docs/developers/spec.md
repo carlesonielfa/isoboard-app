@@ -35,7 +35,7 @@ for updates runs a check at any time. Development builds check only on request.
 Only a newer release in the running major version is offered, because a
 commercial license covers one major series. A found update downloads in the
 background and its signature is verified against the public key in the app.
-The menu bar and About then offer Restart to update. About → What's new lists
+The menu bar and About then offer Update & relaunch. About → What's new lists
 release notes newest first. The installed version is tagged Current and the
 newest version found by the last check is tagged Latest. Notes for the
 installed and older versions are bundled; newer ones come from the update
@@ -658,7 +658,13 @@ Settings and capture availability checks never read Keychain. They use saved
 references and session state. An unread saved credential is Configured, not
 verified. External inference reads the credential on first use. Successful reads
 are cached for the process in development and release builds. Replacement and
-token refresh update the cache. Deletion clears the secret. Access errors are
+token refresh update the cache. Deletion clears the secret.
+The provider editor shows a masked placeholder while readiness reports a saved
+credential reference, and a remove action next to the field. Removal asks for
+native confirmation, then clears the provider's reference in TOML, keeps its
+endpoint, and deletes the secret once no provider references it. It is rejected
+while a capture is running. A failed TOML write keeps both the reference and the
+secret. Access errors are
 remembered for status display without background retries. An explicit capture
 can retry denied access. Local inference does not access Keychain.
 It emits HTML only after a completed provider response. Capture then normalizes

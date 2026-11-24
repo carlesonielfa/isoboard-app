@@ -120,7 +120,8 @@
       (issue.target === 'model'
         ? document.getElementById(modelPickerId)
         : issue.target === 'rules'
-          ? document.getElementById(`${modelPickerId}-rules`)
+          ? (document.getElementById(`${modelPickerId}-rules`) ??
+            section?.querySelector<HTMLElement>('textarea'))
           : null) ?? section?.querySelector<HTMLElement>('input, button, select, textarea');
     (control ?? section)?.scrollIntoView({ block: 'center', behavior: 'instant' });
     control?.focus({ preventScroll: true });
@@ -259,6 +260,7 @@
       automaticSeparatePass={requiresRulesModel}
       onInput={(additionalRules) => update({ additionalRules })}
       onBlur={() => void save()}
+      onCommit={() => void save()}
       onSeparatePassChange={(additionalRulesSeparatePass) => {
         update({ additionalRulesSeparatePass });
         void save();
